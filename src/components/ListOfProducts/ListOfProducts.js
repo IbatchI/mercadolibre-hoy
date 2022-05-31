@@ -1,7 +1,7 @@
 import Product from 'components/Product/Product'
 import './ListOfProducts.css'
 
-const ListOfProducts = ({ products }) => {
+export default function ListOfProducts({ products }) {
   return (
     <div className="ListOfProducts">
       {products.map((product) => (
@@ -10,5 +10,3 @@ const ListOfProducts = ({ products }) => {
     </div>
   )
 }
-
-export default ListOfProducts

@@ -1,7 +1,8 @@
 import { useFormik } from 'formik'
 import { useLocation } from 'wouter'
+import './SearchProduct.css'
 
-const SearchProduct = () => {
+export default function SearchProduct() {
   // eslint-disable-next-line no-unused-vars
   const [path, pushLocation] = useLocation()
   const formik = useFormik({
@@ -13,13 +14,15 @@ const SearchProduct = () => {
     },
   })
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <input type="text" {...formik.getFieldProps('search')} />
-      <button type="submit" value="Buscar">
-        <span className="material-symbols-outlined">search</span>
+    <form className='FormSearchProduct' onSubmit={formik.handleSubmit}>
+      <input
+        type='text'
+        placeholder='Buscar producto...'
+        {...formik.getFieldProps('search')}
+      />
+      <button type='submit' value='Buscar'>
+        <span className='material-symbols-outlined'>search</span>
       </button>
     </form>
   )
 }
-
-export default SearchProduct

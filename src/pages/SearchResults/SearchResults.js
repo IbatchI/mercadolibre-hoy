@@ -5,7 +5,7 @@ import Spinner from 'components/Spinner/Spinner'
 import useNearScreen from 'hooks/useNearScreen'
 import useProducts from 'hooks/useProducts'
 
-const SearchResults = ({ params }) => {
+export default function SearchResults ({ params }) {
   const { keyword } = params
   const { products, loading, setOffset } = useProducts({ keyword })
   const externalRef = useRef()
@@ -27,10 +27,15 @@ const SearchResults = ({ params }) => {
 
   return (
     <div className="container">
-      {loading ? <Spinner /> : <ListOfProducts products={products} />}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <h5>Resultados de {decodeURI(keyword)}</h5>
+          <ListOfProducts products={products} />
+        </>
+      )}
       <div id="visor" ref={externalRef}></div>
     </div>
   )
 }
-
-export default SearchResults

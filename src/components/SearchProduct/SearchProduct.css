@@ -1,0 +1,22 @@
+.FormSearchProduct input, button {
+    border-radius: 5px;
+    border: 1px solid #cecdcd;
+    font-size: 14px;
+    padding: 5px 8px;
+}
+
+.FormSearchProduct input {
+    border: 1px solid #cecdcd;
+}
+
+.FormSearchProduct input:hover {
+    border: 1px solid #adadad;
+}
+
+.FormSearchProduct button {
+    background-color: var(--ligthblue-color);
+    border: 1px solid var(--violet-color);
+    color: #000000;
+    font-weight: bold;
+    margin: 0 5px;
+}
