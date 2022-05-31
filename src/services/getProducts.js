@@ -11,15 +11,19 @@ export default async function getProducts({
   const res = await fetch(sarchUrl)
   const response = await res.json()
   const data = response.results
+  const products = []
 
-  const products = data.map((product) => {
-    const { id, permalink, title, price } = product
-    const productDetail = getProduct({ id }).then((detailProduct) => {
-      const { pictures, description } = detailProduct
-      return { pictures, description }
+  await Promise.all(
+    data.map(async (product) => {
+      try {
+        const { id, permalink, title, price } = product
+        const { pictures, description } = await getProduct({ id })
+
+        products.push({ id, permalink, title, price, pictures, description })
+      } catch (error) {
+        console.log('error' + error)
+      }
     })
-    const { pictures, description } = productDetail
-    return { id, permalink, title, price, pictures, description }
-  })
+  )
   return products
 }

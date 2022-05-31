@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import getProducts from 'services/getProducts'
 
-const INITIAL_OFFSET = 12
+const INITIAL_OFFSET = 0
 
 const useProducts = ({ keyword }) => {
   const [loading, setLoading] = useState(false)
