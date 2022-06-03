@@ -1,4 +1,5 @@
 .ListOfPictures {
   display: flex;
   align-items: center;
+  overflow: hidden;
 }

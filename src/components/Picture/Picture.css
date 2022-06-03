@@ -1,5 +1,9 @@
 .Picture{
-    border-radius: 50%;
     height: 80px;
     width: 80px;
+    transition: 0.3s all;
+}
+
+.Picture:hover{
+    zoom: 2;
 }

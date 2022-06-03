@@ -1,8 +1,9 @@
+import React from 'react'
 import ListOfPictures from 'components/ListOfPictures/ListOFPictures'
 import { Link } from 'wouter'
 import './Product.css'
 
-export default function Product({
+function Product({
   permalink,
   title,
   price,
@@ -17,3 +18,5 @@ export default function Product({
     </Link>
   )
 }
+
+export default React.memo(Product)
