@@ -1,22 +1,29 @@
-.FormSearchProduct input, button {
-    border-radius: 5px;
-    border: 1px solid #cecdcd;
-    font-size: 14px;
-    padding: 5px 8px;
+.FormSearchProduct {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.FormSearchProduct input {
-    border: 1px solid #cecdcd;
+.FormSearchProduct input,
+button {
+  background-color: var(--backgroudt-clear-color);
+  border-radius: 3px;
+  border: 1px solid #252525;
+  color: var(--secondary-color);
+  font-weight: bold;
+  padding: 8px 90px 8px 10px;
+  text-align: start;
 }
 
-.FormSearchProduct input:hover {
-    border: 1px solid #adadad;
+.FormSearchProduct input:hover:focus {
+  border: 1px solid var(--secondary-color);
+  outline: none;
 }
 
 .FormSearchProduct button {
-    background-color: var(--ligthblue-color);
-    border: 1px solid var(--violet-color);
-    color: #000000;
-    font-weight: bold;
-    margin: 0 5px;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 5px;
+  padding: 6px 0 0 0;
 }

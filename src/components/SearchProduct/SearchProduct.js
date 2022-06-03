@@ -1,5 +1,6 @@
 import { useFormik } from 'formik'
 import { useLocation } from 'wouter'
+import { BiSearchAlt } from 'react-icons/bi'
 import './SearchProduct.css'
 
 export default function SearchProduct() {
@@ -21,7 +22,7 @@ export default function SearchProduct() {
         {...formik.getFieldProps('search')}
       />
       <button type='submit' value='Buscar'>
-        <span className='material-symbols-outlined'>search</span>
+        <BiSearchAlt />
       </button>
     </form>
   )

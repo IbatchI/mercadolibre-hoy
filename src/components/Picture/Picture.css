@@ -1,9 +1,11 @@
 .Picture{
-    height: 80px;
-    width: 80px;
-    transition: 0.3s all;
+    height: 150px;
+    width: 110px;
+    transition: 0.4s all;
+    object-fit:cover;
+    border-radius: 4px;
 }
 
 .Picture:hover{
-    zoom: 2;
+    zoom: 1.05;
 }

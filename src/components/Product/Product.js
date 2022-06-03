@@ -12,9 +12,9 @@ function Product({
 }) {
   return (
     <Link className="product" to={permalink}>
+      <h3 className="overflow-product-title">{title}</h3>
       <ListOfPictures pictures={pictures} />
-      <h4>{title}</h4>
-      <span>$ {price}</span>
+      <span>${price}</span>
     </Link>
   )
 }

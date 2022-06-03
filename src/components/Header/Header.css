@@ -1,9 +1,9 @@
 header {
   align-items: center;
-  background-color: white;
+  background-color: var(--backgroudt-light-color);
   display: flex;
-  height: 50px;
-  justify-content: center;
+  height: 70px;
+  justify-content: space-between;
   position: sticky;
   width: 100%;
 }
