@@ -4,9 +4,9 @@ import './ListOfPictures.css'
 export default function ListOfPictures({ pictures }) {
   return (
     <div className="ListOfPictures">
-      {pictures.map((picture, index) => 
+      {pictures.slice(0, 3).map((picture, index) => (
         <Picture pictureURL={picture} key={index} />
-      )}
+      ))}
     </div>
   )
 }

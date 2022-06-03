@@ -31,7 +31,7 @@ export default function SearchResults ({ params }) {
         <Spinner />
       ) : (
         <>
-          <h5>Resultados de {decodeURI(keyword)}</h5>
+          <h2>Resultados de {decodeURI(keyword)}</h2>
           <ListOfProducts products={products} />
         </>
       )}

@@ -1,12 +1,28 @@
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--secondary-color);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--secondary-color);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--secondary-color);
+}
+
 body {
   margin: 0;
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Cascadia Code', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Cascadia Code',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--backgroud-color);
-  color: #FFFFFF;
+  color: var(--secondary-color);
 }
 
 code {
@@ -14,11 +30,10 @@ code {
     monospace;
 }
 
-:root{
-  --yellow-color:#FFBE0B;
-  --orange-color:#FB5607;
-  --pink-color:#FF006E;
-  --violet-color:#8338EC;
-  --ligthblue-color:#3A86FF;
-  --backgroud-color: #240046;
+:root {
+  --primary-color: #4a185b;
+  --secondary-color: #bac2e6;
+  --backgroud-color: #0b0b0c;
+  --backgroudt-light-color: #0e0e10;
+  --backgroudt-clear-color: #1212;
 }
