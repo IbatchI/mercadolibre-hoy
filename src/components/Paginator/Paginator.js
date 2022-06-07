@@ -10,7 +10,10 @@ export default function Paginator({ totalResults, page, nextPage }) {
         <button
           className="btn-pagination"
           key={pageNumber}
-          onClick={() => nextPage(pageNumber)}
+          onClick={() => {
+            window.scrollTo(0, 0)
+            nextPage(pageNumber)
+          }}
           style={{
             color:
               page === pageNumber
