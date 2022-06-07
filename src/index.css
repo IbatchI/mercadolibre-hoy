@@ -32,7 +32,9 @@ code {
 
 :root {
   --primary-color: #4a185b;
+  --focus-primary-color:rgb(172, 6, 228);
   --secondary-color: #bac2e6;
+  --focus-secondary-color: #8798e2;
   --backgroud-color: #0b0b0c;
   --backgroudt-light-color: #0e0e10;
   --backgroudt-clear-color: #1212;

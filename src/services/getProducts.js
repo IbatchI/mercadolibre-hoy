@@ -1,29 +1,22 @@
-import getProduct from './getProduct'
 import { API_URL } from './settings'
+import getProduct from './getProduct'
 
 export default async function getProducts({
   keyword = 'placas de video',
-  limit = 12,
-  offset = 0,
 } = {}) {
-  const sarchUrl = `${API_URL}/sites/MLA/search?q=${keyword}&since=today&condition=used&limit=${limit}&offset=${offset}&sort=price_asc`
+  const sarchUrl = `${API_URL}/sites/MLA/search?q=${keyword}&since=today&condition=used&sort=price_asc`
 
   const res = await fetch(sarchUrl)
   const response = await res.json()
   const data = response.results
-  const products = []
 
-  await Promise.all(
+  const products = await Promise.all(
     data.map(async (product) => {
-      try {
-        const { id, permalink, title, price } = product
-        const { pictures, description } = await getProduct({ id })
-
-        products.push({ id, permalink, title, price, pictures, description })
-      } catch (error) {
-        console.log('error' + error)
-      }
+      const { id, permalink, title, price } = product
+      const { pictures, description } = await getProduct({ id })
+      return { id, permalink, title, price, pictures, description }
     })
   )
-  return products
+
+  return products.sort((productA, productB) => (productA.price > productB.price ? 1 : -1))
 }

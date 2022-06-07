@@ -1,29 +1,13 @@
-import { useCallback, useEffect, useRef } from 'react'
-import debounce from 'just-debounce-it'
+import { useState } from 'react'
 import ListOfProducts from 'components/ListOfProducts/ListOfProducts'
+import Paginator from 'components/Paginator/Paginator'
 import Spinner from 'components/Spinner/Spinner'
-import useNearScreen from 'hooks/useNearScreen'
 import useProducts from 'hooks/useProducts'
 
-export default function SearchResults ({ params }) {
+export default function SearchResults({ params }) {
   const { keyword } = params
-  const { products, loading, setOffset } = useProducts({ keyword })
-  const externalRef = useRef()
-  const { isNearScreen } = useNearScreen({
-    distance: '50px',
-    externalRef: loading ? null : externalRef,
-    once: false,
-  })
-
-  const handleLoadMore = () => setOffset((prevOffset) => prevOffset + 12)
-
-  const deboundHandleLoadModer = useCallback(() =>
-    debounce(handleLoadMore(), 1000)
-  )
-
-  useEffect(function () {
-    isNearScreen && deboundHandleLoadModer()
-  }, [isNearScreen])
+  const { products, loading } = useProducts({ keyword })
+  const [page, setPage] = useState(1)
 
   return (
     <div className="container">
@@ -31,11 +15,17 @@ export default function SearchResults ({ params }) {
         <Spinner />
       ) : (
         <>
-          <h2>Resultados de {decodeURI(keyword)}</h2>
-          <ListOfProducts products={products} />
+          <h5>
+            {products.length} resultados de {decodeURI(keyword)}
+          </h5>
+          <ListOfProducts page={page} products={products} />
+          <Paginator
+            page={page}
+            nextPage={setPage}
+            totalResults={products.length}
+          />
         </>
       )}
-      <div id="visor" ref={externalRef}></div>
     </div>
   )
 }
