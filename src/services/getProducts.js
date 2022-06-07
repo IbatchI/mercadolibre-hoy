@@ -4,13 +4,14 @@ import { API_URL } from './settings'
 export default async function getProducts({
   keyword = 'placas de video',
   limit = 12,
-  offset = 0,
+  page = 1,
 } = {}) {
-  const sarchUrl = `${API_URL}/sites/MLA/search?q=${keyword}&since=today&condition=used&limit=${limit}&offset=${offset}&sort=price_asc`
+  const sarchUrl = `${API_URL}/sites/MLA/search?q=${keyword}&since=today&condition=used&limit=${limit}&offset=${page * limit}&sort=price_asc`
 
   const res = await fetch(sarchUrl)
   const response = await res.json()
   const data = response.results
+  const totalResults = response.paging.total
   const products = []
 
   await Promise.all(
@@ -25,5 +26,5 @@ export default async function getProducts({
       }
     })
   )
-  return products
+  return { products, totalResults }
 }

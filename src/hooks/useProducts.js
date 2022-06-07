@@ -1,34 +1,26 @@
 import { useEffect, useState } from 'react'
 import getProducts from 'services/getProducts'
 
-const INITIAL_OFFSET = 0
+const INITIAL_PAGE = 1
 
 const useProducts = ({ keyword }) => {
   const [loading, setLoading] = useState(false)
-  const [loadingMoreProducts, setLoadingMoreProducts] = useState(false)
   const [products, setProducts] = useState([])
+  const [totalResults, setTotalResults] = useState(0)
 
-  const [offset, setOffset] = useState(INITIAL_OFFSET)
+  const [page, setPage] = useState(INITIAL_PAGE)
 
   useEffect(() => {
     setLoading(true)
-    getProducts({ keyword }).then((products) => {
+    getProducts({ keyword }).then((result) => {
+      const { products, totalResults } = result
       setProducts(products)
+      setTotalResults(totalResults)
       setLoading(false)
     })
-  }, [keyword, setProducts])
+  }, [keyword, setProducts, page, setPage])
 
-  useEffect(() => {
-    if (offset === INITIAL_OFFSET) return
-
-    setLoadingMoreProducts(true)
-    getProducts({ keyword, offset }).then((nextProducts) => {
-      setProducts((prevProducts) => prevProducts.concat(nextProducts))
-      setLoadingMoreProducts(false)
-    })
-  }, [keyword, offset, setOffset])
-
-  return { products, loading, loadingMoreProducts, setOffset }
+  return { products, totalResults, loading, page, setPage }
 }
 
 export default useProducts
