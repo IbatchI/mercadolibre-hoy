@@ -5,14 +5,13 @@ const INITIAL_PAGE = 1
 
 const useProducts = ({ keyword }) => {
   const [loading, setLoading] = useState(false)
+  const [page, setPage] = useState(INITIAL_PAGE)
   const [products, setProducts] = useState([])
   const [totalResults, setTotalResults] = useState(0)
 
-  const [page, setPage] = useState(INITIAL_PAGE)
-
   useEffect(() => {
     setLoading(true)
-    getProducts({ keyword }).then((result) => {
+    getProducts({ keyword, page }).then((result) => {
       const { products, totalResults } = result
       setProducts(products)
       setTotalResults(totalResults)

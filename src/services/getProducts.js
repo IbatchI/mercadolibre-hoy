@@ -1,12 +1,14 @@
-import getProduct from './getProduct'
 import { API_URL } from './settings'
+import getProduct from './getProduct'
 
 export default async function getProducts({
   keyword = 'placas de video',
   limit = 12,
   page = 1,
 } = {}) {
-  const sarchUrl = `${API_URL}/sites/MLA/search?q=${keyword}&since=today&condition=used&limit=${limit}&offset=${page * limit}&sort=price_asc`
+  const sarchUrl = `${API_URL}/sites/MLA/search?q=${keyword}&since=today&condition=used&limit=${limit}&offset=${
+    (page - 1) * limit
+  }&sort=price_asc`
 
   const res = await fetch(sarchUrl)
   const response = await res.json()

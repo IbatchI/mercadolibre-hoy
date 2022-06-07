@@ -21,13 +21,13 @@ export default function SearchResults({ params }) {
             {totalResults} resultados de {decodeURI(keyword)}
           </h5>
           <ListOfProducts products={products} />
+          <Paginator
+            handleLoadMore={handleLoadMore}
+            page={page}
+            totalResults={totalResults}
+          />
         </>
       )}
-      <Paginator
-        page={page}
-        totalResults={totalResults}
-        handleLoadMore={handleLoadMore}
-      />
     </div>
   )
 }
