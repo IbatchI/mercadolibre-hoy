@@ -1,8 +1,7 @@
 import './Paginator.css'
 
-export default function Paginator({ totalResults, page, handleLoadMore }) {
+export default function Paginator({ totalResults, page, nextPage }) {
   const NUM_OF_PAGES = Math.ceil(totalResults / 12)
-  console.log(page)
   const pages = []
   for (let i = 1; i <= NUM_OF_PAGES; i++) pages.push(i)
   return (
@@ -11,7 +10,7 @@ export default function Paginator({ totalResults, page, handleLoadMore }) {
         <button
           className="btn-pagination"
           key={pageNumber}
-          onClick={() => handleLoadMore(pageNumber)}
+          onClick={() => nextPage(pageNumber)}
           style={{
             color:
               page === pageNumber

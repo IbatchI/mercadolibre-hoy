@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import ListOfProducts from 'components/ListOfProducts/ListOfProducts'
 import Paginator from 'components/Paginator/Paginator'
 import Spinner from 'components/Spinner/Spinner'
@@ -5,11 +6,8 @@ import useProducts from 'hooks/useProducts'
 
 export default function SearchResults({ params }) {
   const { keyword } = params
-  const { products, totalResults, page, loading, setPage } = useProducts({
-    keyword,
-  })
-
-  const handleLoadMore = (pageNumber) => setPage(pageNumber)
+  const { products, loading } = useProducts({ keyword })
+  const [page, setPage] = useState(1)
 
   return (
     <div className="container">
@@ -18,13 +16,13 @@ export default function SearchResults({ params }) {
       ) : (
         <>
           <h5>
-            {totalResults} resultados de {decodeURI(keyword)}
+            {products.length} resultados de {decodeURI(keyword)}
           </h5>
-          <ListOfProducts products={products} />
+          <ListOfProducts page={page} products={products} />
           <Paginator
-            handleLoadMore={handleLoadMore}
             page={page}
-            totalResults={totalResults}
+            nextPage={setPage}
+            totalResults={products.length}
           />
         </>
       )}
