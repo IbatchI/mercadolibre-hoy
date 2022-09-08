@@ -4,20 +4,21 @@
   line-height: 24px;
   font-weight: 400;
 
-  color: var(--mainTextColor);
+
   background-color: var(--mainBackgroundColor);
+  color: white;
   
   /* Colors of main theme  */
-  --mainBackgroundColor: #242424;
+  --mainBackgroundColor: #202124;
   --mainBgInputColor: #ffffff33;
   --mainBorderColor: #ACACB7;
   --mainButtonBackgroundColor: #A86E1B;
   --mainButtonHoverBackgroundColor: #ce9a51;
   --mainButtonTextColor: #242424;
-  --mainPrimaryColor: #3D261A;
-  --mainSecondayColor: #674D26;
+  --mainPrimaryColor: #005be4;
+  --mainSecondayColor: #fff159;
   --mainTextColor: #A86E1B;
-  --mainNavBarBackgroundColor: #3D261A;
+  --mainNavBarBackgroundColor: #ffd301;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
