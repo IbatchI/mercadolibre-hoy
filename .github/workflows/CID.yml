@@ -81,7 +81,8 @@ jobs:
       - name: Instalar dependencia
         run: yarn
       - name: Deploy
+        if: [ ${{ github.ref }} = "refs/heads/master" ] && github.event_name == 'push'
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
-        run: if [ ${{ github.ref }} = "refs/heads/master" ]; then npx netlify deploy --dir=dist --prod --message="Deploy from GitHub Actions"; else echo "depley to ${{ github.ref }}"; fi
+        run: npx netlify deploy --dir=dist --prod --message="Deploy from GitHub Actions" 
