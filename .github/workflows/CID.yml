@@ -1,0 +1,103 @@
+name: CI-CD
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+    types: [opened, synchronize]
+jobs:
+  # Cancel Previous Redundant Builds
+  check-skip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Redundant Builds
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{github.token}}
+
+  # Build
+  Build:
+   runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Instalar dependencia
+        run: yarn
+      - name: Build
+        run: yarn build
+
+  # Lint
+  # Lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         cache: 'npm'
+  #         node-version: 16
+  #     - name: Instalar dependencia
+  #       run: npm ci
+  #     - name: Lint
+  #       run: npm run lint
+
+  # Test
+  # Test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         cache: 'npm'
+  #         node-version: 16
+  #     - name: Instalar dependencia
+  #       run: npm ci
+  #     - name: Test
+  #       run: npm run test
+
+  # # Test e2e
+  # teste2e:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16
+  #     - name: Instalar dependencia
+  #       run: npm ci
+  #     - name: Run App
+  #       run: npm run start
+  #     - name: E2E test
+  #       uses: cypress-io/github-action@v2
+  #       with:
+  #         command: npm run e2e
+  #         wait-on: http://localhost:4200
+
+  # Release
+  # Release :
+  #   needs: [lint, test, teste2e]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #     with:
+  #       fetch-depth: 0
+
+  # Deploy
+  # Deploy :
+  #   needs: [build, lint, test]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #     with:
+  #       fetch-depth: 0
