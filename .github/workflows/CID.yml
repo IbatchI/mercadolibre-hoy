@@ -28,7 +28,24 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: 'yarn'
       - name: Instalar dependencia
         run: yarn
       - name: Build
         run: yarn build
+
+    # Lint:
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
+          node-version: 16
+      - name: Instalar dependencia
+        run: yarn ci
+      - name: Lint
+        run: yarn lint
