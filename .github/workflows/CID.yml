@@ -1,12 +1,5 @@
 name: CI-CD
-on:
-  push:
-    branches:
-      - [dev, master]
-  pull_request:
-    branches:
-      - [dev, master]
-    types: [opened, synchronize]
+on: [push, pull_request]
 jobs:
   # Cancel Previous Redundant Builds
   check-skip:
