@@ -27,11 +27,11 @@ jobs:
       - name: Setup Node.js
       - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
       - name: Instalar dependencia
-        - run: yarn
+      - run: yarn
       - name: Build
-        - run: yarn build
+      - run: yarn build
 
   # Lint
   # Lint:
