@@ -29,9 +29,9 @@ jobs:
         with:
           node-version: 16
       - name: Instalar dependencia
-      - run: yarn
+        run: yarn
       - name: Build
-      - run: yarn build
+        run: yarn build
 
   # Lint
   # Lint:
