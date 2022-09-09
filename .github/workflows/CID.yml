@@ -46,5 +46,7 @@ jobs:
         with:
           cache: 'yarn'
           node-version: 16
+      - name: Instalar dependencia
+        run: yarn
       - name: Lint
         run: yarn lint
