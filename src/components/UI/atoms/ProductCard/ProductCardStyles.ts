@@ -15,6 +15,8 @@ export const StyledCard = styled.div`
   @media ${deviceSize.tablet} {
     width: 170px;
     height: 230px;
+    -webkit-box-shadow: 0px 0px 10px -5px #000000;
+    box-shadow: 0px 0px 10px -5px #000000;
   }
 `
 
@@ -78,6 +80,8 @@ export const StyledPriceCard = styled.div`
 export const ImageCardStyled = styled.img`
   height: 150px;
   object-fit: cover;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   @media ${deviceSize.tablet} {
     height: 130px;
   }

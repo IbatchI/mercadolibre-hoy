@@ -21,6 +21,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const [pagesState, setPages] = useState<any>([])
   useEffect(() => {
     const pages = []
+    window.scrollTo(0, 0)
     if (selectedPage <= NUM_OF_PAGES) {
       if (selectedPage === 1) {
         for (let i = 1; i <= Math.min(NUM_OF_PAGES, 3); i++) {
