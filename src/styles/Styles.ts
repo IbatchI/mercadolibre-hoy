@@ -44,3 +44,14 @@ export const mainTheme = {
     large: '3rem',
   },
 }
+const size = {
+  tablet: '768px',
+  tabletL: '1024px',
+  desktop: '1256px',
+}
+
+export const deviceSize = {
+  tablet: `(max-width: ${size.tablet})`,
+  tabletL: `(max-width: ${size.tabletL})`,
+  desktop: `(max-width: ${size.desktop})`,
+}
