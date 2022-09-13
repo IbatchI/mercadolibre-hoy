@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { Pagination } from '../components/UI/molecules/Pagination/Pagination'
 import useProducts from '../hooks/useProducts'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ProductCard } from '../components/UI/atoms/ProductCard/ProductCard'
 import {
   StyledCardContainer,
@@ -20,6 +20,11 @@ const SearchResults = () => {
   const { keyword } = useParams()
   const [pagination, setPagination] = useState<number>(0)
   const { products, loading, totalResults } = useProducts(keyword, pagination * LIMIT)
+
+  useEffect(() => {
+    setPagination(0)
+  }, [keyword])
+
   return (
     <>
       {loading ? (

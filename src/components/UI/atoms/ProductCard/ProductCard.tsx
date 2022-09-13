@@ -29,7 +29,13 @@ export const ProductCard: FC<ProductCardProps> = ({ title, price, pictures, link
   return (
     <StyledCard>
       <StyledCarrouselContainer>
-        <Carousel showArrows showIndicators={false} showThumbs={false} showStatus={false}>
+        <Carousel
+          showArrows
+          showIndicators={false}
+          showThumbs={false}
+          showStatus={false}
+          emulateTouch={false}
+        >
           {pictures.map((picture, index) => (
             <div key={index}>
               <ImageCardStyled src={picture} />
