@@ -12,11 +12,13 @@ export const SearchBox = () => {
   const history = useNavigate()
 
   const handleSubmit = () => {
+    setValueSelected('')
     history(`/search/${valueSelected}`)
   }
   const handleKeyDown = (e: any) => {
     if (e.key === 'Enter') {
       e.preventDefault()
+      setValueSelected('')
       history(`/search/${valueSelected}`)
     }
   }
