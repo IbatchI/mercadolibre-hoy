@@ -24,7 +24,7 @@ export const StyledNavBarGhost = styled.div<{
   width: 14%;
   transition: all 0.5s;
   @media ${deviceSize.tablet} {
-    height: 50px;
+    height: 65px;
     &:hover {
       width: 100%;
     }
@@ -61,6 +61,7 @@ export const SearchIcon = styled(AiOutlineSearch)`
   border-radius: 50%;
   color: #07051a;
   text-align: center;
+  pointer-events: none;
   font-size: 1.2em;
   transition: all 1s;
   @media ${deviceSize.tablet} {
@@ -95,6 +96,7 @@ export const StyledSearchInput = styled.form`
   &:hover ${SearchIcon},&:valid ${SearchIcon} {
     background: #ffd301;
     color: black;
+    pointer-events: all;
   }
   @media ${deviceSize.tablet} {
     width: 43px;

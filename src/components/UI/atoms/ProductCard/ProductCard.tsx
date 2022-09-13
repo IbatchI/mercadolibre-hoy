@@ -35,6 +35,7 @@ export const ProductCard: FC<ProductCardProps> = ({ title, price, pictures, link
           showThumbs={false}
           showStatus={false}
           emulateTouch={false}
+          swipeable={false}
         >
           {pictures.map((picture, index) => (
             <div key={index}>

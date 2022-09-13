@@ -13,7 +13,7 @@ export const StyledNavBarContainer = styled.div`
   justify-content: space-between;
   width: auto;
   @media ${deviceSize.tablet} {
-    height: 50px;
+    height: 65px;
   }
 `
 
