@@ -7,7 +7,7 @@ const Navbar = () => {
     <>
       <SearchBox />
       <StyledNavBarContainer>
-        <StyledMainLogo src="../../../../../images/logo.png" />
+        <StyledMainLogo src="/images/logo.png" />
         <UserDropDown />
       </StyledNavBarContainer>
     </>
