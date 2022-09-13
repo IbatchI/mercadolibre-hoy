@@ -80,6 +80,8 @@ export const StyledPriceCard = styled.div`
 export const ImageCardStyled = styled.img`
   height: 150px;
   object-fit: cover;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   @media ${deviceSize.tablet} {
     height: 130px;
   }
