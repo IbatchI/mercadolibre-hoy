@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 
 interface PaginationProps {
   totalResults: number
+  // eslint-disable-next-line no-unused-vars
   setPage: (page: number) => void
   initialPage: number
 }

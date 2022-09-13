@@ -1,14 +1,14 @@
-import React, { useRef } from "react";
-import "./styles.css";
-import { useDetectOutsideClick } from "./useDetectOutsideClick";
+import React, { useRef } from 'react'
+import './styles.css'
+import { useDetectOutsideClick } from './useDetectOutsideClick'
 /*
  * Read the blog post here:
  * https://letsbuildui.dev/articles/building-a-dropdown-menu-component-with-react-hooks
  */
 export default function UserDropDown() {
-  const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-  const onClick = () => setIsActive(!isActive);
+  const dropdownRef = useRef(null)
+  const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false)
+  const onClick = () => setIsActive(!isActive)
 
   return (
     <div className="container">
@@ -20,10 +20,7 @@ export default function UserDropDown() {
             alt="User avatar"
           />
         </button>
-        <nav
-          ref={dropdownRef}
-          className={`menu ${isActive ? "active" : "inactive"}`}
-        >
+        <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
           <ul>
             <li>
               <a href="#">Messages</a>
@@ -38,5 +35,5 @@ export default function UserDropDown() {
         </nav>
       </div>
     </div>
-  );
+  )
 }
