@@ -1,0 +1,43 @@
+import styled from 'styled-components'
+import { deviceSize } from './Styles'
+
+export const StyledCardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  @media ${deviceSize.tablet} {
+    gap: 0.5rem;
+  }
+`
+
+export const StyledSearchAndFilters = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 20px 35px 20px;
+  align-self: center;
+  justify-self: center;
+  width: 88%;
+  margin: auto;
+  @media ${deviceSize.tablet} {
+    padding: 5px 10px 15px 10px;
+    width: 100%;
+  }
+`
+
+export const StyledTextSeatch = styled.div`
+  font-size: 24px;
+  font-weight: 500;
+  @media ${deviceSize.tablet} {
+    font-size: 16px;
+  }
+`
+export const StyledTextTotal = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  @media ${deviceSize.tablet} {
+    font-size: 13px;
+  }
+`

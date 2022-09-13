@@ -4,20 +4,20 @@
   line-height: 24px;
   font-weight: 400;
 
-  color: var(--mainTextColor);
+
   background-color: var(--mainBackgroundColor);
   
   /* Colors of main theme  */
-  --mainBackgroundColor: #242424;
+  --mainBackgroundColor: #ebebeb;
   --mainBgInputColor: #ffffff33;
   --mainBorderColor: #ACACB7;
   --mainButtonBackgroundColor: #A86E1B;
   --mainButtonHoverBackgroundColor: #ce9a51;
   --mainButtonTextColor: #242424;
-  --mainPrimaryColor: #3D261A;
-  --mainSecondayColor: #674D26;
+  --mainPrimaryColor: #005be4;
+  --mainSecondayColor: #ffd301;
   --mainTextColor: #A86E1B;
-  --mainNavBarBackgroundColor: #3D261A;
+  --mainNavBarBackgroundColor: #ffd301;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,7 +26,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
+
+.carousel.carousel-slider .control-arrow {
+  opacity: 1;
+  
+}
+
+
 body {
   margin: 0;
+  font-family: 'Roboto', sans-serif;
   min-height: 100vh;
 }
