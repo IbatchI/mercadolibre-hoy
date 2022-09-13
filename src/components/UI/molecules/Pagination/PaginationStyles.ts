@@ -1,8 +1,9 @@
 import styled from 'styled-components'
-import { deviceSize, mainTheme } from '../../../../styles/Styles'
 
 export const StyledPaginationContainer = styled.div`
   display: flex;
   width: 100%;
+  gap: 4px;
+  margin-top: 20px;
   justify-content: center;
 `

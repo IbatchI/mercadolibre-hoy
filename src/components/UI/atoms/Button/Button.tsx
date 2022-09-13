@@ -3,10 +3,11 @@ import { mainTheme } from '../../../../styles/Styles'
 import { StyledButton } from './ButtonStyles'
 mainTheme.colors.navBarBackgroundColor
 interface ButtonProps {
-  children: string
+  children: JSX.Element | string
   BackgroundColor?: string
   TextColor?: string
   active?: boolean
+  padding?: string
   onClick?: () => void
 }
 export const Button: React.FC<ButtonProps> = ({
@@ -14,6 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
   BackgroundColor = mainTheme.colors.navBarBackgroundColor,
   TextColor = '#ffffff',
   active = false,
+  padding = '',
   onClick,
 }) => {
   return (
@@ -22,6 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
       BackgroundColor={BackgroundColor}
       TextColor={TextColor}
       onClick={onClick}
+      paddingStyled={padding}
     >
       {children}
     </StyledButton>

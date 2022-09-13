@@ -1,18 +1,44 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   StyledSearchInput,
   StyledSearchInputt,
   SearchIcon,
   StyledContainer,
+  StyledNavBarGhost,
 } from './SearchBoxStyles'
 export const SearchBox = () => {
-  const [value, setValue] = useState('')
+  const [valueSelected, setValueSelected] = useState<string>('')
+  const history = useNavigate()
+
+  const handleSubmit = () => {
+    history(`/search/${valueSelected}`)
+  }
+  const handleKeyDown = (e: any) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      history(`/search/${valueSelected}`)
+    }
+  }
   return (
-    <StyledContainer>
-      <StyledSearchInput action="" value={value} onChange={(e) => setValue(e.target.value)}>
-        <StyledSearchInputt type="search" required />
-        <SearchIcon onClick={() => console.log('holi')} />
-      </StyledSearchInput>
-    </StyledContainer>
+    <StyledNavBarGhost active={valueSelected === ''}>
+      <StyledContainer>
+        <StyledSearchInput
+          onKeyDown={(e) => {
+            handleKeyDown(e)
+          }}
+          method="get"
+          onChange={(e) => setValueSelected((e.target as HTMLTextAreaElement).value)}
+        >
+          <StyledSearchInputt value={valueSelected} type="search" required />
+          <SearchIcon
+            type="button"
+            onClick={() => {
+              handleSubmit()
+            }}
+          />
+        </StyledSearchInput>
+      </StyledContainer>
+    </StyledNavBarGhost>
   )
 }

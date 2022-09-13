@@ -8,6 +8,7 @@ import './App.css'
 export const App = () => (
   <BrowserRouter>
     <Navbar />
+
     <StyledGlobalContainer>
       <Routes>
         <Route path="/" element={<Home />} />

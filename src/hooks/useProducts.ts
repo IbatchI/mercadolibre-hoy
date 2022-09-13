@@ -17,7 +17,7 @@ const useProducts = (keyword = '', offset = 0) => {
     } catch (error) {
       setLoading(false)
     }
-  }, [keyword])
+  }, [keyword, offset])
 
   return { products, loading, totalResults }
 }

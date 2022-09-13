@@ -6,15 +6,21 @@ import { useState, useEffect } from 'react'
 
 interface PaginationProps {
   totalResults: number
+  setPage: (page: number) => void
+  initialPage: number
 }
 
-export const Pagination: React.FC<PaginationProps> = ({ totalResults = 0 }) => {
+export const Pagination: React.FC<PaginationProps> = ({
+  totalResults = 0,
+  setPage,
+  initialPage = 0,
+}) => {
   const NUM_OF_PAGES = Math.ceil(totalResults / LIMIT)
-  const [selectedPage, setSelectedPage] = useState(1)
+  const [selectedPage, setSelectedPage] = useState(initialPage + 1)
   const [pagesState, setPages] = useState<any>([])
   useEffect(() => {
     const pages = []
-    if (selectedPage < NUM_OF_PAGES) {
+    if (selectedPage <= NUM_OF_PAGES) {
       if (selectedPage === 1) {
         for (let i = 1; i <= Math.min(NUM_OF_PAGES, 3); i++) {
           pages.push(i)
@@ -30,12 +36,14 @@ export const Pagination: React.FC<PaginationProps> = ({ totalResults = 0 }) => {
 
   return (
     <StyledPaginationContainer>
-      {pagesState.map((page, index) => (
+      {pagesState.map((page: number, index: string) => (
         <Button
+          padding="0.5rem 1rem"
           active={page === selectedPage}
           key={index}
           onClick={() => {
             setSelectedPage(page)
+            setPage(page - 1)
           }}
         >
           {page.toString()}

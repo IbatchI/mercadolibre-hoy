@@ -6,10 +6,9 @@
 
 
   background-color: var(--mainBackgroundColor);
-  color: white;
   
   /* Colors of main theme  */
-  --mainBackgroundColor: #202124;
+  --mainBackgroundColor: #ebebeb;
   --mainBgInputColor: #ffffff33;
   --mainBorderColor: #ACACB7;
   --mainButtonBackgroundColor: #A86E1B;
@@ -27,7 +26,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
+
+.carousel.carousel-slider .control-arrow {
+  opacity: 1;
+  
+}
+
+
 body {
   margin: 0;
+  font-family: 'Roboto', sans-serif;
   min-height: 100vh;
 }

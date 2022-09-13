@@ -4,11 +4,13 @@ import { StyledNavBarContainer, StyledMainLogo } from './NavBarStyles'
 
 const Navbar = () => {
   return (
-    <StyledNavBarContainer>
-      <StyledMainLogo src="../../../../../images/logo.png" />
+    <>
       <SearchBox />
-      <UserDropDown />
-    </StyledNavBarContainer>
+      <StyledNavBarContainer>
+        <StyledMainLogo src="../../../../../images/logo.png" />
+        <UserDropDown />
+      </StyledNavBarContainer>
+    </>
   )
 }
 
