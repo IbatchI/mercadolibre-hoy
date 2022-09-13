@@ -96,8 +96,13 @@ export const StyledSearchInput = styled.form`
   &:hover ${SearchIcon},&:valid ${SearchIcon} {
     background: #ffd301;
     color: black;
+  }
+  &:valid ${SearchIcon} {
+    background: #ffd301;
+    color: black;
     pointer-events: all;
   }
+
   @media ${deviceSize.tablet} {
     width: 43px;
     height: 43px;
