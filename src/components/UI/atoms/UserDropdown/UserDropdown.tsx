@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import './styles.css'
 import { useDetectOutsideClick } from './useDetectOutsideClick'
 /*
@@ -26,7 +26,7 @@ export default function UserDropDown() {
               <a href="#">Messages</a>
             </li>
             <li>
-              <a href="#">Trips</a>
+              <a href="#">Trips</a> cm
             </li>
             <li>
               <a href="#">Saved</a>
