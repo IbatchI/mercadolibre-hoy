@@ -1,45 +1,33 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
-  StyledSearchInput,
-  StyledSearchInputt,
+  FormSearchBox,
+  InputSearchBox,
   SearchIcon,
   StyledContainer,
   StyledNavBarGhost,
 } from './SearchBoxStyles'
 export const SearchBox = () => {
-  const [valueSelected, setValueSelected] = useState<string>('')
+  const [keyword, setKeyword] = useState<string>('')
   const history = useNavigate()
 
-  const handleSubmit = () => {
-    setValueSelected('')
-    history(`/search/${valueSelected}`)
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault()
+    setKeyword('')
+    history(`/search/${keyword}`)
   }
-  const handleKeyDown = (e: any) => {
-    if (e.key === 'Enter') {
-      e.preventDefault()
-      setValueSelected('')
-      history(`/search/${valueSelected}`)
-    }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyword(e.target.value)
   }
+
   return (
-    <StyledNavBarGhost active={valueSelected === ''}>
+    <StyledNavBarGhost active={keyword === ''}>
       <StyledContainer>
-        <StyledSearchInput
-          onKeyDown={(e) => {
-            handleKeyDown(e)
-          }}
-          method="get"
-          onChange={(e) => setValueSelected((e.target as HTMLTextAreaElement).value)}
-        >
-          <StyledSearchInputt value={valueSelected} type="search" required />
-          <SearchIcon
-            type="button"
-            onClick={() => {
-              handleSubmit()
-            }}
-          />
-        </StyledSearchInput>
+        <FormSearchBox method="get" onSubmit={handleSubmit}>
+          <InputSearchBox value={keyword} type="search" onChange={handleChange} required />
+          <SearchIcon type="submit" onClick={handleSubmit} />
+        </FormSearchBox>
       </StyledContainer>
     </StyledNavBarGhost>
   )

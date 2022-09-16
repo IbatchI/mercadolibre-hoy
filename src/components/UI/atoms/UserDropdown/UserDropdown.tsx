@@ -1,19 +1,20 @@
 import { useRef } from 'react'
-import './styles.css'
-import { useDetectOutsideClick } from './useDetectOutsideClick'
+import { useDetectOutsideClick } from '../../../../hooks/useDetectOutsideClick'
+import './stylesDropDown.css'
+
 /*
  * Read the blog post here:
  * https://letsbuildui.dev/articles/building-a-dropdown-menu-component-with-react-hooks
  */
-export default function UserDropDown() {
+
+export function UserDropDown() {
   const dropdownRef = useRef(null)
-  const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false)
-  const onClick = () => setIsActive(!isActive)
+  const [isActive, handleIsActive] = useDetectOutsideClick(dropdownRef, false)
 
   return (
     <div className="container">
       <div className="menu-container">
-        <button onClick={onClick} className="menu-trigger">
+        <button onClick={() => handleIsActive} className="menu-trigger">
           <span>User</span>
           <img
             src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"

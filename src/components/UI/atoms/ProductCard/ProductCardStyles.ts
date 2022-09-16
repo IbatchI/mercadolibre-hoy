@@ -2,41 +2,43 @@ import styled from 'styled-components'
 import { deviceSize } from '../../../../styles/Styles'
 
 export const StyledCard = styled.div`
-  width: 200px;
-  height: 250px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.47);
+  color: black;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  color: black;
+  height: 250px;
+  width: 200px;
 
-  border-radius: 4px;
   -webkit-box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.47);
   @media ${deviceSize.tablet} {
-    width: 170px;
-    height: 230px;
-    -webkit-box-shadow: 0px 0px 10px -5px #000000;
     box-shadow: 0px 0px 10px -5px #000000;
+    height: 230px;
+    width: 170px;
+    -webkit-box-shadow: 0px 0px 10px -5px #000000;
   }
 `
 
 export const StyledCarrouselContainer = styled.div`
-  width: 200px;
-  height: 150px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  height: 150px;
+  width: 200px;
+
   @media ${deviceSize.tablet} {
     width: 170px;
     height: 130px;
   }
 `
 export const StyledCardTextContainer = styled.div`
-  padding: 5px;
-  height: 130px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  -webkit-box-shadow: inset 0px 0px 15px -3px rgba(0, 0, 0, 0.28);
   box-shadow: inset 0px 0px 15px -3px rgba(0, 0, 0, 0.28);
+  height: 130px;
+  padding: 5px;
+
+  -webkit-box-shadow: inset 0px 0px 15px -3px rgba(0, 0, 0, 0.28);
 `
 
 export const StyledTitleCard = styled.div`
