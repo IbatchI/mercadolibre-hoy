@@ -8,21 +8,21 @@ export const StyledContainer = styled.div`
 export const StyledNavBarGhost = styled.div<{
   active: boolean
 }>`
-  background-color: ${mainTheme.colors.navBarBackgroundColor};
-  height: 70px;
-  position: absolute;
-  left: 0;
-  border-radius: 20px;
-  z-index: 9999;
-  display: flex;
   align-items: center;
-  padding: 10px;
+  background-color: ${mainTheme.colors.navBarBackgroundColor};
+  border-radius: 20px;
+  display: flex;
+  height: 70px;
   justify-content: center;
-  position: absolute;
+  left: 0;
   left: 50%;
+  padding: 10px;
+  position: absolute;
+  position: absolute;
   transform: translate(-50%, 0);
-  width: 14%;
   transition: all 0.5s;
+  width: 14%;
+  z-index: 9999;
   @media ${deviceSize.tablet} {
     height: 65px;
     &:hover {
@@ -32,59 +32,62 @@ export const StyledNavBarGhost = styled.div<{
   }
 `
 
-export const StyledSearchInputt = styled.input`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 42.5px;
-  line-height: 30px;
-  outline: 0;
+export const InputSearchBox = styled.input`
+  border-radius: 20px;
   border: 0;
   display: none;
   font-size: 1em;
-  border-radius: 20px;
+  height: 42.5px;
+  left: 0;
+  line-height: 30px;
+  outline: 0;
   padding: 0 20px;
+  position: absolute;
+  top: 0;
+  width: 100%;
   @media ${deviceSize.tablet} {
     height: 36px;
   }
 `
-export const SearchIcon = styled(AiOutlineSearch)`
-  box-sizing: border-box;
-  cursor: pointer;
-  padding: 10px;
-  width: 42.5px;
-  height: 42.5px;
-  position: absolute;
-  top: 0;
-  right: 0;
+
+// Esto deberia ser un button para que ya tenga el evento submit asociado
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const SearchIcon = styled(AiOutlineSearch)<{ onClick?: any }>`
   border-radius: 50%;
+  box-sizing: border-box;
   color: #07051a;
-  text-align: center;
-  pointer-events: none;
+  cursor: pointer;
   font-size: 1.2em;
+  height: 42.5px;
+  padding: 10px;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
   transition: all 1s;
+  width: 42.5px;
   @media ${deviceSize.tablet} {
     width: 36px;
     height: 36px;
   }
 `
 
-export const StyledSearchInput = styled.form`
-  position: relative;
-  -webkit-box-shadow: 0px 0px 8px -3px #000000;
-  box-shadow: 0px 0px 8px -3px #000000;
-  transition: all 0.5s;
-  width: 50px;
-  height: 50px;
+export const FormSearchBox = styled.form`
   background: white;
-  box-sizing: border-box;
   border-radius: 25px;
   border: 4px solid white;
+  box-shadow: 0px 0px 8px -3px #000000;
+  box-sizing: border-box;
+  height: 50px;
   padding: 5px;
+  position: relative;
+  transition: all 0.5s;
   width: 250px;
+  width: 50px;
+  -webkit-box-shadow: 0px 0px 8px -3px #000000;
 
-  &:hover ${StyledSearchInputt},&:valid ${StyledSearchInputt} {
+  &:hover ${InputSearchBox},&:valid ${InputSearchBox} {
     display: block;
   }
   &:hover,
@@ -104,8 +107,8 @@ export const StyledSearchInput = styled.form`
   }
 
   @media ${deviceSize.tablet} {
-    width: 43px;
     height: 43px;
+    width: 43px;
     &:hover,
     &:valid {
       width: 200px;

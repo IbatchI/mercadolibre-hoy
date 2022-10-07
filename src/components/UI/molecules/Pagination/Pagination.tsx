@@ -1,8 +1,8 @@
-import React from 'react'
-import { LIMIT } from '../../../../services/api-mercadolibre/settings'
-import { Button } from '../../atoms/Button/Button'
-import { StyledPaginationContainer } from './PaginationStyles'
 import { useState, useEffect } from 'react'
+
+import { Button } from '../../atoms/Button/ButtonStyles'
+import { LIMIT } from '../../../../services/api-mercadolibre/settings'
+import { StyledPaginationContainer } from './PaginationStyles'
 
 interface PaginationProps {
   totalResults: number
@@ -11,16 +11,13 @@ interface PaginationProps {
   initialPage: number
 }
 
-export const Pagination: React.FC<PaginationProps> = ({
-  totalResults = 0,
-  setPage,
-  initialPage = 0,
-}) => {
+export const Pagination = ({ totalResults = 0, setPage, initialPage = 0 }: PaginationProps) => {
   const NUM_OF_PAGES = Math.ceil(totalResults / LIMIT)
-  const [selectedPage, setSelectedPage] = useState(initialPage + 1)
-  const [pagesState, setPages] = useState<any>([])
+  const [selectedPage, setSelectedPage] = useState<number>(initialPage + 1)
+  const [pagesState, setPages] = useState<Array<number>>()
+
   useEffect(() => {
-    const pages = []
+    const pages: Array<number> = []
     window.scrollTo(0, 0)
     if (selectedPage <= NUM_OF_PAGES) {
       if (selectedPage === 1) {
@@ -38,7 +35,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <StyledPaginationContainer>
-      {pagesState.map((page: number, index: string) => (
+      {pagesState?.map((page: number, index: number) => (
         <Button
           padding="0.5rem 1rem"
           active={page === selectedPage}
@@ -48,7 +45,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             setPage(page - 1)
           }}
         >
-          {page.toString()}
+          {page}
         </Button>
       ))}
     </StyledPaginationContainer>

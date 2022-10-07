@@ -9,12 +9,12 @@ import {
   StyledTextSeatch,
   StyledTextTotal,
 } from '../styles/SearchResultsStyles'
-import { Button } from '../components/UI/atoms/Button/Button'
 import { BiFilterAlt } from 'react-icons/bi'
 import { capitalizeFirstLetter } from '../../utils/utilsFunctions'
 import { Loader } from '../components/UI/atoms/Loader/Loader'
 import { OpacityAnimationContainer } from '../../utils/styledGlobal'
 import { LIMIT } from '../services/api-mercadolibre/settings'
+import { Button } from '../components/UI/atoms/Button/ButtonStyles'
 
 const SearchResults = () => {
   const { keyword } = useParams()
