@@ -84,7 +84,6 @@ export const FormSearchBox = styled.form`
   position: relative;
   transition: all 0.5s;
   width: 250px;
-  width: 50px;
   -webkit-box-shadow: 0px 0px 8px -3px #000000;
 
   &:hover ${InputSearchBox},&:valid ${InputSearchBox} {
