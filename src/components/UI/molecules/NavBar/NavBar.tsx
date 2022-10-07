@@ -1,5 +1,5 @@
 import { SearchBox } from '../../atoms/SearchBox/SearchBox'
-import UserDropDown from '../../atoms/UserDropdown/UserDropdown'
+import { UserDropDown } from '../../atoms/UserDropdown/UserDropdown'
 import { StyledNavBarContainer, StyledMainLogo } from './NavBarStyles'
 
 const Navbar = () => {

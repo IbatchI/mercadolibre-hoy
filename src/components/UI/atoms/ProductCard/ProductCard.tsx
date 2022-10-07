@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import {
   ImageCardStyled,
   StyledButtonsAndPriceContainer,
@@ -11,30 +10,31 @@ import {
 } from './ProductCardStyles'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
-import { Button } from '../Button/Button'
 import { HiOutlineClipboardCopy } from 'react-icons/hi'
 import { BiLinkExternal } from 'react-icons/bi'
+import { Button } from '../Button/ButtonStyles'
 
 interface ProductCardProps {
-  title: string
-  price: number
-  pictures: string[]
   link: string
+  pictures: string[]
+  price: number
+  title: string
 }
 
-export const ProductCard: FC<ProductCardProps> = ({ title, price, pictures, link }) => {
+export const ProductCard = ({ title, price, pictures, link }: ProductCardProps) => {
   const goToPage = () => {
     window.open(link, '_blank')
   }
+
   return (
     <StyledCard>
       <StyledCarrouselContainer>
         <Carousel
+          emulateTouch={false}
           showArrows
           showIndicators={false}
-          showThumbs={false}
           showStatus={false}
-          emulateTouch={false}
+          showThumbs={false}
           swipeable={false}
         >
           {pictures.map((picture, index) => (

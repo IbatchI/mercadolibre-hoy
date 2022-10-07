@@ -1,17 +1,18 @@
-import styled from 'styled-components'
 import { deviceSize, mainTheme } from '../../../../styles/Styles'
+import styled from 'styled-components'
 
 export const StyledNavBarContainer = styled.div`
-  background-color: ${mainTheme.colors.navBarBackgroundColor};
-  height: 70px;
-  display: flex;
-  position: relative;
   align-items: center;
-  -webkit-box-shadow: 0px -10px 12px 8px rgba(0, 0, 0, 0.53);
+  background-color: ${mainTheme.colors.navBarBackgroundColor};
   box-shadow: 0px -10px 12px 8px rgba(0, 0, 0, 0.53);
-  padding: 10px;
+  display: flex;
+  height: 70px;
   justify-content: space-between;
+  padding: 10px;
+  position: relative;
   width: auto;
+  -webkit-box-shadow: 0px -10px 12px 8px rgba(0, 0, 0, 0.53);
+
   @media ${deviceSize.tablet} {
     height: 65px;
   }
