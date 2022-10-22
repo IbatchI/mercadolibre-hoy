@@ -2,7 +2,7 @@ import { SearchBox } from '../../atoms/SearchBox/SearchBox'
 import { UserDropDown } from '../../atoms/UserDropdown/UserDropdown'
 import { StyledNavBarContainer, StyledMainLogo } from './NavBarStyles'
 
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <>
       <SearchBox />
@@ -13,5 +13,3 @@ const Navbar = () => {
     </>
   )
 }
-
-export default Navbar

@@ -6,18 +6,15 @@ export const mediaQuerys = {
 
 export const mainTheme = {
   colors: {
-    bgInputColor: 'var(--mainBgInputColor)',
-    borderColor: 'var(--mainBorderColor)',
-    buttonBackgroundColor: 'var(--mainButtonBackgroundColor)',
-    buttonHoverBackgroundColor: 'var(--mainButtonHoverBackgroundColor)',
-    buttonTextColor: 'var(--mainButtonTextColor)',
+    defaultBackgroundColor: 'var(--mainBackgroundColor)',
+    defaultBorderColor: 'var(--mainBorderColor)',
+    disabledColor: 'var(--mainDisabledColor)',
     primaryColor: 'var(--mainPrimaryColor)',
     secondaryColor: 'var(--mainSecondaryColor)',
-    navBarBackgroundColor: 'var(--mainNavBarBackgroundColor)',
-    textColor: 'var(--mainTextColor)',
   },
 
   mainBorderRadius: '0.6rem',
+  mainShadow: '0 0.5rem 1rem rgba(0, 0, 0, 0.15)',
 
   padding: {
     small: '0.5rem',
@@ -45,12 +42,14 @@ export const mainTheme = {
   },
 }
 const size = {
+  mobile: '320px',
   tablet: '768px',
   tabletL: '1024px',
   desktop: '1256px',
 }
 
 export const deviceSize = {
+  mobile: `(max-width: ${size.mobile})`,
   tablet: `(max-width: ${size.tablet})`,
   tabletL: `(max-width: ${size.tabletL})`,
   desktop: `(max-width: ${size.desktop})`,

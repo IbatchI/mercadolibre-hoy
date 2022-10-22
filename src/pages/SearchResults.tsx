@@ -1,8 +1,7 @@
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Pagination } from '../components/UI/molecules/Pagination/Pagination'
-import useProducts from '../hooks/useProducts'
-import { useState, useEffect } from 'react'
-import { ProductCard } from '../components/UI/atoms/ProductCard/ProductCard'
+import { ProductCard } from '../components/UI/molecules/ProductCard/ProductCard'
 import {
   StyledCardContainer,
   StyledSearchAndFilters,
@@ -15,8 +14,9 @@ import { Loader } from '../components/UI/atoms/Loader/Loader'
 import { OpacityAnimationContainer } from '../../utils/styledGlobal'
 import { LIMIT } from '../services/api-mercadolibre/settings'
 import { Button } from '../components/UI/atoms/Button/ButtonStyles'
+import { useProducts } from '../hooks'
 
-const SearchResults = () => {
+export const SearchResults = () => {
   const { keyword } = useParams()
   const [pagination, setPagination] = useState<number>(0)
   const { products, loading, totalResults } = useProducts(keyword, pagination * LIMIT)
@@ -64,5 +64,3 @@ const SearchResults = () => {
     </>
   )
 }
-
-export default SearchResults

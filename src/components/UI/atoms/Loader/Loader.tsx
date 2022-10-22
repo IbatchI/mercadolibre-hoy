@@ -1,9 +1,21 @@
 import { StyledLoader, StyledLoaderContainer } from './LoaderStyles'
 
-export const Loader = () => {
+interface ILoaderProps {
+  width?: string
+  height?: string
+  isLocalLoader?: boolean
+}
+
+export const Loader = ({ height, isLocalLoader, width }: ILoaderProps) => {
   return (
-    <StyledLoaderContainer>
-      <StyledLoader />
-    </StyledLoaderContainer>
+    <>
+      {isLocalLoader ? (
+        <StyledLoader />
+      ) : (
+        <StyledLoaderContainer>
+          <StyledLoader height={height} isLocalLoader={isLocalLoader} width={width} />
+        </StyledLoaderContainer>
+      )}
+    </>
   )
 }

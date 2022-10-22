@@ -38,7 +38,7 @@ export const Pagination = ({ totalResults = 0, setPage, initialPage = 0 }: Pagin
       {pagesState?.map((page: number, index: number) => (
         <Button
           padding="0.5rem 1rem"
-          active={page === selectedPage}
+          // active={page === selectedPage}
           key={index}
           onClick={() => {
             setSelectedPage(page)

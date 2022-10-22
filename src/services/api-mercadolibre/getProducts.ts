@@ -1,7 +1,8 @@
 import { API_URL, LIMIT } from './settings'
+import { IProduct } from '../../types/types'
 import getDetailProduct from './getDetailProduct'
 
-export default async function getProducts(keyword = '', offset = 0) {
+export async function getProducts(keyword = '', offset = 0) {
   const sarchUrl = `${API_URL}/sites/MLA/search?q=${keyword}&since=today&condition=used&sort=price_asc&limit=${LIMIT}&offset=${offset}`
 
   const res = await fetch(sarchUrl)

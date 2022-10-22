@@ -1,26 +1,27 @@
+import { Currency, TimeZone } from '../src/types/types'
+
 export const capitalizeFirstLetter = (str: string) => {
   // converting first letter to uppercase
   const capitalized = str.charAt(0).toUpperCase() + str.slice(1)
   return capitalized
 }
-interface IQuantities {
-  id: number
-  quantity: number
+
+export const formatPrice = (
+  price: number,
+  currency: Currency = 'ARS',
+  timeZone: TimeZone = 'es-AR'
+) => {
+  const formatter = new Intl.NumberFormat(timeZone, {
+    style: 'currency',
+    currency,
+  })
+  return formatter.format(price)
 }
 
-const originalQuantities = [
-  { id: 1, quantity: 1 },
-  { id: 2, quantity: 2 },
-  { id: 3, quantity: 3 },
-  { id: 4, quantity: 4 },
-]
+// Storage Functions
 
-const editedQuantities = [
-  { id: 1, quantity: 6 },
-  { id: 2, quantity: 6 },
-  { id: 3, quantity: 6 },
-  { id: 4, quantity: 6 },
-]
-const areAllQuantitiesEdited = (quantities: IQuantities[], editedQuantities: IQuantities[]) => {
-  
-}
+export const getLocalStorage = (key: string) => localStorage.getItem(key)
+
+export const removeLocalStorage = (key: string) => localStorage.removeItem(key)
+
+export const setLocalStorage = (key: string, value: string) => localStorage.setItem(key, value)
