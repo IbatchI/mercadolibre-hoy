@@ -10,9 +10,9 @@
   /* Colors of main theme  */
   --mainBackgroundColor: #ebebeb;
   --mainBorderColor: #ACACB7;
-  --mainPrimaryColor: #6b2ae6;
-  --mainSecondaryColor: #8a5cd3;
-  --mainDisabledColor: #c157ff6b;
+  --mainPrimaryColor: #714aff;
+  --mainSecondaryColor: #894de9;
+  --mainDisabledColor: #714affd3;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

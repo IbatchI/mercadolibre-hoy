@@ -1,2 +1,2 @@
-// export const BASE_URL_ML_HOY = 'https://api-ml-hoy-production.up.railway.app'
-export const BASE_URL_ML_HOY = 'http://localhost:8080/api'
+// export const BASE_URL_ML_HOY = 'https://api-ml-hoy.onrender.com/api/users'
+export const BASE_URL_ML_HOY = import.meta.env.VITE_REACT_BASE_URL_ML_HOY

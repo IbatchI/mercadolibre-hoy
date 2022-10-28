@@ -19,6 +19,6 @@ export const StyledNavBarContainer = styled.div`
 `
 
 export const StyledMainLogo = styled.img`
-  height: 30px;
-  width: 120px;
+  height: 40px;
+  width: 40px;
 `

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useState } from 'react'
 
 import { getLocalStorage, setLocalStorage } from '../../utils/utilsFunctions'
 import { UserInfo } from '../types/types'
@@ -10,7 +10,7 @@ interface IAuthContextProps {
 interface IAuthContext {
   handleOnLogOut(): void
   // eslint-disable-next-line no-unused-vars
-  handleOnLogin(arg0: UserInfo, arg1: string): void
+  handleOnLogin(userInfo: UserInfo, tokenJWT: string): void
   isAuth: boolean
 }
 
@@ -27,7 +27,9 @@ const defaultAuthContext = {
 export const AuthContext = createContext<IAuthContext>(defaultAuthContext)
 
 export const AuthProvider = ({ children }: IAuthContextProps) => {
-  const [isAuth, setIsAuth] = useState<boolean>(false)
+  // Solo va a consultar al localStorage la primera vez
+  // o en caso que recarguemos la pagina
+  const [isAuth, setIsAuth] = useState<boolean>(!!getLocalStorage('accessToken'))
 
   const handleOnLogin = (userInfoParam: UserInfo, tokenJWT: string) => {
     setIsAuth(true)
@@ -41,14 +43,6 @@ export const AuthProvider = ({ children }: IAuthContextProps) => {
     setIsAuth(false)
     localStorage.clear()
   }
-
-  // Si recargamos la pagina se perderia el valor de isAuth
-  // de esta forma nos aseguramos que si hay accessToken se mantenga en el context
-  useEffect(() => {
-    if (getLocalStorage('accessToken')) {
-      setIsAuth(true)
-    }
-  }, [isAuth])
 
   return (
     <AuthContext.Provider value={{ handleOnLogOut, handleOnLogin, isAuth }}>

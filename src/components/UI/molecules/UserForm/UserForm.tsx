@@ -42,9 +42,10 @@ export const UserForm = ({ type }: UserFormProps) => {
       ) : (
         <>
           <Form onSubmit={handleOnSubmit} width={'40%'}>
-            <h4>{titleOfLogin}</h4>
+            <h3>{titleOfLogin}</h3>
             {type === 'register' && (
               <Input
+                height={'50px'}
                 id="name"
                 type="text"
                 placeholder="Name"

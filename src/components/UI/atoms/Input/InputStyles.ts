@@ -10,12 +10,13 @@ interface IInputProps {
 
 export const Input = styled.input<IInputProps>`
   border-radius: 5px;
-  border: 0;
+  border: 0.3px solid ${mainTheme.colors.primaryColor};
   display: flex;
   font-size: 100%;
+  font-weight: bold;
   height: ${({ height }) => height || '30px'};
   min-width: ${({ minWidth }) => minWidth || 0};
-  opacity: 0.5;
+  opacity: 1;
   padding: ${({ padding }) => padding || '0 10px'};
   width: ${({ width }) => width || '100%'};
   &:focus {
