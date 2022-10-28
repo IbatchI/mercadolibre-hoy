@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const StyledNavBarContainer = styled.div`
   align-items: center;
-  background-color: ${mainTheme.colors.navBarBackgroundColor};
+  background-color: ${mainTheme.colors.primaryColor};
   box-shadow: 0px -10px 12px 8px rgba(0, 0, 0, 0.53);
   display: flex;
   height: 70px;
@@ -19,6 +19,6 @@ export const StyledNavBarContainer = styled.div`
 `
 
 export const StyledMainLogo = styled.img`
-  height: 30px;
-  width: 120px;
+  height: 40px;
+  width: 40px;
 `

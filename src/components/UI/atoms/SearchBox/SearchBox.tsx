@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import {
   FormSearchBox,
   InputSearchBox,
@@ -7,6 +8,7 @@ import {
   StyledContainer,
   StyledNavBarGhost,
 } from './SearchBoxStyles'
+
 export const SearchBox = () => {
   const [keyword, setKeyword] = useState<string>('')
   const history = useNavigate()

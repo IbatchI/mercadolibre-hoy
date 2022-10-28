@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import getProducts from '../services/api-mercadolibre/getProducts'
+import { getProducts } from '../services/api-mercadolibre/getProducts'
+import { IProductDetail } from '../types/types'
 
-const useProducts = (keyword = '', offset = 0) => {
+export const useProducts = (keyword = '', offset = 0) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [products, setProducts] = useState<Array<IProductDetail>>([])
   const [totalResults, setTotalResults] = useState<number>(0)
@@ -21,5 +22,3 @@ const useProducts = (keyword = '', offset = 0) => {
 
   return { products, loading, totalResults }
 }
-
-export default useProducts
