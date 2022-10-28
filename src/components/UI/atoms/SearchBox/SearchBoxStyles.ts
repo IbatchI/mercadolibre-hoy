@@ -9,7 +9,7 @@ export const StyledNavBarGhost = styled.div<{
   active: boolean
 }>`
   align-items: center;
-  background-color: ${mainTheme.colors.navBarBackgroundColor};
+  background-color: ${mainTheme.colors.primaryColor};
   border-radius: 20px;
   display: flex;
   height: 70px;

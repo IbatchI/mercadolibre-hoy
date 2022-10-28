@@ -1,3 +1,4 @@
+import { IPicture } from '../../types/types'
 import { API_URL } from './settings'
 
 export default async function getDetailProduct(id: string) {
