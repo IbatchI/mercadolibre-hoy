@@ -13,12 +13,12 @@ interface StyledPriceProps {
 }
 
 export const StyledPrice = styled.span<StyledPriceProps>`
-  align-items: center;
-  color: ${(props) => props.color || 'black'};
+  
+  color: ${(props) => props.color || 'white'};
   display: flex;
-  font-size: ${(props) => props.fontSize || '1rem'};
+  font-size: ${(props) => props.fontSize || '1.1rem'};
   font-weight: ${(props) => props.fontWeight || 'normal'};
-  justify-content: center;
+  justify-content: flex-end;
   line-height: normal;
   padding: ${(props) => props.padding || '0'};
 `

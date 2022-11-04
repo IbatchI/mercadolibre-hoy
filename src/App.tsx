@@ -4,11 +4,14 @@ import { AppRoutes } from './routes/AppRoutes'
 import { AuthProvider } from './context/AuthProvider'
 
 import './App.css'
+import { LoadingProvider } from './context/LoadingProvider'
 
 export const App = () => (
   <BrowserRouter>
-    <AuthProvider>
-      <AppRoutes />
-    </AuthProvider>
+    <LoadingProvider>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
+    </LoadingProvider>
   </BrowserRouter>
 )

@@ -6,12 +6,16 @@ import { Navbar } from '../components/UI/molecules/NavBar/NavBar'
 import { AuthProtection } from './AuthProtection'
 import { Register, SearchResults, Home } from '../pages'
 import { StyledGlobalContainer } from '../../utils/styledGlobal'
+import { Loader } from '../components/UI/atoms/Loader/Loader'
+import { useLoading } from '../context/LoadingProvider'
 
 export const AppRoutes = () => {
   const { isAuth } = useContext(AuthContext)
+  const { loading } = useLoading()
 
   return (
     <>
+      {loading && <Loader />}
       <Navbar />
       <StyledGlobalContainer>
         <Routes>

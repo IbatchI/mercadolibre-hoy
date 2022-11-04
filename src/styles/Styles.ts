@@ -7,10 +7,10 @@ export const mediaQuerys = {
 export const mainTheme = {
   colors: {
     defaultBackgroundColor: 'var(--mainBackgroundColor)',
-    defaultBorderColor: 'var(--mainBorderColor)',
     disabledColor: 'var(--mainDisabledColor)',
     primaryColor: 'var(--mainPrimaryColor)',
     secondaryColor: 'var(--mainSecondaryColor)',
+    ternaryColor: 'var(--mainTernaryColor)',
   },
 
   mainBorderRadius: '0.6rem',

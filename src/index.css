@@ -8,11 +8,17 @@
   background-color: var(--mainBackgroundColor);
   
   /* Colors of main theme  */
-  --mainBackgroundColor: #ebebeb;
-  --mainBorderColor: #ACACB7;
-  --mainPrimaryColor: #714aff;
-  --mainSecondaryColor: #894de9;
+  --mainBackgroundColor: #efebeb;
+  --mainTernaryColor: #8e8d8a;
+  --mainPrimaryColor: #D8C3A5;
+  --mainSecondaryColor: #e55d62;
   --mainDisabledColor: #714affd3;
+
+    /* --mainBackgroundColor: #090b0f;
+  --mainTernaryColor: #0dbd81;
+  --mainPrimaryColor: #D8C3A5;
+  --mainSecondaryColor: #E85A4F;
+  --mainDisabledColor: #714affd3; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,6 +36,6 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: -apple-system, Helvetica Neue, sans-serif;
   min-height: 100vh;
 }

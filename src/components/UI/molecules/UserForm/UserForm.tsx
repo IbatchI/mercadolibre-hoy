@@ -4,7 +4,6 @@ import { Form } from '../../atoms/Form/FormStyles'
 import { Input } from '../../atoms/Input/InputStyles'
 import { UserFormTypes } from '../../../../types/types'
 import { useUserForm } from '../../../../hooks/useUserForm'
-import { Loader } from '../../atoms/Loader/Loader'
 // import { GoogleLogin } from 'react-google-login'
 
 interface UserFormProps {
@@ -17,7 +16,6 @@ export const UserForm = ({ type }: UserFormProps) => {
     emailError,
     handleOnChange,
     handleOnSubmit,
-    isLoading,
     nameError,
     passwordError,
     values,
@@ -37,52 +35,49 @@ export const UserForm = ({ type }: UserFormProps) => {
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <Form onSubmit={handleOnSubmit} width={'40%'}>
-            <h3>{titleOfLogin}</h3>
-            {type === 'register' && (
-              <Input
-                height={'50px'}
-                id="name"
-                type="text"
-                placeholder="Name"
-                value={values.name}
-                onChange={handleOnChange}
-                required
-              />
-            )}
-            <Error>{nameError}</Error>
+      <>
+        <Form onSubmit={handleOnSubmit} width={'40%'}>
+          <h3>{titleOfLogin}</h3>
+          {type === 'register' && (
             <Input
               height={'50px'}
-              id="email"
+              id="name"
+              type="text"
+              placeholder="Name"
+              value={values.name}
               onChange={handleOnChange}
-              placeholder={'Email'}
-              type={'email'}
-              value={values.email}
               required
             />
-            <Error>{emailError}</Error>
+          )}
+          <Error>{nameError}</Error>
+          <Input
+            height={'50px'}
+            id="email"
+            onChange={handleOnChange}
+            placeholder={'Email'}
+            type={'email'}
+            value={values.email}
+            required
+          />
+          <Error>{emailError}</Error>
 
-            <Input
-              height={'50px'}
-              id="password"
-              onChange={handleOnChange}
-              placeholder={'Contraseña'}
-              required
-              type={'password'}
-              value={values.password}
-            />
-            <Error>{passwordError}</Error>
+          <Input
+            height={'50px'}
+            id="password"
+            onChange={handleOnChange}
+            placeholder={'Contraseña'}
+            required
+            type={'password'}
+            value={values.password}
+          />
+          <Error>{passwordError}</Error>
 
-            <Button width={'100%'} fontWeight={'bold'} type="submit" disabled={disabledSubmit}>
-              {type === 'register' ? 'Registrarse' : 'Iniciar sesión'}
-            </Button>
-          </Form>
-          <hr />
-          {/* <GoogleLogin
+          <Button width={'100%'} fontWeight={'bold'} type="submit" disabled={disabledSubmit}>
+            {type === 'register' ? 'Registrarse' : 'Iniciar sesión'}
+          </Button>
+        </Form>
+        <hr />
+        {/* <GoogleLogin
         clientId={clientId}
         buttonText="Sign in with Google"
         onSuccess={onSuccess}
@@ -90,8 +85,7 @@ export const UserForm = ({ type }: UserFormProps) => {
         cookiePolicy={'single_host_origin'}
         isSignedIn={true}
       /> */}
-        </>
-      )}
+      </>
     </>
   )
 }

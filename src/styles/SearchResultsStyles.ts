@@ -19,11 +19,10 @@ export const StyledSearchAndFilters = styled.div`
   padding: 35px 20px 35px 20px;
   align-self: center;
   justify-self: center;
-  width: 88%;
+  max-width: 880px;
   margin: auto;
   @media ${deviceSize.tablet} {
     padding: 5px 10px 15px 10px;
-    width: 100%;
   }
 `
 
