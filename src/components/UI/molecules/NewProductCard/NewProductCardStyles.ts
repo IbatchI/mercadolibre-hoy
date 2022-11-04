@@ -53,6 +53,7 @@ export const StyledTitle = styled.div`
   text-overflow: ellipsis;
   overflow: hidden;
   color: white;
+  font-weight: 500;
   font-size: 0.9rem;
   line-height: 1.2em;
   margin-top: 0.8rem;
