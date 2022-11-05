@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 // export const BASE_URL_ML_HOY = 'https://api-ml-hoy.onrender.com/api/users'
 export const BASE_URL_ML_HOY = import.meta.env.VITE_REACT_BASE_URL_ML_HOY
@@ -49,10 +48,10 @@ API_ML_HOY.interceptors.response.use(
     if (error.response.status === 500) toast.error('Error del servidor')
 
     // if it's a 400 error, we can show the error message
-    if (error.response.status === 400) {
-      const errorMessage = error.response.data.msg
-      toast.error(errorMessage)
-    }
+    // if (error.response.status === 400) {
+    //   const errorMessage = error.response.data.msg
+    //   toast.error(errorMessage)
+    // }
     return Promise.reject(error)
   }
 )
