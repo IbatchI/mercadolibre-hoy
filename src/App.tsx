@@ -4,11 +4,15 @@ import { AppRoutes } from './routes/AppRoutes'
 import { AuthProvider } from './context/AuthProvider'
 
 import './App.css'
+import { Toast } from './components/UI/atoms/Toast/Toast'
 
 export const App = () => (
-  <BrowserRouter>
-    <AuthProvider>
-      <AppRoutes />
-    </AuthProvider>
-  </BrowserRouter>
+  <>
+    <Toast />
+    <BrowserRouter>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
+    </BrowserRouter>
+  </>
 )

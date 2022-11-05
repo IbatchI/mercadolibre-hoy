@@ -1,10 +1,12 @@
 import { useContext, useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import { AxiosError } from 'axios'
 
+import { AuthContext } from '../context/AuthProvider'
 import { IUser, UserFormTypes } from '../types/types'
 import { login, register } from '../services/api-ml-hoy/User'
-import { AuthContext } from '../context/AuthProvider'
+import { toast } from 'react-toastify'
 
 const initialValues = {
   name: '',
@@ -18,8 +20,9 @@ const validatationSchema = yup.object({
 })
 
 export const useUserForm = (type: UserFormTypes) => {
-  const { handleOnLogin } = useContext(AuthContext)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [responseError, setResponseError] = useState<string | undefined>()
+  const { handleOnLogin } = useContext(AuthContext)
 
   const handleOnSubmit = async (userData: IUser) => {
     if (type === 'login') {
@@ -35,9 +38,12 @@ export const useUserForm = (type: UserFormTypes) => {
           },
           token
         )
+        toast.success(response.msg)
         setIsLoading(false)
       } catch (error) {
-        console.log(error)
+        if (error instanceof AxiosError && error.request.status === 400) {
+          setResponseError(error.response?.data?.msg)
+        }
         setIsLoading(false)
       }
     }
@@ -46,8 +52,12 @@ export const useUserForm = (type: UserFormTypes) => {
       try {
         setIsLoading(true)
         const response = await register(userData)
+        toast.success(response.msg)
         setIsLoading(false)
       } catch (error) {
+        if (error instanceof AxiosError && error.request.status === 400) {
+          setResponseError(error.response?.data?.msg)
+        }
         setIsLoading(false)
       }
     }
@@ -70,6 +80,7 @@ export const useUserForm = (type: UserFormTypes) => {
     isLoading,
     nameError: formik.touched.name && formik.errors.name ? formik.errors.name : '',
     passwordError: formik.touched.password && formik.errors.password ? formik.errors.password : '',
+    responseError: responseError,
     values: formik.values,
   }
 }

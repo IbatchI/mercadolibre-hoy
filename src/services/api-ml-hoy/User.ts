@@ -1,14 +1,12 @@
-import axios from 'axios'
-
-import { BASE_URL_ML_HOY } from './Settings'
+import { API_ML_HOY } from './Settings'
 import { IUser } from '../../types/types'
 
 export const register = async (data: IUser) => {
-  const response = await axios.post(`${BASE_URL_ML_HOY}/users`, data)
+  const response = await API_ML_HOY.post(`/users`, data)
   return response.data
 }
 
 export const login = async (data: IUser) => {
-  const response = await axios.post(`${BASE_URL_ML_HOY}/auth/login`, data)
+  const response = await API_ML_HOY.post(`/auth/login`, data)
   return response.data
 }
