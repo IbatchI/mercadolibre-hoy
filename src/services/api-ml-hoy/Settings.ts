@@ -44,6 +44,7 @@ API_ML_HOY.interceptors.response.use(
     //   window.location.href = '/404'
     // }
     if (error.response.status === 401) toast.error('Token no válido')
+    if (error.response.status === 403) toast.error('No tienes permisos')
     if (error.response.status === 404) toast.error('No se encontró el recurso')
     if (error.response.status === 500) toast.error('Error del servidor')
 
