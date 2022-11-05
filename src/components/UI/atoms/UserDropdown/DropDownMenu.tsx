@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Avatar } from '../Avatar/Avatar'
-// import { useDetectOutsideClick } from '../../../../hooks/useDetectOutsideClick'
 import { DropDownMenuContainer, ListOfDropsItmes } from './DropDownMenuStyles'
 import { ItemDropDownMenu } from './ItemsDropDownMenu/ItemsDropDownMenuStyles'
+import { useDetectOutsideClick } from '../../../../hooks/useDetectOutsideClick'
 
 interface IDropDownMenuItem {
   text: string
@@ -15,13 +15,20 @@ interface IDropDownMenuProps {
 
 export const DropDownMenu = ({ items }: IDropDownMenuProps) => {
   const [dropDownMenuIsOpen, setDropDownMenuIsOpen] = useState<boolean>(false)
+  const dropDownMenuRef = useRef(null)
+
+  const handleOnClickOutOfMenu = () => {
+    if (dropDownMenuIsOpen) setDropDownMenuIsOpen(false)
+  }
+
+  useDetectOutsideClick(dropDownMenuRef, handleOnClickOutOfMenu, dropDownMenuIsOpen)
 
   const handleOnClickAvatar = () => {
     setDropDownMenuIsOpen(!dropDownMenuIsOpen)
   }
 
   return (
-    <DropDownMenuContainer>
+    <DropDownMenuContainer ref={dropDownMenuRef}>
       <Avatar
         alt="user"
         handleOnClick={handleOnClickAvatar}

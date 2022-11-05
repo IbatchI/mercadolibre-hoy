@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const useDetectOutsideClick = (el: React.MutableRefObject<any>, initialState: boolean) => {
-  const [isActive, setIsActive] = useState<boolean>(initialState)
-
-  const handleIsActive = () => setIsActive(!isActive)
-
+export const useDetectOutsideClick = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  el: React.MutableRefObject<any>,
+  handleOnClickOut: () => void,
+  isActive: boolean
+) => {
   useEffect(() => {
     const onClick = (evt: MouseEvent) => {
       // If the active element exists and is clicked outside of
+      // we exectute the handle
       if (el.current !== null && !el.current.contains(evt.target)) {
-        setIsActive(!isActive)
+        handleOnClickOut()
       }
     }
 
@@ -22,7 +23,5 @@ export const useDetectOutsideClick = (el: React.MutableRefObject<any>, initialSt
     return () => {
       window.removeEventListener('click', onClick)
     }
-  }, [isActive, el])
-
-  return [isActive, handleIsActive]
+  }, [el, isActive])
 }
