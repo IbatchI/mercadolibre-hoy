@@ -7,7 +7,6 @@ import { Form } from '../../atoms/Form/FormStyles'
 import { Input } from '../../atoms/Input/Input'
 import { UserFormTypes } from '../../../../types/types'
 import { useUserForm } from '../../../../hooks/useUserForm'
-import { Loader } from '../../atoms/Loader/Loader'
 
 interface UserFormProps {
   type: UserFormTypes
@@ -21,7 +20,6 @@ export const UserForm = ({ type }: UserFormProps) => {
     emailError,
     handleOnChange,
     handleOnSubmit,
-    isLoading,
     nameError,
     passwordError,
     responseError,
@@ -32,57 +30,51 @@ export const UserForm = ({ type }: UserFormProps) => {
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <Form onSubmit={handleOnSubmit}>
-            <h3>{titleOfLogin}</h3>
-            {type === 'register' && (
-              <Input
-                height={'50px'}
-                id="name"
-                type="text"
-                placeholder="Name"
-                value={values.name}
-                onChange={handleOnChange}
-                required
-              />
-            )}
-            <Error>{nameError}</Error>
-            <Input
-              height={'50px'}
-              id="email"
-              onChange={handleOnChange}
-              placeholder={'Email'}
-              type={'email'}
-              value={values.email}
-              required
-            />
-            <Error>{emailError}</Error>
+      <Form onSubmit={handleOnSubmit} width={'40%'}>
+        <h3>{titleOfLogin}</h3>
+        {type === 'register' && (
+          <Input
+            height={'50px'}
+            id="name"
+            type="text"
+            placeholder="Name"
+            value={values.name}
+            onChange={handleOnChange}
+            required
+          />
+        )}
+        <Error>{nameError}</Error>
+        <Input
+          height={'50px'}
+          id="email"
+          onChange={handleOnChange}
+          placeholder={'Email'}
+          type={'email'}
+          value={values.email}
+          required
+        />
+        <Error>{emailError}</Error>
 
-            <Input
-              height={'50px'}
-              id="password"
-              onChange={handleOnChange}
-              placeholder={'Contraseña'}
-              required
-              type={showPassword ? 'text' : 'password'}
-              value={values.password}
-              icon={showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-              handleOnClickIcon={() => {
-                setShowPassword(!showPassword)
-              }}
-            />
-            <Error>{passwordError}</Error>
+        <Input
+          height={'50px'}
+          id="password"
+          onChange={handleOnChange}
+          placeholder={'Contraseña'}
+          required
+          type={showPassword ? 'text' : 'password'}
+          value={values.password}
+          icon={showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+          handleOnClickIcon={() => {
+            setShowPassword(!showPassword)
+          }}
+        />
+        <Error>{passwordError}</Error>
 
-            <Error>{responseError}</Error>
-            <Button width={'100%'} fontWeight={'bold'} type="submit" disabled={disabledSubmit}>
-              {type === 'register' ? 'Registrarse' : 'Iniciar sesión'}
-            </Button>
-          </Form>
-        </>
-      )}
+        <Error>{responseError}</Error>
+        <Button width={'100%'} fontWeight={'bold'} type="submit" disabled={disabledSubmit}>
+          {type === 'register' ? 'Registrarse' : 'Iniciar sesión'}
+        </Button>
+      </Form>
     </>
   )
 }

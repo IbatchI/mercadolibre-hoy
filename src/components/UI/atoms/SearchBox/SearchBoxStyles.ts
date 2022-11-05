@@ -22,7 +22,7 @@ export const StyledNavBarGhost = styled.div<{
   transform: translate(-50%, 0);
   transition: all 0.5s;
   width: 14%;
-  z-index: 9999;
+  z-index: 30;
   @media ${deviceSize.tablet} {
     height: 65px;
     &:hover {
@@ -96,11 +96,11 @@ export const FormSearchBox = styled.form`
     cursor: pointer;
   }
   &:hover ${SearchIcon},&:valid ${SearchIcon} {
-    background: #ffd301;
+    background: ${mainTheme.colors.primaryColor};
     color: black;
   }
   &:valid ${SearchIcon} {
-    background: #ffd301;
+    background: ${mainTheme.colors.primaryColor};
     color: black;
     pointer-events: all;
   }
