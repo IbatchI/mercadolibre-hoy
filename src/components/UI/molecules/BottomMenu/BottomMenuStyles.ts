@@ -17,7 +17,7 @@ export const StyledBottomMenu = styled.div`
   box-shadow: inset 4px 15px 21px -16px rgba(0, 0, 0, 0.67);
   @media ${deviceSize.tablet} {
     height: 4rem;
-    gap: 1rem;
+    gap: 0.6rem;
     padding: 0.3rem 0 0.3rem 0;
   }
 `
