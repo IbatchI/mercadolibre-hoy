@@ -18,7 +18,7 @@ export const StyledButtonMenu = styled.button`
   font-weight: 600;
   padding: 0.2rem;
   @media ${deviceSize.tablet} {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
 `
 export const StyledTextButtonMenu = styled.div`
