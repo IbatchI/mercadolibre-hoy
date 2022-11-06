@@ -51,7 +51,11 @@ export const NewProductCard = ({ title, price, pictures, link }: ProductCardProp
         </Price>
       </StyledPriceContainer>
       <StyledContainerButton>
-        <ButtonCopy onClick={() => goToPage()}>
+        <ButtonCopy
+          onClick={() => {
+            navigator.clipboard.writeText(link)
+          }}
+        >
           <HiOutlineClipboardCopy size="14px" />
           Copiar
         </ButtonCopy>
