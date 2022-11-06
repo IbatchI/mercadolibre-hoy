@@ -14,11 +14,11 @@ export const StyledNavBarContainer = styled.div`
   -webkit-box-shadow: 0px -10px 12px 8px rgba(0, 0, 0, 0.53);
 
   @media ${deviceSize.tablet} {
-    height: 65px;
+    height: 50px;
   }
 `
 
 export const StyledMainLogo = styled.img`
-  height: 50px;
+  height: 45px;
   width: auto;
 `
