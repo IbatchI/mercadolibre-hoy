@@ -13,6 +13,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Price } from '../../atoms/Price/Price'
 import { BiLinkExternal } from 'react-icons/bi'
 import { HiOutlineClipboardCopy } from 'react-icons/hi'
+import { toast } from 'react-toastify'
 
 interface ProductCardProps {
   link: string
@@ -24,6 +25,11 @@ interface ProductCardProps {
 export const NewProductCard = ({ title, price, pictures, link }: ProductCardProps) => {
   const goToPage = () => {
     window.open(link, '_blank')
+  }
+
+  const copyClipboard = () => {
+    toast.success('Link copiado al portapapeles')
+    navigator.clipboard.writeText(link)
   }
 
   return (
@@ -53,7 +59,7 @@ export const NewProductCard = ({ title, price, pictures, link }: ProductCardProp
       <StyledContainerButton>
         <ButtonCopy
           onClick={() => {
-            navigator.clipboard.writeText(link)
+            copyClipboard()
           }}
         >
           <HiOutlineClipboardCopy size="14px" />
