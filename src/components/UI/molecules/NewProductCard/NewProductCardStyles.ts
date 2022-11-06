@@ -6,94 +6,103 @@ export const CardStyled = styled.div`
   height: 18rem;
   flex-direction: column;
   width: 13rem;
-  position: relative;
-  border-radius: 0.5rem;
-  background: ${mainTheme.colors.ternaryColor};
+  border-radius: 1rem;
+  background: rgb(37, 67, 113);
+  background: linear-gradient(180deg, rgba(37, 67, 113, 1) 0%, rgba(21, 37, 62, 1) 86%);
+  box-shadow: 0px 2px 14px -1px rgba(0, 0, 0, 0.79);
+  -webkit-box-shadow: 0px 2px 14px -1px rgba(0, 0, 0, 0.79);
+  -moz-box-shadow: 0px 2px 14px -1px rgba(0, 0, 0, 0.79);
   @media ${deviceSize.tablet} {
     height: 15rem;
-    width: 11rem;
+    width: 9rem;
+    box-shadow: 1px 2px 14px -6px rgba(0, 0, 0, 0.95);
+    -webkit-box-shadow: 1px 2px 14px -6px rgba(0, 0, 0, 0.95);
+    -moz-box-shadow: 1px 2px 14px -6px rgba(0, 0, 0, 0.95);
   }
 `
 export const StyledCarrouselContainer = styled.div`
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  height: 18rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  height: auto;
+  width: 12.4rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.3rem;
   border-radius: 10px;
   @media ${deviceSize.tablet} {
     height: 8.1rem;
+    margin-top: 0.2rem;
+    width: 8.6rem;
   }
 `
 export const ImageCardStyled = styled.img`
   height: 9rem;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 0.3rem;
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
   @media ${deviceSize.tablet} {
-    height: 8.1rem;
+    height: 7.7rem;
   }
-`
-export const ButtonCopy = styled.button`
-  width: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.3rem;
-  color: white;
-  background-color: ${mainTheme.colors.secondaryColor};
-  height: 2rem;
-  border-radius: 15px;
-  border: none;
-  font-size: 0.8rem;
-  cursor: pointer;
-  box-shadow: 3px 0px 8px 1px rgba(0, 0, 0, 0.27);
-  -webkit-box-shadow: 3px 0px 8px 1px rgba(0, 0, 0, 0.27);
-  -moz-box-shadow: 3px 0px 8px 1px rgba(0, 0, 0, 0.27);
 `
 
 export const StyledTitle = styled.div`
   text-overflow: ellipsis;
   overflow: hidden;
   color: white;
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-weight: 400;
+  font-size: 0.8rem;
+  height: 2.1rem;
   line-height: 1.2em;
-  margin-top: 0.8rem;
+  padding: 0.5rem 0.5rem 0 0.5rem;
   display: -webkit-box !important;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   white-space: normal;
-`
-export const StyledContainerButton = styled.div`
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  gap: 1.5rem;
-  top: 8rem;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 20;
   @media ${deviceSize.tablet} {
-    top: 7rem;
-    gap: 0.6rem;
+    padding: 0 0.5rem 0 0.5rem;
+    font-size: 0.7rem;
+    height: 1.7rem;
   }
 `
-export const StyledContainerTitleAndPrice = styled.div`
+export const StyledPriceContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-between;
-  padding: 12px;
+  justify-content: center;
+  margin-top: 1rem;
+  @media ${deviceSize.tablet} {
+    margin-top: 0.9rem;
+  }
 `
 
-export const StyledLine = styled.div`
-  height: 0.5px;
-  background-color: white;
+export const StyledContainerButton = styled.div`
+  background-color: ${mainTheme.colors.primaryColor};
   width: 100%;
+  height: 2.2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: auto;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 `
 
-export const StyledPriceAndLine = styled.div`
-  gap: 0.3rem;
+export const ButtonCopy = styled.button`
+  border: none;
   display: flex;
-  flex-direction: column;
+  gap: 4px;
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  @media ${deviceSize.tablet} {
+    font-size: 0.7rem;
+  }
+`
+export const VerticalLine = styled.div`
+  height: 1.1rem;
+  width: 1px;
+  background: white;
 `

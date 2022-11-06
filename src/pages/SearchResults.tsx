@@ -14,10 +14,12 @@ import { LIMIT } from '../services/api-mercadolibre/settings'
 import { Button } from '../components/UI/atoms/Button/ButtonStyles'
 import { useProducts } from '../hooks'
 import { NewProductCard } from '../components/UI/molecules/NewProductCard/NewProductCard'
+import { useLoading } from '../context/LoadingProvider'
 
 export const SearchResults = () => {
   const { keyword } = useParams()
   const [pagination, setPagination] = useState<number>(0)
+  const { loading } = useLoading()
   const { products, totalResults } = useProducts(keyword, pagination * LIMIT)
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export const SearchResults = () => {
             </StyledTextSeatch>
             <StyledTextTotal>Total : {totalResults}</StyledTextTotal>
           </div>
-          <Button padding="10px">
+          <Button padding="10px" textColor="white">
             <BiFilterAlt size="16px" />
           </Button>
         </StyledSearchAndFilters>
@@ -51,7 +53,7 @@ export const SearchResults = () => {
           ))}
         </StyledCardContainer>
       </OpacityAnimationContainer>
-      {totalResults && (
+      {!loading && (
         <Pagination totalResults={totalResults} setPage={setPagination} initialPage={pagination} />
       )}
     </>

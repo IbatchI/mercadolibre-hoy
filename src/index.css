@@ -4,16 +4,14 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-
-
   background-color: var(--mainBackgroundColor);
   
   /* Colors of main theme  */
-  --mainBackgroundColor: #efebeb;
+  --mainBackgroundColor: #eaeaeaab;
   --mainTernaryColor: #8e8d8a;
-  --mainPrimaryColor: #D8C3A5;
-  --mainSecondaryColor: #e55d62;
-  --mainDisabledColor: #714affd3;
+  --mainPrimaryColor: #276783;
+  --mainSecondaryColor: #257ea4;
+  --mainDisabledColor: #0d3f54;
 
     /* --mainBackgroundColor: #090b0f;
   --mainTernaryColor: #0dbd81;
