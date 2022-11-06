@@ -16,7 +16,7 @@ export const StyledNavBarGhost = styled.div<{
   justify-content: center;
   left: 0;
   left: 50%;
-  padding: 10px;
+  padding-top: 10px;
   position: absolute;
   position: absolute;
   transform: translate(-50%, 0);
