@@ -71,7 +71,13 @@ export const UserForm = ({ type }: UserFormProps) => {
         <Error>{passwordError}</Error>
 
         <Error>{responseError}</Error>
-        <Button width={'100%'} fontWeight={'bold'} type="submit" disabled={disabledSubmit}>
+        <Button
+          width={'100%'}
+          fontWeight={'bold'}
+          type="submit"
+          disabled={disabledSubmit}
+          textColor="white"
+        >
           {type === 'register' ? 'Registrarse' : 'Iniciar sesión'}
         </Button>
       </Form>

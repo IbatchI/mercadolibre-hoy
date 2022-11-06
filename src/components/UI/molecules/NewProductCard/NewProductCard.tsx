@@ -5,10 +5,9 @@ import {
   ImageCardStyled,
   StyledCarrouselContainer,
   StyledContainerButton,
-  StyledContainerTitleAndPrice,
-  StyledLine,
-  StyledPriceAndLine,
+  StyledPriceContainer,
   StyledTitle,
+  VerticalLine,
 } from './NewProductCardStyles'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Price } from '../../atoms/Price/Price'
@@ -45,29 +44,23 @@ export const NewProductCard = ({ title, price, pictures, link }: ProductCardProp
           ))}
         </Carousel>
       </StyledCarrouselContainer>
+      <StyledTitle>{title}</StyledTitle>
+      <StyledPriceContainer>
+        <Price color="rgb(53 225 230)" fontWeight="500">
+          {price}
+        </Price>
+      </StyledPriceContainer>
       <StyledContainerButton>
-        <ButtonCopy
-          onClick={() => {
-            navigator.clipboard.writeText(link)
-          }}
-        >
-          <HiOutlineClipboardCopy size="16px" />
+        <ButtonCopy onClick={() => goToPage()}>
+          <HiOutlineClipboardCopy size="14px" />
           Copiar
         </ButtonCopy>
+        <VerticalLine></VerticalLine>
         <ButtonCopy onClick={() => goToPage()}>
           Visitar
-          <BiLinkExternal size="16px" />
+          <BiLinkExternal size="14px" />
         </ButtonCopy>
       </StyledContainerButton>
-      <StyledContainerTitleAndPrice>
-        <StyledTitle>{title}</StyledTitle>
-        <StyledPriceAndLine>
-          <StyledLine></StyledLine>
-          <Price currency="ARS" timeZone="es-AR">
-            {price}
-          </Price>
-        </StyledPriceAndLine>
-      </StyledContainerTitleAndPrice>
     </CardStyled>
   )
 }
