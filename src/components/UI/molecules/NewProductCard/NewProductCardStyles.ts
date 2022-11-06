@@ -82,8 +82,8 @@ export const StyledContainerButton = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin-top: auto;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 `
 
 export const ButtonCopy = styled.button`
