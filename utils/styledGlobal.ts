@@ -7,7 +7,7 @@ export const StyledGlobalContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 6rem;
   @media ${deviceSize.tablet} {
     margin-top: 15px;
   }
