@@ -16,6 +16,7 @@ export const Button = styled.button<ButtonProps>`
   background-clip: padding-box;
   background-color: ${(props) => props.backgroundColor ?? mainTheme.colors.primaryColor};
   border-radius: 5px;
+  color: ${(props) => props.textColor ?? 'default'};
   border: 1px solid transparent;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;

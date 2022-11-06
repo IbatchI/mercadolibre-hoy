@@ -8,7 +8,7 @@ export const StyledCardContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   @media ${deviceSize.tablet} {
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 `
 

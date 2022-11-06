@@ -32,7 +32,7 @@ export const DropDownMenu = ({ items }: IDropDownMenuProps) => {
       <Avatar
         alt="user"
         handleOnClick={handleOnClickAvatar}
-        src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        src="https://64.media.tumblr.com/b45b7e1fc7b7d59209fa83f2a73c3913/1928a2d225706847-47/s640x960/e1d6d1fa71c4a474731ec50b26f36dc0b342fe09.jpg"
       />
       <ListOfDropsItmes isOpen={dropDownMenuIsOpen}>
         {items.map((item) => (
