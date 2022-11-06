@@ -14,7 +14,7 @@ export const CardStyled = styled.div`
   -moz-box-shadow: 0px 2px 14px -1px rgba(0, 0, 0, 0.79);
   @media ${deviceSize.tablet} {
     height: 15rem;
-    width: 9rem;
+    width: 9.5rem;
     box-shadow: 1px 2px 14px -6px rgba(0, 0, 0, 0.95);
     -webkit-box-shadow: 1px 2px 14px -6px rgba(0, 0, 0, 0.95);
     -moz-box-shadow: 1px 2px 14px -6px rgba(0, 0, 0, 0.95);
@@ -32,7 +32,7 @@ export const StyledCarrouselContainer = styled.div`
   @media ${deviceSize.tablet} {
     height: 8.1rem;
     margin-top: 0.2rem;
-    width: 8.6rem;
+    width: 9.1rem;
   }
 `
 export const ImageCardStyled = styled.img`
@@ -61,8 +61,8 @@ export const StyledTitle = styled.div`
   white-space: normal;
   @media ${deviceSize.tablet} {
     padding: 0 0.5rem 0 0.5rem;
-    font-size: 0.7rem;
-    height: 1.7rem;
+    font-size: 0.75rem;
+    height: 1.75rem;
   }
 `
 export const StyledPriceContainer = styled.div`

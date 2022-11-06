@@ -24,7 +24,7 @@ export const StyledNavBarGhost = styled.div<{
   width: 14%;
   z-index: 30;
   @media ${deviceSize.tablet} {
-    height: 65px;
+    height: 50px;
     &:hover {
       width: 100%;
     }
