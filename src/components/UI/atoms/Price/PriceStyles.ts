@@ -20,6 +20,6 @@ export const StyledPrice = styled.span<StyledPriceProps>`
   line-height: normal;
   padding: ${(props) => props.padding || '0'};
   @media ${deviceSize.tablet} {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 `
