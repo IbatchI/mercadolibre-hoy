@@ -26,14 +26,14 @@ export const StyledSearchAndFilters = styled.div`
   }
 `
 
-export const StyledTextSeatch = styled.div`
+export const H1 = styled.h1`
   font-size: 24px;
   font-weight: 500;
   @media ${deviceSize.tablet} {
     font-size: 16px;
   }
 `
-export const StyledTextTotal = styled.div`
+export const H2 = styled.h2`
   font-size: 16px;
   font-weight: 500;
   @media ${deviceSize.tablet} {

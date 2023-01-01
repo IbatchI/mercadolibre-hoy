@@ -17,8 +17,20 @@ export const StyledNavBarContainer = styled.div`
     height: 50px;
   }
 `
+interface IStyledNavBarLogoProps extends React.HTMLAttributes<HTMLDivElement> {
+  onClick?: () => void
+}
 
-export const StyledMainLogo = styled.img`
+export const StyledMainLogo = styled.img<IStyledNavBarLogoProps>`
   height: 45px;
   width: auto;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.8);
+    transition: 0.3s;
+  }
 `

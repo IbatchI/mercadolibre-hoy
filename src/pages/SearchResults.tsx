@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Pagination } from '../components/UI/molecules/Pagination/Pagination'
-import {
-  StyledCardContainer,
-  StyledSearchAndFilters,
-  StyledTextSeatch,
-  StyledTextTotal,
-} from '../styles/SearchResultsStyles'
+import { H1, H2, StyledCardContainer, StyledSearchAndFilters } from '../styles/SearchResultsStyles'
 import { BiFilterAlt } from 'react-icons/bi'
 import { capitalizeFirstLetter } from '../../utils/utilsFunctions'
 import { OpacityAnimationContainer } from '../../utils/styledGlobal'
@@ -31,10 +26,8 @@ export const SearchResults = () => {
       <OpacityAnimationContainer>
         <StyledSearchAndFilters>
           <div>
-            <StyledTextSeatch>
-              Resultados para : {capitalizeFirstLetter(keyword || '')}
-            </StyledTextSeatch>
-            <StyledTextTotal>Total : {totalResults}</StyledTextTotal>
+            <H1>Resultados para : {capitalizeFirstLetter(keyword || '')}</H1>
+            <H2>Total : {totalResults}</H2>
           </div>
           <Button padding="10px" textColor="white">
             <BiFilterAlt size="16px" />
@@ -54,7 +47,7 @@ export const SearchResults = () => {
         </StyledCardContainer>
       </OpacityAnimationContainer>
       {!loading && (
-        <Pagination totalResults={totalResults} setPage={setPagination} initialPage={pagination} />
+        <Pagination resultsPerPage={LIMIT} totalResults={totalResults} setPage={setPagination} />
       )}
     </>
   )

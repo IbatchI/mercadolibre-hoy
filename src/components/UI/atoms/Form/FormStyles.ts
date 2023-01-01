@@ -11,14 +11,14 @@ export const Form = styled.form<IInputProps>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${mainTheme.colors.formBackgroundColor};
   gap: 10px;
-  /* height: ${({ height }) => height || '100%'}; */
-  /* min-width: ${({ minWidth }) => minWidth || ''}; */
   padding: 10px;
   width: 40%;
   border-radius: 5px;
   margin: 40px auto;
-  border: 1px solid #e0e0e0;
+  color: ${mainTheme.colors.primaryTextColor};
+  border: 1px solid ${mainTheme.colors.borderColors};
   box-shadow: ${mainTheme.mainShadow};
 
   @media ${deviceSize.tablet} {

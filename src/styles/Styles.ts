@@ -7,10 +7,15 @@ export const mediaQuerys = {
 export const mainTheme = {
   colors: {
     defaultBackgroundColor: 'var(--mainBackgroundColor)',
+    formBackgroundColor: 'var(--mainSecondaryBackgroundColor)',
+    borderColors: 'var(--mainBorderColor)',
+    primaryTextColor: 'var(--mainTextColor)',
+    inputBackgroundColor: 'var(--mainBackgroundInputColor)',
     disabledColor: 'var(--mainDisabledColor)',
     primaryColor: 'var(--mainPrimaryColor)',
     secondaryColor: 'var(--mainSecondaryColor)',
     ternaryColor: 'var(--mainTernaryColor)',
+    dangerColor: 'var(--mainDangerColor)',
   },
 
   mainBorderRadius: '0.6rem',

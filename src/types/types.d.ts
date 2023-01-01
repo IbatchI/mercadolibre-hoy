@@ -23,6 +23,13 @@ interface IPicture {
   quality
 }
 
+// Searches interfaces
+export interface ISearch {
+  uid: string
+  keyword: string
+  user?: string
+}
+
 // User interfaces
 export interface IUser {
   uid?: string

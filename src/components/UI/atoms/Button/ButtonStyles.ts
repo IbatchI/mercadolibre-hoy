@@ -3,6 +3,7 @@ import { mainTheme } from '../../../../styles/Styles'
 
 interface ButtonProps {
   backgroundColor?: string
+  active?: boolean
   fontWeight?: string
   hoverBackgroundColor?: string
   padding?: string
@@ -14,10 +15,11 @@ export const Button = styled.button<ButtonProps>`
   -webkit-user-select: none;
   align-items: center;
   background-clip: padding-box;
-  background-color: ${(props) => props.backgroundColor ?? mainTheme.colors.primaryColor};
-  border-radius: 5px;
-  color: ${(props) => props.textColor ?? 'default'};
-  border: 1px solid transparent;
+  background-color: ${(props) => props.backgroundColor ?? mainTheme.colors.secondaryColor};
+  border: ${(props) =>
+    props.active ? '1px solid ' + mainTheme.colors.secondaryColor : '1px solid transparent'};
+  border-radius: ${mainTheme.mainBorderRadius};
+  color: ${(props) => props.textColor ?? mainTheme.colors.primaryTextColor};
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   cursor: pointer;
