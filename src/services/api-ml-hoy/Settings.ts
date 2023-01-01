@@ -43,7 +43,7 @@ API_ML_HOY.interceptors.response.use(
 
     // if it's a 400 error, we can show the error message
     if (error.response.status === 400) {
-      const errorMessage = error.response.data.message
+      const errorMessage = error.response.data.msg
       toast.error(errorMessage)
     }
     return Promise.reject(error)

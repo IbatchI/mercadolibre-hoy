@@ -18,7 +18,7 @@ export const mainTheme = {
     dangerColor: 'var(--mainDangerColor)',
   },
 
-  mainBorderRadius: '0.6rem',
+  mainBorderRadius: '0.3rem',
   mainShadow: '0 0.5rem 1rem rgba(0, 0, 0, 0.15)',
 
   padding: {
