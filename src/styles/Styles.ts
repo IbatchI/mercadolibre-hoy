@@ -47,8 +47,8 @@ export const mainTheme = {
   },
 }
 const size = {
-  mobile: '320px',
-  tablet: '768px',
+  mobile: '500px',
+  tablet: '900px',
   tabletL: '1024px',
   desktop: '1256px',
 }
