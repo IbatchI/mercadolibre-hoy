@@ -18,19 +18,22 @@ const getStylesFromInput = (
 ): string => {
   if (!hasIconInRight) {
     return `
+    background-color: ${mainTheme.colors.inputBackgroundColor};
     border-radius: 5px;
-    border: 0.3px solid ${mainTheme.colors.primaryColor};
+    border: 0.3px solid ${mainTheme.colors.borderColors};
     box-sizing: border-box;
+    color: ${mainTheme.colors.primaryTextColor};
     display: flex;
     font-size: 100%;
-    font-weight: bold;
     height: ${height || '30px'};
     min-width: ${minWidth || 0};
     padding: ${padding || '0 10px'};
     width: ${width || '100%'};
     &:focus {
       outline: none;
-      box-shadow: 0px 0px 2px ${mainTheme.colors.primaryColor};
+      box-shadow: 0px 0px 2px ${mainTheme.colors.secondaryColor};
+      background-color: ${mainTheme.colors.primaryColor};
+      color: ${mainTheme.colors.primaryTextColor};
     }`
   } else {
     return `
@@ -56,7 +59,6 @@ export const StyledInput = styled.input<IInputProps>`
 
 export const StyledInputContainer = styled.div<IInputProps>`
   align-items: center;
-  background-color: #fff;
   display: block;
   height: ${(props) => props.height || '30px'};
   min-width: ${(props) => props.minWidth || 0};
@@ -66,24 +68,27 @@ export const StyledInputContainer = styled.div<IInputProps>`
   width: ${(props) => props.width || '100%'};
 
   & input {
-    position: relative;
-    font-size: 100%;
-    font-weight: bold;
-    height: 100%;
-    box-sizing: border-box;
+    color: ${mainTheme.colors.primaryTextColor};
+    background-color: ${mainTheme.colors.inputBackgroundColor};
     border-radius: 5px;
-    border: 0.3px solid ${mainTheme.colors.primaryColor};
+    border: 0.3px solid ${mainTheme.colors.borderColors};
+    box-sizing: border-box;
+    font-size: 100%;
+    height: 100%;
     padding: ${(props) => props.padding || '0 10px'};
+    position: relative;
 
     &:focus {
-      outline: none;
-      box-shadow: 0px 0px 2px ${mainTheme.colors.primaryColor};
+      box-shadow: 0px 0px 2px ${mainTheme.colors.secondaryColor};
+      background-color: ${mainTheme.colors.primaryColor};
+      color: ${mainTheme.colors.primaryTextColor};
     }
   }
 
   &:focus {
-    outline: none;
-    box-shadow: 0px 0px 2px ${mainTheme.colors.primaryColor};
+    box-shadow: 0px 0px 2px ${mainTheme.colors.secondaryColor};
+    background-color: ${mainTheme.colors.primaryColor};
+    color: ${mainTheme.colors.primaryTextColor};
   }
 `
 
@@ -93,7 +98,7 @@ export const InputButtonIcon = styled.button`
   background-color: transparent;
   border: none;
   bottom: 0px;
-  color: ${mainTheme.colors.primaryColor};
+  color: ${mainTheme.colors.primaryTextColor};
   display: flex;
   font-size: 1.2rem;
   padding: 0;
@@ -104,7 +109,7 @@ export const InputButtonIcon = styled.button`
   & svg {
     display: flex;
     align-items: center;
-    color: ${mainTheme.colors.primaryColor};
+    color: ${mainTheme.colors.primaryTextColor};
 
     &:hover {
       color: ${mainTheme.colors.secondaryColor};

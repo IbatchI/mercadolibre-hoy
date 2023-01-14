@@ -15,7 +15,7 @@ export interface StyledPriceProps {
 
 export const StyledPrice = styled.span<StyledPriceProps>`
   color: ${(props) => props.color || 'white'};
-  font-size: ${(props) => props.fontSize || '1.1rem'};
+  font-size: ${(props) => props.fontSize || '0.8rem'};
   font-weight: ${(props) => props.fontWeight || 'normal'};
   line-height: normal;
   padding: ${(props) => props.padding || '0'};

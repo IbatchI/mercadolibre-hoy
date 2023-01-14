@@ -9,6 +9,7 @@ import { StyledGlobalContainer } from '../../utils/styledGlobal'
 import { Loader } from '../components/UI/atoms/Loader/Loader'
 import { useLoading } from '../context/LoadingProvider'
 import { BottomMenu } from '../components/UI/molecules/BottomMenu/BottomMenu'
+import { MySearches } from '../pages/MySearches'
 
 export const AppRoutes = () => {
   const { isAuth } = useContext(AuthContext)
@@ -30,6 +31,7 @@ export const AppRoutes = () => {
             }
           />
           <Route path={'/register'} element={<Register />} />
+          <Route path={'/my-searches'} element={<MySearches />} />
         </Routes>
       </StyledGlobalContainer>
       {isAuth && <BottomMenu />}

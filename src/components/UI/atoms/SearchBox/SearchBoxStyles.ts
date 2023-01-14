@@ -55,7 +55,7 @@ export const InputSearchBox = styled.input`
 export const SearchIcon = styled(AiOutlineSearch)<{ onClick?: any }>`
   border-radius: 50%;
   box-sizing: border-box;
-  color: #07051a;
+  color: ${mainTheme.colors.primaryColor};
   cursor: pointer;
   font-size: 1.2em;
   height: 42.5px;
@@ -67,6 +67,7 @@ export const SearchIcon = styled(AiOutlineSearch)<{ onClick?: any }>`
   top: 0;
   transition: all 1s;
   width: 42.5px;
+
   @media ${deviceSize.tablet} {
     width: 36px;
     height: 36px;
@@ -97,11 +98,11 @@ export const FormSearchBox = styled.form`
   }
   &:hover ${SearchIcon},&:valid ${SearchIcon} {
     background: ${mainTheme.colors.primaryColor};
-    color: black;
+    color: ${mainTheme.colors.primaryTextColor};
   }
   &:valid ${SearchIcon} {
     background: ${mainTheme.colors.primaryColor};
-    color: black;
+    color: ${mainTheme.colors.primaryTextColor};
     pointer-events: all;
   }
 

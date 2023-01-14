@@ -9,7 +9,8 @@ export const StyledGlobalContainer = styled.div`
   flex-direction: column;
   margin-bottom: 6rem;
   @media ${deviceSize.tablet} {
-    margin-top: 15px;
+    margin-top: 25px;
+    max-width: 94%;
   }
 `
 

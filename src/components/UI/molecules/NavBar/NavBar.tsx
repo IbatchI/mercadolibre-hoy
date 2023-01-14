@@ -21,7 +21,12 @@ export const Navbar = () => {
     <>
       {isAuth && <SearchBox />}
       <StyledNavBarContainer>
-        <StyledMainLogo src="/images/logo.png" />
+        <StyledMainLogo
+          src="/images/logo.png"
+          onClick={() => {
+            navigate('/')
+          }}
+        />
         <DropDownMenu items={userDropDownItems} />
       </StyledNavBarContainer>
     </>

@@ -5,13 +5,19 @@
   line-height: 24px;
   font-weight: 400;
   background-color: var(--mainBackgroundColor);
+  color: var(--mainTextColor);
   
   /* Colors of main theme  */
-  --mainBackgroundColor: #eaeaeaab;
+  --mainBackgroundColor: #0f0f0f;
+  --mainTextColor: #f1f1f1;
   --mainTernaryColor: #8e8d8a;
-  --mainPrimaryColor: #276783;
-  --mainSecondaryColor: #257ea4;
-  --mainDisabledColor: #0d3f54;
+  --mainPrimaryColor: #0f0f0f;
+  --mainSecondaryColor: #9c5ff7;
+  --mainDisabledColor: #ab80f5;
+  --mainBorderColor: #5a5a5a7a;
+  --mainBackgroundInputColor: #ffffff29;
+  --mainSecondaryBackgroundColor: #18181b;
+  --mainDangerColor: #e85a4f;
 
     /* --mainBackgroundColor: #090b0f;
   --mainTernaryColor: #0dbd81;
