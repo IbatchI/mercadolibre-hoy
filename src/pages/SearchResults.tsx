@@ -47,7 +47,12 @@ export const SearchResults = () => {
         </StyledCardContainer>
       </OpacityAnimationContainer>
       {!loading && (
-        <Pagination resultsPerPage={LIMIT} totalResults={totalResults} setPage={setPagination} />
+        <Pagination
+          pageSize={LIMIT}
+          totalCount={totalResults}
+          onPageChange={setPagination}
+          currentPage={pagination}
+        />
       )}
     </>
   )

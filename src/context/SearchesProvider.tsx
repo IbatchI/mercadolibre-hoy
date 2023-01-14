@@ -12,8 +12,10 @@ export interface ISearchesContext {
   handleSaveSearch(keyword: string): Promise<void>
   handleDeleteSearch(id: string): Promise<void>
   handlePagination(page: number): void
+  currentPage: number
 }
 
+const LIMIT_FOR_SEARCHES = 9
 export const SearchesContext = createContext<ISearchesContext>({} as ISearchesContext)
 
 interface SearchesProviderProps {
@@ -33,7 +35,7 @@ export function SearchesProvider({ children }: SearchesProviderProps) {
   const fetchMySearches = async () => {
     try {
       setLoading(true)
-      const response = await getSearches(page * 5, 5)
+      const response = await getSearches(page * LIMIT_FOR_SEARCHES, LIMIT_FOR_SEARCHES)
       setMySearches(response?.searches)
       setTotalSearches(response?.total)
       toast.success(response.msg)
@@ -48,7 +50,7 @@ export function SearchesProvider({ children }: SearchesProviderProps) {
     try {
       setLoading(true)
       const response = await saveSearch(keyword)
-      setMySearches(response?.searches)
+      fetchMySearches()
       toast.success(response.msg)
       setLoading(false)
     } catch (error) {
@@ -76,7 +78,14 @@ export function SearchesProvider({ children }: SearchesProviderProps) {
 
   return (
     <SearchesContext.Provider
-      value={{ mySearches, handleSaveSearch, handleDeleteSearch, totalSearches, handlePagination }}
+      value={{
+        mySearches,
+        handleSaveSearch,
+        handleDeleteSearch,
+        totalSearches,
+        handlePagination,
+        currentPage: page,
+      }}
     >
       {children}
     </SearchesContext.Provider>

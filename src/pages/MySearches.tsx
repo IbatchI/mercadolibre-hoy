@@ -6,7 +6,7 @@ import { Pagination } from '../components/UI/molecules/Pagination/Pagination'
 import { OpacityAnimationContainer } from '../../utils/styledGlobal'
 
 export const MySearches = () => {
-  const { mySearches, totalSearches, handlePagination } = useContext(SearchesContext)
+  const { mySearches, totalSearches, handlePagination, currentPage } = useContext(SearchesContext)
 
   return (
     <OpacityAnimationContainer>
@@ -14,7 +14,12 @@ export const MySearches = () => {
       {mySearches.map((search) => (
         <SearchItem key={search.uid} search={search} />
       ))}
-      <Pagination totalResults={totalSearches} resultsPerPage={5} setPage={handlePagination} />
+      <Pagination
+        currentPage={currentPage}
+        totalCount={totalSearches}
+        pageSize={10}
+        onPageChange={handlePagination}
+      />
     </OpacityAnimationContainer>
   )
 }
