@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { getLocalStorage, setLocalStorage } from '../../utils/utilsFunctions'
 import { UserInfo } from '../types/types'
@@ -30,6 +31,7 @@ export const AuthProvider = ({ children }: IAuthContextProps) => {
   // Solo va a consultar al localStorage la primera vez
   // o en caso que recarguemos la pagina
   const [isAuth, setIsAuth] = useState<boolean>(!!getLocalStorage('accessToken'))
+  const navigate = useNavigate()
 
   const handleOnLogin = (userInfoParam: UserInfo, tokenJWT: string) => {
     setIsAuth(true)
@@ -42,6 +44,7 @@ export const AuthProvider = ({ children }: IAuthContextProps) => {
   const handleOnLogOut = () => {
     setIsAuth(false)
     localStorage.clear()
+    navigate('/')
   }
 
   return (

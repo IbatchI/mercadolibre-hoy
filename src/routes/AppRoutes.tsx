@@ -31,7 +31,14 @@ export const AppRoutes = () => {
             }
           />
           <Route path={'/register'} element={<Register />} />
-          <Route path={'/my-searches'} element={<MySearches />} />
+          <Route
+            path={'/my-searches'}
+            element={
+              <AuthProtection isAuth={isAuth}>
+                <MySearches />
+              </AuthProtection>
+            }
+          />
         </Routes>
       </StyledGlobalContainer>
       {isAuth && <BottomMenu />}

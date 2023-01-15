@@ -25,6 +25,8 @@ export const usePagination = ({
   currentPage,
 }: IUsePaginationProps) => {
   const paginationRange = useMemo(() => {
+    // Scroll to top of the page
+    window.scrollTo(0, 0)
     const totalPageCount = Math.ceil(totalCount / pageSize)
 
     // Pages count is determined as siblingCount + firstPage + lastPage + currentPage + 2*DOTS

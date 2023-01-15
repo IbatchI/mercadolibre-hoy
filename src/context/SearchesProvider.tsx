@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, createContext, useEffect } from 'react'
+import React, { useState, createContext, useEffect, useContext } from 'react'
+import { useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { deleteSearch, getSearches, saveSearch } from '../services/api-ml-hoy/Searches'
 import { ISearch } from '../types/types'
+import { AuthContext } from './AuthProvider'
 import { useLoading } from './LoadingProvider'
 
 export interface ISearchesContext {
@@ -26,6 +28,9 @@ export function SearchesProvider({ children }: SearchesProviderProps) {
   const [mySearches, setMySearches] = useState<Array<ISearch>>([])
   const [totalSearches, setTotalSearches] = useState<number>(0)
   const [page, setPage] = useState<number>(0)
+
+  const { isAuth } = useContext(AuthContext)
+
   const { setLoading } = useLoading()
 
   const handlePagination = (page: number) => {
@@ -73,7 +78,7 @@ export function SearchesProvider({ children }: SearchesProviderProps) {
   }
 
   useEffect(() => {
-    fetchMySearches()
+    if (isAuth) fetchMySearches()
   }, [page])
 
   return (
