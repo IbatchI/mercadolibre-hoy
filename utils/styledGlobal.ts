@@ -2,9 +2,10 @@ import styled, { keyframes } from 'styled-components'
 import { deviceSize } from '../src/styles/Styles'
 
 export const StyledGlobalContainer = styled.div`
-  max-width: 1024px;
+  max-width: 95%;
   margin: auto;
   display: flex;
+  overflow-y: auto;
   justify-content: center;
   flex-direction: column;
   margin-bottom: 6rem;

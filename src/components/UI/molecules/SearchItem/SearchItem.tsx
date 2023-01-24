@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import { AiTwotoneDelete } from 'react-icons/ai'
 import { BiRightArrow } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
@@ -7,18 +6,19 @@ import { IconButton } from '../../atoms/IconButton/IconButton'
 import { ISearch } from '../../../../types/types'
 import { ListOfActionButtonsContainer, SearchItemStyled } from './SearchItemStyles'
 import { mainTheme } from '../../../../styles/Styles'
-import { SearchesContext } from '../../../../context/SearchesProvider'
+import { deleteSearchThunk } from '../../../../store/slices/searches/searchesThunks'
+import { useAppDispatch } from '../../../../store/hooks'
 
 interface ISearchItemProps {
   search: ISearch
 }
 
 export const SearchItem = ({ search }: ISearchItemProps) => {
-  const { handleDeleteSearch } = useContext(SearchesContext)
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const handleOnDeleteSearch = (id: string) => {
-    handleDeleteSearch(id)
+    dispatch(deleteSearchThunk(id))
   }
 
   const handleOnClickSearch = (keyword: string) => {

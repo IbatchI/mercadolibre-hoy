@@ -5,8 +5,8 @@ export const SearchItemStyled = styled.li`
   color: ${mainTheme.colors.primaryTextColor};
   background-color: ${mainTheme.colors.formBackgroundColor};
   list-style-type: none;
-  padding: ${mainTheme.padding.medium};
-  margin: 3px 20px;
+  padding: 0.5rem;
+  margin: 3px 0;
   font-size: ${mainTheme.fontSizes.small};
   border: 1px solid ${mainTheme.colors.borderColors};
   border-radius: 3px;
@@ -19,8 +19,7 @@ export const SearchItemStyled = styled.li`
   }
 
   @media ${deviceSize.tablet} {
-    padding: ${mainTheme.padding.small};
-    margin: 3px 0px;
+    padding: 0.35rem;
   }
 `
 

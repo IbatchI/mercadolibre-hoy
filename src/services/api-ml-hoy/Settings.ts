@@ -29,6 +29,7 @@ API_ML_HOY.interceptors.request.use(
 API_ML_HOY.interceptors.response.use(
   (response) => {
     // do something with response data
+    toast.success(response.data.msg)
     return response
   },
   (error) => {

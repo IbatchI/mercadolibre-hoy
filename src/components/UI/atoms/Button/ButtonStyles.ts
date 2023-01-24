@@ -1,17 +1,8 @@
 import styled from 'styled-components'
 import { deviceSize, mainTheme } from '../../../../styles/Styles'
+import { ButtonProps } from './Button'
 
-interface ButtonProps {
-  backgroundColor?: string
-  active?: boolean
-  fontWeight?: string
-  hoverBackgroundColor?: string
-  padding?: string
-  textColor?: string
-  width?: string
-}
-
-export const Button = styled.button<ButtonProps>`
+export const StyledButton = styled.button<ButtonProps>`
   -webkit-user-select: none;
   align-items: center;
   background-clip: padding-box;
