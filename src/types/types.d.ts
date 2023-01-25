@@ -32,11 +32,11 @@ export interface ISearch {
 
 // User interfaces
 export interface IUser {
-  uid?: string
   email: string
   google?: boolean
   name: string
-  password: string
+  password?: string
+  uid?: string
 }
 
 // Error interface

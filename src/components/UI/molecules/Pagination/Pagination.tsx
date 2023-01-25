@@ -2,7 +2,7 @@
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi'
 import { usePagination, DOTS } from '../../../../hooks/usePagination'
 
-import { Button } from '../../atoms/Button/ButtonStyles'
+import { Button } from '../../atoms/Button/Button'
 import { Dot } from '../../atoms/Dot/DotStyles'
 import { StyledPaginationContainer } from './PaginationStyles'
 

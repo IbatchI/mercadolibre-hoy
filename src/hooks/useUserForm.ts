@@ -1,13 +1,9 @@
-import { useContext, useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import { AxiosError } from 'axios'
-
-import { AuthContext } from '../context/AuthProvider'
 import { IUser, UserFormTypes } from '../types/types'
-import { login, register } from '../services/api-ml-hoy/User'
-import { toast } from 'react-toastify'
-import { useLoading } from '../context/LoadingProvider'
+import { useAppDispatch } from '../store/hooks'
+import { loginThunk, registerThunk } from '../store/slices/users/userThunks'
+import { useNavigate } from 'react-router-dom'
 
 const initialValues = {
   name: '',
@@ -21,46 +17,15 @@ const validatationSchema = yup.object({
 })
 
 export const useUserForm = (type: UserFormTypes) => {
-  const [responseError, setResponseError] = useState<string | undefined>()
-  const { handleOnLogin } = useContext(AuthContext)
-  const { setLoading } = useLoading()
-
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const handleOnSubmit = async (userData: IUser) => {
     if (type === 'login') {
-      try {
-        setLoading(true)
-        const response = await login(userData)
-        const { user, token } = response
-        handleOnLogin(
-          {
-            email: user.email,
-            name: user.name,
-            uid: user.uid,
-          },
-          token
-        )
-        toast.success(response.msg)
-        setLoading(false)
-      } catch (error) {
-        if (error instanceof AxiosError && error.request.status === 400) {
-          setResponseError(error.response?.data?.msg)
-        }
-        setLoading(false)
-      }
+      dispatch(loginThunk(userData))
+      navigate('/')
     }
-
     if (type === 'register') {
-      try {
-        setLoading(true)
-        const response = await register(userData)
-        toast.success(response.msg)
-        setLoading(false)
-      } catch (error) {
-        if (error instanceof AxiosError && error.request.status === 400) {
-          setResponseError(error.response?.data?.msg)
-        }
-        setLoading(false)
-      }
+      dispatch(registerThunk(userData))
     }
   }
 
@@ -80,7 +45,6 @@ export const useUserForm = (type: UserFormTypes) => {
     handleOnSubmit: formik.handleSubmit,
     nameError: formik.touched.name && formik.errors.name ? formik.errors.name : '',
     passwordError: formik.touched.password && formik.errors.password ? formik.errors.password : '',
-    responseError: responseError,
     values: formik.values,
   }
 }
