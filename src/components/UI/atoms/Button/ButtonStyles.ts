@@ -47,6 +47,5 @@ export const StyledButton = styled.button<ButtonProps>`
 
   @media ${deviceSize.mobile} {
     font-size: ${mainTheme.fontSizes.xSmall};
-    padding: calc(0.4rem - 1px) calc(0.87rem - 1px);
   }
 `

@@ -4,12 +4,13 @@ import { deviceSize } from '../src/styles/Styles'
 export const StyledGlobalContainer = styled.div`
   max-width: 1024px;
   margin: auto;
+  margin-top: 35px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin-bottom: 6rem;
   @media ${deviceSize.tablet} {
-    margin-top: 25px;
+    margin-top: 20px;
     max-width: 94%;
   }
 `

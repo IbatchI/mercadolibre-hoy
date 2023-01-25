@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
-import { H1 } from '../styles/SearchResultsStyles'
+import { H3, StyledSaveSearchs } from '../styles/SearchResultsStyles'
 import { SearchItem } from '../components/UI/molecules/SearchItem/SearchItem'
 import { getSearchesThunk } from '../store/slices/searches/searchesThunks'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { Pagination } from '../components/UI/molecules/Pagination/Pagination'
 import { OpacityAnimationContainer } from '../../utils/styledGlobal'
-import { Skeleton } from '../components/UI/atoms/Skeleton/Skeleton'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { skeletonArray, generateRandomKey } from '../../utils/utilsFunctions'
 
 export const MySearches = () => {
   // getInfo from redux store
@@ -24,19 +25,23 @@ export const MySearches = () => {
 
   return (
     <OpacityAnimationContainer>
-      {/* TODO: Hacer bien el skeleton, o intalar una libreria, que creo seria lo mas conveniente
-        suggerencia: https://www.npmjs.com/package/react-loading-skeleton
-      */}
-      {loading ? <Skeleton width="164px" height="24px" /> : <H1>Mis Busquedas</H1>}
-      {searchResults.map((search) => (
-        <SearchItem key={search.uid} search={search} />
-      ))}
-      <Pagination
-        currentPage={currentPage}
-        totalCount={searches}
-        pageSize={10}
-        onPageChange={handlePagination}
-      />
+      <StyledSaveSearchs>
+        <H3>Mis Busquedas</H3>
+        {loading
+          ? skeletonArray.map(() => (
+              <SkeletonTheme key={generateRandomKey()} baseColor="#202020" highlightColor="#444">
+                <Skeleton count={1} height="50px" />
+              </SkeletonTheme>
+            ))
+          : searchResults.map((search) => <SearchItem key={search.uid} search={search} />)}
+
+        <Pagination
+          currentPage={currentPage}
+          totalCount={searches}
+          pageSize={10}
+          onPageChange={handlePagination}
+        />
+      </StyledSaveSearchs>
     </OpacityAnimationContainer>
   )
 }
