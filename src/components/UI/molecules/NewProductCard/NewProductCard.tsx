@@ -1,28 +1,37 @@
 import { Carousel } from 'react-responsive-carousel'
 import {
-  ButtonCopy,
   CardStyled,
   ImageCardStyled,
   StyledCarrouselContainer,
-  StyledContainerButton,
+  StyledIconContainer,
   StyledPriceContainer,
   StyledTitle,
-  VerticalLine,
+  StyledTitleAndButtonsContainer,
 } from './NewProductCardStyles'
+import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Price } from '../../atoms/Price/Price'
 import { BiLinkExternal } from 'react-icons/bi'
 import { HiOutlineClipboardCopy } from 'react-icons/hi'
 import { toast } from 'react-toastify'
+import { IconButton } from '../../atoms/IconButton/IconButton'
 
 interface ProductCardProps {
-  link: string
-  pictures: string[]
-  price: number
-  title: string
+  link?: string
+  pictures?: string[]
+  price?: number
+  isSqueleton?: boolean
+  title?: string
 }
 
-export const NewProductCard = ({ title, price, pictures, link }: ProductCardProps) => {
+export const NewProductCard = ({
+  title = '',
+  price = 0,
+  pictures = [],
+  link = '',
+  isSqueleton = false,
+}: ProductCardProps) => {
   const goToPage = () => {
     window.open(link, '_blank')
   }
@@ -33,44 +42,45 @@ export const NewProductCard = ({ title, price, pictures, link }: ProductCardProp
   }
 
   return (
-    <CardStyled>
-      <StyledCarrouselContainer>
-        <Carousel
-          emulateTouch={false}
-          showArrows
-          showIndicators={false}
-          showStatus={false}
-          showThumbs={false}
-          swipeable={false}
-        >
-          {pictures.map((picture, index) => (
-            <div key={index}>
-              <ImageCardStyled src={picture} />
-            </div>
-          ))}
-        </Carousel>
-      </StyledCarrouselContainer>
-      <StyledTitle>{title}</StyledTitle>
-      <StyledPriceContainer>
-        <Price color="rgb(53 225 230)" fontWeight="500">
-          {price}
-        </Price>
-      </StyledPriceContainer>
-      <StyledContainerButton>
-        <ButtonCopy
-          onClick={() => {
-            copyClipboard()
-          }}
-        >
-          <HiOutlineClipboardCopy size="14px" />
-          Copiar
-        </ButtonCopy>
-        <VerticalLine></VerticalLine>
-        <ButtonCopy onClick={() => goToPage()}>
-          Visitar
-          <BiLinkExternal size="14px" />
-        </ButtonCopy>
-      </StyledContainerButton>
-    </CardStyled>
+    <>
+      {isSqueleton ? (
+        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+          <Skeleton count={1} height="180px" />
+        </SkeletonTheme>
+      ) : (
+        <CardStyled>
+          <StyledCarrouselContainer>
+            <Carousel
+              emulateTouch={false}
+              showArrows
+              showIndicators={false}
+              showStatus={false}
+              showThumbs={false}
+              swipeable={false}
+            >
+              {pictures.map((picture, index) => (
+                <div key={index}>
+                  <ImageCardStyled src={picture} />
+                </div>
+              ))}
+            </Carousel>
+          </StyledCarrouselContainer>
+          <StyledTitleAndButtonsContainer>
+            <StyledTitle>{title}</StyledTitle>
+            <StyledIconContainer>
+              <IconButton onClick={copyClipboard} icon={<HiOutlineClipboardCopy size="20px" />} />
+              <IconButton
+                onClick={goToPage}
+                style={{ marginTop: '2.5px' }}
+                icon={<BiLinkExternal size="19px" />}
+              />
+            </StyledIconContainer>
+          </StyledTitleAndButtonsContainer>
+          <StyledPriceContainer>
+            <Price color="gray">{price}</Price>
+          </StyledPriceContainer>
+        </CardStyled>
+      )}
+    </>
   )
 }

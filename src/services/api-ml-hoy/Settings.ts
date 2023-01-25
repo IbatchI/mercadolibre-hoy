@@ -11,19 +11,12 @@ export const API_ML_HOY = axios.create({
   },
 })
 
-// set token to header
-export const setAuthToken = (token: string) => {
-  if (token) {
-    API_ML_HOY.defaults.headers.common['x-token'] = token
-  } else {
-    delete API_ML_HOY.defaults.headers.common['x-token']
-  }
-}
-
 // set request interceptor
 API_ML_HOY.interceptors.request.use(
   (config) => {
-    // do something before request is sent
+    // Siempre va a tener headers porque lo inicializamos asi en la linea 7
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    config.headers!['x-token'] = localStorage.getItem('accessToken') || ''
     return config
   },
   (error) => {
@@ -36,6 +29,7 @@ API_ML_HOY.interceptors.request.use(
 API_ML_HOY.interceptors.response.use(
   (response) => {
     // do something with response data
+    toast.success(response.data.msg)
     return response
   },
   (error) => {
@@ -49,10 +43,10 @@ API_ML_HOY.interceptors.response.use(
     if (error.response.status === 500) toast.error('Error del servidor')
 
     // if it's a 400 error, we can show the error message
-    // if (error.response.status === 400) {
-    //   const errorMessage = error.response.data.msg
-    //   toast.error(errorMessage)
-    // }
+    if (error.response.status === 400) {
+      const errorMessage = error.response.data.msg
+      toast.error(errorMessage)
+    }
     return Promise.reject(error)
   }
 )

@@ -18,6 +18,10 @@ export const formatPrice = (
   return formatter.format(price)
 }
 
+export const generateRandomKey = () => Math.random() * 100000000000000000
+
+export const skeletonArray = Array(12).fill(0)
+
 // Storage Functions
 
 export const getLocalStorage = (key: string) => localStorage.getItem(key)

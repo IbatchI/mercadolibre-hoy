@@ -1,22 +1,18 @@
-import { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { AuthContext } from '../context/AuthProvider'
 import { Navbar } from '../components/UI/molecules/NavBar/NavBar'
 import { AuthProtection } from './AuthProtection'
 import { Register, SearchResults, Home } from '../pages'
 import { StyledGlobalContainer } from '../../utils/styledGlobal'
-import { Loader } from '../components/UI/atoms/Loader/Loader'
-import { useLoading } from '../context/LoadingProvider'
 import { BottomMenu } from '../components/UI/molecules/BottomMenu/BottomMenu'
+import { MySearches } from '../pages/MySearches'
+import { useAppSelector } from '../store/hooks'
 
 export const AppRoutes = () => {
-  const { isAuth } = useContext(AuthContext)
-  const { loading } = useLoading()
+  const { isAuth } = useAppSelector((state) => state.user)
 
   return (
     <>
-      {loading && <Loader />}
       <Navbar />
       <StyledGlobalContainer>
         <Routes>
@@ -30,6 +26,14 @@ export const AppRoutes = () => {
             }
           />
           <Route path={'/register'} element={<Register />} />
+          <Route
+            path={'/my-searches'}
+            element={
+              <AuthProtection isAuth={isAuth}>
+                <MySearches />
+              </AuthProtection>
+            }
+          />
         </Routes>
       </StyledGlobalContainer>
       {isAuth && <BottomMenu />}

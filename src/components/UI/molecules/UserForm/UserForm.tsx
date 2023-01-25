@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
-import { Button } from '../../atoms/Button/ButtonStyles'
+import { Button } from '../../atoms/Button/Button'
 import { Error } from '../../atoms/ErrorMessage/ErrorMessageStyles'
 import { Form } from '../../atoms/Form/FormStyles'
 import { Input } from '../../atoms/Input/Input'
 import { UserFormTypes } from '../../../../types/types'
 import { useUserForm } from '../../../../hooks/useUserForm'
+import { useAppSelector } from '../../../../store/hooks'
 
 interface UserFormProps {
   type: UserFormTypes
@@ -14,6 +15,7 @@ interface UserFormProps {
 
 export const UserForm = ({ type }: UserFormProps) => {
   const [showPassword, setShowPassword] = useState(false)
+  const { error, loading } = useAppSelector((state) => state.user)
 
   const {
     disabledSubmit,
@@ -22,7 +24,6 @@ export const UserForm = ({ type }: UserFormProps) => {
     handleOnSubmit,
     nameError,
     passwordError,
-    responseError,
     values,
   } = useUserForm(type)
 
@@ -34,6 +35,7 @@ export const UserForm = ({ type }: UserFormProps) => {
         <h3>{titleOfLogin}</h3>
         {type === 'register' && (
           <Input
+            disabled={loading}
             height={'50px'}
             id="name"
             type="text"
@@ -45,6 +47,7 @@ export const UserForm = ({ type }: UserFormProps) => {
         )}
         <Error>{nameError}</Error>
         <Input
+          disabled={loading}
           height={'50px'}
           id="email"
           onChange={handleOnChange}
@@ -56,6 +59,7 @@ export const UserForm = ({ type }: UserFormProps) => {
         <Error>{emailError}</Error>
 
         <Input
+          disabled={loading}
           height={'50px'}
           id="password"
           onChange={handleOnChange}
@@ -70,11 +74,12 @@ export const UserForm = ({ type }: UserFormProps) => {
         />
         <Error>{passwordError}</Error>
 
-        <Error>{responseError}</Error>
+        <Error>{error}</Error>
         <Button
           width={'100%'}
           fontWeight={'bold'}
           type="submit"
+          loading={loading}
           disabled={disabledSubmit}
           textColor="white"
         >

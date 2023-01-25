@@ -7,13 +7,18 @@ export const mediaQuerys = {
 export const mainTheme = {
   colors: {
     defaultBackgroundColor: 'var(--mainBackgroundColor)',
+    formBackgroundColor: 'var(--mainSecondaryBackgroundColor)',
+    borderColors: 'var(--mainBorderColor)',
+    primaryTextColor: 'var(--mainTextColor)',
+    inputBackgroundColor: 'var(--mainBackgroundInputColor)',
     disabledColor: 'var(--mainDisabledColor)',
     primaryColor: 'var(--mainPrimaryColor)',
     secondaryColor: 'var(--mainSecondaryColor)',
     ternaryColor: 'var(--mainTernaryColor)',
+    dangerColor: 'var(--mainDangerColor)',
   },
 
-  mainBorderRadius: '0.6rem',
+  mainBorderRadius: '0.3rem',
   mainShadow: '0 0.5rem 1rem rgba(0, 0, 0, 0.15)',
 
   padding: {
@@ -24,6 +29,7 @@ export const mainTheme = {
   },
 
   fontSizes: {
+    xSmall: '0.8rem',
     small: '1rem',
     medium: '1.5rem',
     large: '2rem',
@@ -42,8 +48,8 @@ export const mainTheme = {
   },
 }
 const size = {
-  mobile: '320px',
-  tablet: '768px',
+  mobile: '500px',
+  tablet: '900px',
   tabletL: '1024px',
   desktop: '1256px',
 }

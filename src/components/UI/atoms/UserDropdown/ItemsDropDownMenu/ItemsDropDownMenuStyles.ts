@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-// import { mainTheme } from '../../../../../styles/Styles'
+import { mainTheme } from '../../../../../styles/Styles'
 
 export const ItemDropDownMenu = styled.li`
   font-weight: bold;
@@ -10,6 +10,6 @@ export const ItemDropDownMenu = styled.li`
 
   &:hover {
     cursor: pointer;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid ${mainTheme.colors.secondaryColor};
   }
 `

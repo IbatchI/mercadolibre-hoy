@@ -9,16 +9,16 @@ export const DropDownMenuContainer = styled.div`
   position: relative;
 `
 export const ListOfDropsItmes = styled.ul<IListOfDropsItmesProps>`
-  background-color: #fff;
+  background-color: ${mainTheme.colors.formBackgroundColor};
   border-radius: ${mainTheme.mainBorderRadius};
-  border: 1px solid #ddd;
+  color: ${mainTheme.colors.primaryTextColor};
+  border: 1px solid ${mainTheme.colors.borderColors};
   display: ${(props) => (props.isOpen ? 'block' : 'none')};
   max-height: ${(props) => (props.isOpen ? '300px' : '0')};
   overflow: hidden;
-  padding: 4px;
+  padding: 4px 10px;
   position: absolute;
-  position: absolute;
-  right: 15px;
+  right: 10px;
   transition: all 0.5s;
   width: 150px;
 `

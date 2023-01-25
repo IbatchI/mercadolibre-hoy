@@ -23,13 +23,20 @@ interface IPicture {
   quality
 }
 
+// Searches interfaces
+export interface ISearch {
+  uid: string
+  keyword: string
+  user?: string
+}
+
 // User interfaces
 export interface IUser {
-  uid?: string
   email: string
   google?: boolean
   name: string
-  password: string
+  password?: string
+  uid?: string
 }
 
 // Error interface

@@ -5,20 +5,20 @@
   line-height: 24px;
   font-weight: 400;
   background-color: var(--mainBackgroundColor);
+  color: var(--mainTextColor);
   
   /* Colors of main theme  */
-  --mainBackgroundColor: #eaeaeaab;
+  --mainBackgroundColor: #0f0f0f;
+  --mainTextColor: #f1f1f1;
   --mainTernaryColor: #8e8d8a;
-  --mainPrimaryColor: #276783;
-  --mainSecondaryColor: #257ea4;
-  --mainDisabledColor: #0d3f54;
-
-    /* --mainBackgroundColor: #090b0f;
-  --mainTernaryColor: #0dbd81;
-  --mainPrimaryColor: #D8C3A5;
-  --mainSecondaryColor: #E85A4F;
-  --mainDisabledColor: #714affd3; */
-
+  --mainPrimaryColor: #0f0f0f;
+  --mainSecondaryColor: #9c5ff7;
+  --mainDisabledColor: #ab80f5;
+  --mainBorderColor: #5a5a5a7a;
+  --mainBackgroundInputColor: #ffffff29;
+  --mainSecondaryBackgroundColor: #18181b;
+  --mainDangerColor: #e85a4f;
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,12 +26,9 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
 .carousel.carousel-slider .control-arrow {
   opacity: 1;
-  
 }
-
 
 body {
   margin: 0;
