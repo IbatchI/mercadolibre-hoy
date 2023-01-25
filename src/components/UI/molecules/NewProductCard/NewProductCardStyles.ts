@@ -30,7 +30,7 @@ export const StyledTitle = styled.div`
   padding: 12px;
   font-size: 0.8rem;
   line-height: 20px;
-  max-height: 13px;
+  max-height: 11px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

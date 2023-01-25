@@ -1,10 +1,13 @@
 import { AiTwotoneDelete } from 'react-icons/ai'
-import { BiRightArrow } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 
 import { IconButton } from '../../atoms/IconButton/IconButton'
 import { ISearch } from '../../../../types/types'
-import { ListOfActionButtonsContainer, SearchItemStyled } from './SearchItemStyles'
+import {
+  ListOfActionButtonsContainer,
+  SearchItemStyled,
+  StyledTextButton,
+} from './SearchItemStyles'
 import { mainTheme } from '../../../../styles/Styles'
 import { deleteSearchThunk } from '../../../../store/slices/searches/searchesThunks'
 import { useAppDispatch } from '../../../../store/hooks'
@@ -27,14 +30,15 @@ export const SearchItem = ({ search }: ISearchItemProps) => {
 
   return (
     <SearchItemStyled>
-      {search.keyword}
+      <StyledTextButton onClick={() => handleOnClickSearch(search.keyword)}>
+        {search.keyword}
+      </StyledTextButton>
       <ListOfActionButtonsContainer>
         <IconButton
           color={mainTheme.colors.dangerColor}
           icon={<AiTwotoneDelete />}
           onClick={() => handleOnDeleteSearch(search.uid)}
         />
-        <IconButton icon={<BiRightArrow />} onClick={() => handleOnClickSearch(search.keyword)} />
       </ListOfActionButtonsContainer>
     </SearchItemStyled>
   )
