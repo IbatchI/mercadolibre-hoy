@@ -44,6 +44,10 @@ API_ML_HOY.interceptors.response.use(
 
     // if it's a 400 error, we can show the error message
     if (error.response.status === 400) {
+      // when the back send a new Trow Error('message')
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const erroreMessages = error.response.data.errors.map((err: any) => err.msg)
+      erroreMessages.forEach((msg: string) => toast.error(msg))
       const errorMessage = error.response.data.msg
       toast.error(errorMessage)
     }

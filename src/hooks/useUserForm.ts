@@ -26,6 +26,7 @@ export const useUserForm = (type: UserFormTypes) => {
     }
     if (type === 'register') {
       dispatch(registerThunk(userData))
+      navigate('/')
     }
   }
 
