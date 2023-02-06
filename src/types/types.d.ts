@@ -54,3 +54,15 @@ export type Currency = 'ARS' | 'USD' | 'BRL'
 export type TimeZone = 'es-AR' | 'en-US' | 'pt-BR'
 
 export type UserFormTypes = 'register' | 'login' | 'update'
+
+// Filters types
+export const enum TypesOfFilters {
+  MIN_PRICE = 'MIN_PRICE',
+  MAX_PRICE = 'MAX_PRICE',
+  ALREADY_SEEN = 'ALREADY_SEEN',
+}
+
+export type TFilter =
+  | { type: TypesOfFilters.MIN_PRICE; value: number }
+  | { type: TypesOfFilters.MAX_PRICE; value: number }
+  | { type: TypesOfFilters.ALREADY_SEEN; value: boolean }
