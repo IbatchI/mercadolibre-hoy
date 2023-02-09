@@ -31,10 +31,10 @@ export const Navbar = () => {
       {isAuth && <SearchBox />}
       <StyledNavBarContainer>
         <StyledMainLogo
-          src="/images/logo.png"
           onClick={() => {
             navigate('/')
           }}
+          src="/images/logo.png"
         />
         <DropDownMenu items={userDropDownItems} />
       </StyledNavBarContainer>

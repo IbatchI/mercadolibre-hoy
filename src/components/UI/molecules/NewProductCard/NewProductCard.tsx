@@ -68,11 +68,11 @@ export const NewProductCard = ({
           <StyledTitleAndButtonsContainer>
             <StyledTitle>{title}</StyledTitle>
             <StyledIconContainer>
-              <IconButton onClick={copyClipboard} icon={<HiOutlineClipboardCopy size="20px" />} />
+              <IconButton icon={<HiOutlineClipboardCopy size="20px" />} onClick={copyClipboard} />
               <IconButton
+                icon={<BiLinkExternal size="19px" />}
                 onClick={goToPage}
                 style={{ marginTop: '2.5px' }}
-                icon={<BiLinkExternal size="19px" />}
               />
             </StyledIconContainer>
           </StyledTitleAndButtonsContainer>

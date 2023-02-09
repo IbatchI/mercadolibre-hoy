@@ -26,9 +26,9 @@ export const BottomMenu = () => {
       <IconButton icon={<MdNotificationsNone />} />
       <IconButton icon={<BiSearchAlt2 />} onClick={() => navigate(`/my-searches`)} />
       <IconButton
-        loading={loading}
-        icon={<MdSave />}
         disabled={!keyword}
+        icon={<MdSave />}
+        loading={loading}
         onClick={handleClickOnSaveSearch}
       />
     </StyledBottomMenu>

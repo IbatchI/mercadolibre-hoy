@@ -55,25 +55,25 @@ export const SearchResults = () => {
         <StyledCardContainer>
           {loading
             ? skeletonArray.map(() => (
-                <NewProductCard key={generateRandomKey()} isSqueleton={true} />
+                <NewProductCard isSqueleton={true} key={generateRandomKey()} />
               ))
             : products.map((product) => (
                 <NewProductCard
                   key={product.id}
-                  title={product.title}
-                  price={product.price}
-                  pictures={product.pictures}
                   link={product.permalink}
+                  pictures={product.pictures}
+                  price={product.price}
+                  title={product.title}
                 />
               ))}
         </StyledCardContainer>
       </OpacityAnimationContainer>
       {!loading && (
         <Pagination
+          currentPage={currentPage}
+          onPageChange={handlePagination}
           pageSize={LIMIT}
           totalCount={totalResults}
-          onPageChange={handlePagination}
-          currentPage={currentPage}
         />
       )}
     </>

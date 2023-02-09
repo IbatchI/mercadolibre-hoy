@@ -46,10 +46,10 @@ export const Input = ({
           <StyledInput
             error={error}
             height={height}
+            icon={icon}
             minWidth={minWidth}
             padding={padding}
             width={width}
-            icon={icon}
             {...rest}
           />
           <InputButtonIcon onClick={handleOnClickIcon} type="button">

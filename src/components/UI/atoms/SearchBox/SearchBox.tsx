@@ -27,8 +27,8 @@ export const SearchBox = () => {
     <StyledNavBarGhost active={keyword === ''}>
       <StyledContainer>
         <FormSearchBox method="get" onSubmit={handleSubmit}>
-          <InputSearchBox value={keyword} type="search" onChange={handleChange} required />
-          <SearchIcon type="submit" onClick={handleSubmit} />
+          <InputSearchBox onChange={handleChange} required type="search" value={keyword} />
+          <SearchIcon onClick={handleSubmit} type="submit" />
         </FormSearchBox>
       </StyledContainer>
     </StyledNavBarGhost>

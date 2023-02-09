@@ -9,5 +9,5 @@ interface IAvatarProps {
 }
 
 export const Avatar = ({ heigth, width, src, alt, handleOnClick }: IAvatarProps) => (
-  <StyledAvatar heigth={heigth} width={width} src={src} alt={alt} onClick={handleOnClick} />
+  <StyledAvatar alt={alt} heigth={heigth} onClick={handleOnClick} src={src} width={width} />
 )

@@ -29,7 +29,7 @@ export const MySearches = () => {
         <H3>Mis Busquedas</H3>
         {loading
           ? skeletonArray.map(() => (
-              <SkeletonTheme key={generateRandomKey()} baseColor="#202020" highlightColor="#444">
+              <SkeletonTheme baseColor="#202020" highlightColor="#444" key={generateRandomKey()}>
                 <Skeleton count={1} height="50px" />
               </SkeletonTheme>
             ))
@@ -37,9 +37,9 @@ export const MySearches = () => {
 
         <Pagination
           currentPage={currentPage}
-          totalCount={searches}
-          pageSize={10}
           onPageChange={handlePagination}
+          pageSize={10}
+          totalCount={searches}
         />
       </StyledSaveSearchs>
     </OpacityAnimationContainer>

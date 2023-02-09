@@ -66,6 +66,9 @@ export const UserForm = ({ type }: UserFormProps) => {
         <Input
           disabled={loading}
           error={passwordError}
+          handleOnClickIcon={() => {
+            setShowPassword(!showPassword)
+          }}
           height={'50px'}
           icon={showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
           id="password"
@@ -76,19 +79,16 @@ export const UserForm = ({ type }: UserFormProps) => {
           required
           type={showPassword ? 'text' : 'password'}
           value={values.password}
-          handleOnClickIcon={() => {
-            setShowPassword(!showPassword)
-          }}
         />
 
         <Error>{error}</Error>
         <Button
-          width={'100%'}
-          fontWeight={'bold'}
-          type="submit"
-          loading={loading}
           disabled={disabledSubmit}
+          fontWeight={'bold'}
+          loading={loading}
           textColor="white"
+          type="submit"
+          width={'100%'}
         >
           {type === 'register' ? 'Registrarse' : 'Iniciar sesión'}
         </Button>
