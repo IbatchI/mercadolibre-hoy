@@ -28,7 +28,7 @@ export const SearchResults = () => {
   }
 
   useEffect(() => {
-    dispatch(getProductsThunk(keyword, currentPage))
+    dispatch(getProductsThunk(keyword, 0))
   }, [keyword])
 
   return (

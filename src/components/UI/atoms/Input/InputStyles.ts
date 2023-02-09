@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { mainTheme } from '../../../../styles/Styles'
 
 interface IInputProps {
+  error?: string
   height?: string
   icon?: React.ReactNode
   minWidth?: string
@@ -10,6 +11,7 @@ interface IInputProps {
 }
 
 const getStylesFromInput = (
+  error: boolean,
   hasIconInRight: boolean,
   height?: string,
   minWidth?: string,
@@ -20,7 +22,7 @@ const getStylesFromInput = (
     return `
     background-color: ${mainTheme.colors.inputBackgroundColor};
     border-radius: 5px;
-    border: 0.3px solid ${mainTheme.colors.borderColors};
+    border: 0.3px solid ${error ? mainTheme.colors.dangerColor : mainTheme.colors.borderColors};
     box-sizing: border-box;
     color: ${mainTheme.colors.primaryTextColor};
     display: flex;
@@ -49,6 +51,7 @@ const getStylesFromInput = (
 export const StyledInput = styled.input<IInputProps>`
   ${(props) =>
     getStylesFromInput(
+      props.error !== undefined && props.error?.length > 0,
       props?.icon !== undefined,
       props.height,
       props.minWidth,
@@ -71,7 +74,8 @@ export const StyledInputContainer = styled.div<IInputProps>`
     color: ${mainTheme.colors.primaryTextColor};
     background-color: ${mainTheme.colors.inputBackgroundColor};
     border-radius: 5px;
-    border: 0.3px solid ${mainTheme.colors.borderColors};
+    border: 0.3px solid
+      ${(props) => (props.error ? mainTheme.colors.dangerColor : mainTheme.colors.borderColors)};
     box-sizing: border-box;
     font-size: 100%;
     height: 100%;

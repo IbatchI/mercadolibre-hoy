@@ -15,7 +15,10 @@ export const loginThunk = (userData: IUser) => {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(startLoadingUser())
-      const { user, token } = await login(userData)
+      const { user, token } = await login({
+        email: userData.email,
+        password: userData.password || '',
+      })
       dispatch(setUserData({ ...user, accesToken: token }))
       dispatch(setUserLocalStorage({ ...user, accesToken: token }))
     } catch (error) {

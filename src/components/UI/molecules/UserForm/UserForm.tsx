@@ -20,6 +20,7 @@ export const UserForm = ({ type }: UserFormProps) => {
   const {
     disabledSubmit,
     emailError,
+    handleOnBlur,
     handleOnChange,
     handleOnSubmit,
     nameError,
@@ -36,43 +37,49 @@ export const UserForm = ({ type }: UserFormProps) => {
         {type === 'register' && (
           <Input
             disabled={loading}
+            error={nameError}
             height={'50px'}
             id="name"
-            type="text"
-            placeholder="Name"
-            value={values.name}
+            name="name"
+            onBlur={handleOnBlur}
             onChange={handleOnChange}
+            placeholder="Name"
             required
+            type="text"
+            value={values.name}
           />
         )}
-        <Error>{nameError}</Error>
         <Input
           disabled={loading}
+          error={emailError}
           height={'50px'}
           id="email"
+          name="email"
+          onBlur={handleOnBlur}
           onChange={handleOnChange}
           placeholder={'Email'}
+          required
           type={'email'}
           value={values.email}
-          required
         />
-        <Error>{emailError}</Error>
 
         <Input
           disabled={loading}
+          error={passwordError}
           height={'50px'}
+          icon={showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
           id="password"
+          name="password"
+          onBlur={handleOnBlur}
           onChange={handleOnChange}
           placeholder={'Contraseña'}
           required
           type={showPassword ? 'text' : 'password'}
           value={values.password}
-          icon={showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
           handleOnClickIcon={() => {
             setShowPassword(!showPassword)
           }}
         />
-        <Error>{passwordError}</Error>
 
         <Error>{error}</Error>
         <Button

@@ -1,7 +1,9 @@
 import { InputHTMLAttributes } from 'react'
+import { Error } from '../ErrorMessage/ErrorMessageStyles'
 import { StyledInput, StyledInputContainer, InputButtonIcon } from './InputStyles'
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  error?: string
   handleOnClickIcon?(): void
   height?: string
   icon?: React.ReactNode
@@ -11,6 +13,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = ({
+  error,
   handleOnClickIcon,
   height,
   icon,
@@ -21,17 +24,27 @@ export const Input = ({
 }: IInputProps) => {
   return (
     <>
-      {!icon ? (
+      {!icon && (
         <StyledInput
+          error={error}
           height={height}
           minWidth={minWidth}
           padding={padding}
           width={width}
           {...rest}
         />
-      ) : (
-        <StyledInputContainer height={height} minWidth={minWidth} padding={padding} width={width}>
+      )}
+
+      {icon && (
+        <StyledInputContainer
+          error={error}
+          height={height}
+          minWidth={minWidth}
+          padding={padding}
+          width={width}
+        >
           <StyledInput
+            error={error}
             height={height}
             minWidth={minWidth}
             padding={padding}
@@ -44,6 +57,8 @@ export const Input = ({
           </InputButtonIcon>
         </StyledInputContainer>
       )}
+
+      {error && <Error>{error}</Error>}
     </>
   )
 }

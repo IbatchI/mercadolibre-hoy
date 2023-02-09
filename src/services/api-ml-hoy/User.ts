@@ -6,7 +6,11 @@ export const register = async (data: IUser) => {
   return response.data
 }
 
-export const login = async (data: IUser) => {
+interface ILogin {
+  email: string
+  password: string
+}
+export const login = async (data: ILogin) => {
   const response = await API_ML_HOY.post(`/auth/login`, data)
   return response.data
 }
