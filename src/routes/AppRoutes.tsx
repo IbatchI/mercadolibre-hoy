@@ -1,11 +1,10 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { Navbar } from '../components/UI/molecules/NavBar/NavBar'
 import { AuthProtection } from './AuthProtection'
-import { Register, SearchResults, Home } from '../pages'
-import { StyledGlobalContainer } from '../../utils/styledGlobal'
 import { BottomMenu } from '../components/UI/molecules/BottomMenu/BottomMenu'
-import { MySearches } from '../pages/MySearches'
+import { Navbar } from '../components/UI/molecules/NavBar/NavBar'
+import { routes } from './Routes'
+import { StyledGlobalContainer } from '../../utils/styledGlobal'
 import { useAppSelector } from '../store/hooks'
 
 export const AppRoutes = () => {
@@ -16,24 +15,15 @@ export const AppRoutes = () => {
       <Navbar />
       <StyledGlobalContainer>
         <Routes>
-          <Route path="/" element={<Home isAuth={isAuth} />} />
-          <Route
-            path="/search/:keyword"
-            element={
-              <AuthProtection isAuth={isAuth}>
-                <SearchResults />
-              </AuthProtection>
-            }
-          />
-          <Route path={'/register'} element={<Register />} />
-          <Route
-            path={'/my-searches'}
-            element={
-              <AuthProtection isAuth={isAuth}>
-                <MySearches />
-              </AuthProtection>
-            }
-          />
+          {routes.map(({ path, needAuth, Component }) => (
+            <Route
+              element={needAuth ? <AuthProtection>{<Component />}</AuthProtection> : <Component />}
+              key={path}
+              path={path}
+            />
+          ))}
+          {/* Ruta predeterminada en caso de que no se encuentre ninguna ruta */}
+          <Route element={<Navigate replace to={'/'} />} path="/*" />
         </Routes>
       </StyledGlobalContainer>
       {isAuth && <BottomMenu />}
