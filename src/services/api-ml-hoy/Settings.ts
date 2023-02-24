@@ -1,6 +1,5 @@
-import axios from 'axios'
 import { toast } from 'react-toastify'
-
+import axios from 'axios'
 // export const BASE_URL_ML_HOY = 'https://api-ml-hoy.onrender.com/api/users'
 export const BASE_URL_ML_HOY = import.meta.env.VITE_REACT_BASE_URL_ML_HOY
 
@@ -37,7 +36,12 @@ API_ML_HOY.interceptors.response.use(
     // if (error.response.status === 404) {
     //   window.location.href = '/404'
     // }
-    if (error.response.status === 401) toast.error('Token no válido')
+    if (error.response.status === 401) {
+      toast.error('Token no válido')
+      localStorage.clear()
+      window.location.href = '/'
+    }
+
     if (error.response.status === 403) toast.error('No tienes permisos')
     if (error.response.status === 404) toast.error('No se encontró el recurso')
     if (error.response.status === 500) toast.error('Error del servidor')
