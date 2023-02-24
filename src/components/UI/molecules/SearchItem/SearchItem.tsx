@@ -12,6 +12,7 @@ import { mainTheme } from '../../../../styles/Styles'
 import { deleteSearchThunk } from '../../../../store/slices/searches/searchesThunks'
 import { useAppDispatch } from '../../../../store/hooks'
 import { BiDetail } from 'react-icons/bi'
+import { setSearchById } from '../../../../store/slices/searches/searchSlice'
 
 interface ISearchItemProps {
   search: ISearch
@@ -30,6 +31,7 @@ export const SearchItem = ({ search }: ISearchItemProps) => {
   }
 
   const handleOnClickDetail = (id: string) => {
+    dispatch(setSearchById(id))
     navigate(`/my-searches/${id}`)
   }
 
