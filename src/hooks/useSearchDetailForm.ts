@@ -12,10 +12,10 @@ const validatationSchema = yup.object({
 
 export const useSearchDetailForm = ({
   keyword = '',
-  minPrice = 0,
-  maxPrice = '',
+  minPrice = undefined,
+  maxPrice = undefined,
   markAsViewed = false,
-}) => {
+}: ISearchWithFilters) => {
   const handleOnSubmit = async ({
     keyword,
     markAsViewed,
@@ -25,7 +25,7 @@ export const useSearchDetailForm = ({
     console.log('values', markAsViewed, maxPrice, minPrice, keyword)
   }
 
-  const initialValues = { keyword, minPrice, maxPrice, markAsViewed }
+  const initialValues: ISearchWithFilters = { keyword, minPrice, maxPrice, markAsViewed }
 
   const formik = useFormik({
     initialValues,

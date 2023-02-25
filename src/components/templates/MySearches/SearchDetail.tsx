@@ -24,10 +24,10 @@ export const SearchDetail = () => {
     minPriceError,
     values,
   } = useSearchDetailForm({
-    keyword: searchById?.keyword,
-    minPrice: getMinPriceValueFilter(searchById?.filters),
-    maxPrice: getMaxPriceValueFilter(searchById?.filters),
+    keyword: searchById?.keyword || '',
     markAsViewed: getAlreadySeenValueFilter(searchById?.filters),
+    maxPrice: getMaxPriceValueFilter(searchById?.filters),
+    minPrice: getMinPriceValueFilter(searchById?.filters) || undefined,
   })
 
   const { keyword, minPrice, maxPrice, markAsViewed } = values
@@ -76,7 +76,6 @@ export const SearchDetail = () => {
         id="markAsViewed"
         label={'Marcado como visto'}
         name="markAsViewed"
-        onBlur={handleOnBlur}
         onChange={handleOnChange}
         type={'checkbox'}
       />

@@ -47,8 +47,8 @@ export interface IError {
 // Save search with filters interface
 export interface ISearchWithFilters {
   keyword: string
-  minPrice: number
-  maxPrice: number
+  minPrice: number | undefined
+  maxPrice: number | undefined
   markAsViewed: boolean
 }
 
