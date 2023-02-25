@@ -8,6 +8,7 @@ import { Input } from '../../atoms/Input/Input'
 import { UserFormTypes } from '../../../../types/types'
 import { useUserForm } from '../../../../hooks/useUserForm'
 import { useAppSelector } from '../../../../store/hooks'
+import { H3 } from '../../../../styles/SearchResultsStyles'
 
 interface UserFormProps {
   type: UserFormTypes
@@ -28,12 +29,14 @@ export const UserForm = ({ type }: UserFormProps) => {
     values,
   } = useUserForm(type)
 
+  const { password, email, name } = values
+
   const titleOfLogin = type === 'login' ? 'Login' : 'Register'
 
   return (
     <>
       <Form onSubmit={handleOnSubmit} width={'40%'}>
-        <h3>{titleOfLogin}</h3>
+        <H3>{titleOfLogin}</H3>
         {type === 'register' && (
           <Input
             disabled={loading}
@@ -46,7 +49,7 @@ export const UserForm = ({ type }: UserFormProps) => {
             placeholder="Name"
             required
             type="text"
-            value={values.name}
+            value={name}
           />
         )}
         <Input
@@ -60,7 +63,7 @@ export const UserForm = ({ type }: UserFormProps) => {
           placeholder={'Email'}
           required
           type={'email'}
-          value={values.email}
+          value={email}
         />
 
         <Input
@@ -78,7 +81,7 @@ export const UserForm = ({ type }: UserFormProps) => {
           placeholder={'Contraseña'}
           required
           type={showPassword ? 'text' : 'password'}
-          value={values.password}
+          value={password}
         />
 
         <Error>{error}</Error>

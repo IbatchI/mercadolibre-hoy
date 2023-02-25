@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 // Products interfaces
 interface IProduct {
   id: string
@@ -28,6 +27,7 @@ export interface ISearch {
   uid: string
   keyword: string
   user?: string
+  filters: TFilter[]
 }
 
 // User interfaces
@@ -44,6 +44,14 @@ export interface IError {
   msg: string
 }
 
+// Save search with filters interface
+export interface ISearchWithFilters {
+  keyword: string
+  minPrice: number
+  maxPrice: number
+  markAsViewed: boolean
+}
+
 // Global types
 export type UserInfo = Pick<IUser, 'email' | 'name' | 'uid'>
 
@@ -56,7 +64,7 @@ export type TimeZone = 'es-AR' | 'en-US' | 'pt-BR'
 export type UserFormTypes = 'register' | 'login' | 'update'
 
 // Filters types
-export const enum TypesOfFilters {
+export enum TypesOfFilters {
   MIN_PRICE = 'MIN_PRICE',
   MAX_PRICE = 'MAX_PRICE',
   ALREADY_SEEN = 'ALREADY_SEEN',

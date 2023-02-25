@@ -1,53 +1,95 @@
+import { Button } from '../../UI/atoms/Button/Button'
+import { Checkbox } from '../../UI/atoms/Checkbox/Checkbox'
 import { Form } from '../../UI/atoms/Form/FormStyles'
 import { H3 } from '../../../styles/SearchResultsStyles'
 import { Input } from '../../UI/atoms/Input/Input'
-import { StyledGlobalContainer } from '../../../../utils/styledGlobal'
+import { useSearchDetailForm } from '../../../hooks/useSearchDetailForm'
 import { useAppSelector } from '../../../store/hooks'
-import { Checkbox } from '../../UI/atoms/Checkbox/Checkbox'
-import { useState } from 'react'
+import {
+  getAlreadySeenValueFilter,
+  getMaxPriceValueFilter,
+  getMinPriceValueFilter,
+} from '../../../../utils/utilsFunctions'
 
 export const SearchDetail = () => {
   const { searchById } = useAppSelector((state) => state.searches)
-  const [checked, setchecked] = useState(false)
+
+  const {
+    disabledSubmit,
+    handleOnBlur,
+    handleOnChange,
+    handleOnSubmit,
+    keywordError,
+    maxPriceError,
+    minPriceError,
+    values,
+  } = useSearchDetailForm({
+    keyword: searchById?.keyword,
+    minPrice: getMinPriceValueFilter(searchById?.filters),
+    maxPrice: getMaxPriceValueFilter(searchById?.filters),
+    markAsViewed: getAlreadySeenValueFilter(searchById?.filters),
+  })
+
+  const { keyword, minPrice, maxPrice, markAsViewed } = values
 
   return (
-    <StyledGlobalContainer>
-      <H3>Detalle de la busqueda :{searchById?.keyword}</H3>
-      <Form width="100%">
-        <Input
-          height={'50px'}
-          id="name"
-          name="name"
-          placeholder={searchById?.keyword || ''}
-          required
-          type={'text'}
-        />
-        <Input
-          height={'50px'}
-          id="minPrice"
-          name="minPrice"
-          placeholder={'Precio minimo'}
-          required
-          type={'number'}
-        />
-        <Input
-          height={'50px'}
-          id="maxPrice"
-          name="maxPrice"
-          placeholder={'Precio maximo'}
-          required
-          type={'number'}
-        />
-        <Checkbox
-          checked={checked}
-          id="marcadoComoVisto"
-          label={'Marcado como visto'}
-          name="marcadoComoVisto"
-          onClick={() => setchecked((oldChecked: boolean) => !oldChecked)}
-          required
-          type={'checkbox'}
-        />
-      </Form>
-    </StyledGlobalContainer>
+    <Form onSubmit={handleOnSubmit} width={'40%'}>
+      <H3>Detalle de la búsqueda: {keyword}</H3>
+      <Input
+        error={keywordError}
+        height={'50px'}
+        id="keyword"
+        name="keyword"
+        onBlur={handleOnBlur}
+        onChange={handleOnChange}
+        placeholder={keyword || ''}
+        required
+        type={'text'}
+        value={keyword}
+      />
+      <Input
+        error={minPriceError}
+        height={'50px'}
+        id="minPrice"
+        name="minPrice"
+        onBlur={handleOnBlur}
+        onChange={handleOnChange}
+        placeholder={'Precio minimo'}
+        required
+        type={'number'}
+        value={minPrice}
+      />
+      <Input
+        error={maxPriceError}
+        height={'50px'}
+        id="maxPrice"
+        name="maxPrice"
+        onBlur={handleOnBlur}
+        onChange={handleOnChange}
+        placeholder={'Precio maximo'}
+        required
+        type={'number'}
+        value={maxPrice}
+      />
+      <Checkbox
+        checked={markAsViewed}
+        id="markAsViewed"
+        label={'Marcado como visto'}
+        name="markAsViewed"
+        onBlur={handleOnBlur}
+        onChange={handleOnChange}
+        type={'checkbox'}
+      />
+      <Button
+        disabled={disabledSubmit}
+        fontWeight={'bold'}
+        // loading={loading}
+        textColor="white"
+        type="submit"
+        width={'100%'}
+      >
+        Guardar cambios
+      </Button>
+    </Form>
   )
 }
