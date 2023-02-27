@@ -8,7 +8,7 @@ import { Input } from '../../atoms/Input/Input'
 import { UserFormTypes } from '../../../../types/types'
 import { useUserForm } from '../../../../hooks/useUserForm'
 import { useAppSelector } from '../../../../store/hooks'
-import { H3 } from '../../../../styles/SearchResultsStyles'
+import { H1 } from '../../../../styles/SearchResultsStyles'
 
 interface UserFormProps {
   type: UserFormTypes
@@ -31,12 +31,12 @@ export const UserForm = ({ type }: UserFormProps) => {
 
   const { password, email, name } = values
 
-  const titleOfLogin = type === 'login' ? 'Login' : 'Register'
+  const titleOfLogin = type === 'login' ? 'Loguearse' : 'Registrarse'
 
   return (
     <>
       <Form onSubmit={handleOnSubmit} width={'40%'}>
-        <H3>{titleOfLogin}</H3>
+        <H1>{titleOfLogin}</H1>
         {type === 'register' && (
           <Input
             disabled={loading}

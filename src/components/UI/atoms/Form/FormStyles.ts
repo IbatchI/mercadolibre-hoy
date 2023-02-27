@@ -13,7 +13,7 @@ export const Form = styled.form<IInputProps>`
   align-items: center;
   background-color: ${mainTheme.colors.formBackgroundColor};
   gap: 10px;
-  padding: 10px;
+  padding: 16px 12px;
   width: ${(props) => props.width ?? '40%'};
   border-radius: 5px;
   margin: 40px auto;
