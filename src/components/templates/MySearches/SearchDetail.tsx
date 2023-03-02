@@ -4,16 +4,8 @@ import { Form } from '../../UI/atoms/Form/FormStyles'
 import { H3 } from '../../../styles/SearchResultsStyles'
 import { Input } from '../../UI/atoms/Input/Input'
 import { useSearchDetailForm } from '../../../hooks/useSearchDetailForm'
-import { useAppSelector } from '../../../store/hooks'
-import {
-  getAlreadySeenValueFilter,
-  getMaxPriceValueFilter,
-  getMinPriceValueFilter,
-} from '../../../../utils/utilsFunctions'
 
 export const SearchDetail = () => {
-  const { searchById } = useAppSelector((state) => state.searches)
-
   const {
     disabledSubmit,
     handleOnBlur,
@@ -23,14 +15,9 @@ export const SearchDetail = () => {
     maxPriceError,
     minPriceError,
     values,
-  } = useSearchDetailForm({
-    keyword: searchById?.keyword || '',
-    markAsViewed: getAlreadySeenValueFilter(searchById?.filters),
-    maxPrice: getMaxPriceValueFilter(searchById?.filters),
-    minPrice: getMinPriceValueFilter(searchById?.filters) || undefined,
-  })
+  } = useSearchDetailForm()
 
-  const { keyword, minPrice, maxPrice, markAsViewed } = values
+  const { keyword, minPrice, maxPrice, alreadySeen } = values
 
   return (
     <Form onSubmit={handleOnSubmit} width={'40%'}>
@@ -72,10 +59,10 @@ export const SearchDetail = () => {
         value={maxPrice}
       />
       <Checkbox
-        checked={markAsViewed}
-        id="markAsViewed"
+        checked={alreadySeen}
+        id="alreadySeen"
         label={'Marcado como visto'}
-        name="markAsViewed"
+        name="alreadySeen"
         onChange={handleOnChange}
         type={'checkbox'}
       />
