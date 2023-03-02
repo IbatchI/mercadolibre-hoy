@@ -1,6 +1,7 @@
 import { InputHTMLAttributes } from 'react'
 import { Error } from '../ErrorMessage/ErrorMessageStyles'
-import { StyledInput, StyledInputContainer, InputButtonIcon } from './InputStyles'
+import { Label } from '../Label/Label'
+import { StyledInput, StyledInputContainer, InputButtonIcon, InputContainer } from './InputStyles'
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string
@@ -10,6 +11,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   minWidth?: string
   padding?: string
   width?: string
+  label?: boolean
 }
 
 export const Input = ({
@@ -22,17 +24,21 @@ export const Input = ({
   width,
   ...rest
 }: IInputProps) => {
+  const { name } = rest
   return (
-    <>
+    <InputContainer>
+      <Label htmlFor={name || ''}>{name?.toUpperCase()}</Label>
       {!icon && (
-        <StyledInput
-          error={error}
-          height={height}
-          minWidth={minWidth}
-          padding={padding}
-          width={width}
-          {...rest}
-        />
+        <>
+          <StyledInput
+            error={error}
+            height={height}
+            minWidth={minWidth}
+            padding={padding}
+            width={width}
+            {...rest}
+          />
+        </>
       )}
 
       {icon && (
@@ -59,6 +65,6 @@ export const Input = ({
       )}
 
       {error && <Error>{error}</Error>}
-    </>
+    </InputContainer>
   )
 }

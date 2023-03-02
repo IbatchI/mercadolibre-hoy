@@ -125,3 +125,8 @@ export const InputButtonIcon = styled.button`
     }
   }
 `
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
