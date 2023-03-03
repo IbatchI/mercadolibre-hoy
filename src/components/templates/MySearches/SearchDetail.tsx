@@ -19,6 +19,8 @@ export const SearchDetail = () => {
 
   const { keyword, minPrice, maxPrice, alreadySeen } = values
 
+  console.log({ keyword, minPrice, maxPrice, alreadySeen })
+
   return (
     <Form onSubmit={handleOnSubmit} width={'40%'}>
       <H3>Detalle de la búsqueda: {keyword}</H3>
