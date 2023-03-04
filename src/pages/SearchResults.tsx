@@ -21,15 +21,19 @@ import { getProductsThunk } from '../store/slices/products/productsThunks'
 export const SearchResults = () => {
   const { keyword } = useParams()
   const { products, totalResults, currentPage, loading } = useAppSelector((state) => state.products)
+  // Buscamos los filtros de esa busqueda en espcifico
+  const searchById = useAppSelector((state) => state.searches.searchById)
+  const filters = searchById?.filters || {}
   const dispatch = useAppDispatch()
 
   const handlePagination = (page: number) => {
     window.scrollTo(0, 0)
-    dispatch(getProductsThunk(keyword, page))
+    dispatch(getProductsThunk({ keyword, page, filters }))
   }
 
   useEffect(() => {
-    dispatch(getProductsThunk(keyword, 0))
+    const page = 0
+    dispatch(getProductsThunk({ keyword, page, filters }))
   }, [keyword])
 
   return (

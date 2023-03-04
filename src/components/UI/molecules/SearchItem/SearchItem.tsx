@@ -26,7 +26,8 @@ export const SearchItem = ({ search }: ISearchItemProps) => {
     dispatch(deleteSearchThunk(id))
   }
 
-  const handleOnClickSearch = (keyword: string) => {
+  const handleOnClickSearch = (keyword: string, id: string) => {
+    dispatch(setSearchById(id))
     navigate(`/search/${keyword}`)
   }
 
@@ -37,7 +38,7 @@ export const SearchItem = ({ search }: ISearchItemProps) => {
 
   return (
     <SearchItemStyled>
-      <StyledTextButton onClick={() => handleOnClickSearch(search.keyword)}>
+      <StyledTextButton onClick={() => handleOnClickSearch(search.keyword, search.uid)}>
         {search.keyword}
       </StyledTextButton>
       <ListOfActionButtonsContainer>
