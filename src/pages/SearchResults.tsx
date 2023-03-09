@@ -21,14 +21,19 @@ import { getProductsThunk } from '../store/slices/products/productsThunks'
 export const SearchResults = () => {
   const { keyword } = useParams()
   const { products, totalResults, currentPage, loading } = useAppSelector((state) => state.products)
+  // Buscamos los filtros de esa busqueda en espcifico
+  const searchById = useAppSelector((state) => state.searches.searchById)
+  const filters = searchById?.filters || {}
   const dispatch = useAppDispatch()
 
   const handlePagination = (page: number) => {
-    dispatch(getProductsThunk(keyword, page))
+    window.scrollTo(0, 0)
+    dispatch(getProductsThunk({ keyword, page, filters }))
   }
 
   useEffect(() => {
-    dispatch(getProductsThunk(keyword, currentPage))
+    const page = 0
+    dispatch(getProductsThunk({ keyword, page, filters }))
   }, [keyword])
 
   return (
@@ -55,25 +60,25 @@ export const SearchResults = () => {
         <StyledCardContainer>
           {loading
             ? skeletonArray.map(() => (
-                <NewProductCard key={generateRandomKey()} isSqueleton={true} />
+                <NewProductCard isSqueleton={true} key={generateRandomKey()} />
               ))
             : products.map((product) => (
                 <NewProductCard
                   key={product.id}
-                  title={product.title}
-                  price={product.price}
-                  pictures={product.pictures}
                   link={product.permalink}
+                  pictures={product.pictures}
+                  price={product.price}
+                  title={product.title}
                 />
               ))}
         </StyledCardContainer>
       </OpacityAnimationContainer>
       {!loading && (
         <Pagination
+          currentPage={currentPage}
+          onPageChange={handlePagination}
           pageSize={LIMIT}
           totalCount={totalResults}
-          onPageChange={handlePagination}
-          currentPage={currentPage}
         />
       )}
     </>

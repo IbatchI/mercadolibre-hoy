@@ -12,8 +12,12 @@ const initialValues = {
 }
 
 const validatationSchema = yup.object({
-  email: yup.string().email('Invalid email address').required('Required'),
-  password: yup.string().min(6).required('Required'),
+  email: yup.string().email('Email inválido').required('El Email es requerido'),
+  password: yup
+    .string()
+    .min(6)
+    .typeError('La contraseña debe ser de 6 caracteres')
+    .required('La contraseña es requerida'),
 })
 
 export const useUserForm = (type: UserFormTypes) => {
@@ -26,6 +30,7 @@ export const useUserForm = (type: UserFormTypes) => {
     }
     if (type === 'register') {
       dispatch(registerThunk(userData))
+      navigate('/')
     }
   }
 
@@ -39,11 +44,12 @@ export const useUserForm = (type: UserFormTypes) => {
 
   return {
     disabledSubmit: !!(formik.errors.email || formik.errors.password || fieldEmpty),
-    emailError: formik.touched.email && formik.errors.email ? formik.errors.email : '',
+    emailError: formik.errors.email ? formik.errors.email : '',
     formik,
+    handleOnBlur: formik.handleBlur,
     handleOnChange: formik.handleChange,
     handleOnSubmit: formik.handleSubmit,
-    nameError: formik.touched.name && formik.errors.name ? formik.errors.name : '',
+    nameError: formik.errors.name ? formik.errors.name : '',
     passwordError: formik.touched.password && formik.errors.password ? formik.errors.password : '',
     values: formik.values,
   }

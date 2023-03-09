@@ -6,6 +6,7 @@ interface SearcheState {
   currentPage: number
   loading: boolean
   searchResults: ISearch[]
+  searchById: ISearch | undefined
   searches: number
 }
 
@@ -14,6 +15,7 @@ const initialState = {
   currentPage: 0,
   loading: false,
   searchResults: [],
+  searchById: undefined,
   searches: 0,
 } as SearcheState
 
@@ -44,9 +46,17 @@ export const searchSlice = createSlice({
       // setLoading(false)
       state.loading = false
     },
+    setSearchById: (state, action: PayloadAction<string>) => {
+      state.searchById = state.searchResults.find((search) => search.uid === action.payload)
+    },
   },
 })
 
 // Actions
-export const { startLoadingSearches, setSearches, endLoadingSearches, deleteSearch } =
-  searchSlice.actions
+export const {
+  startLoadingSearches,
+  setSearches,
+  endLoadingSearches,
+  deleteSearch,
+  setSearchById,
+} = searchSlice.actions
