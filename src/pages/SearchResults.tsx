@@ -17,13 +17,19 @@ import { Button } from '../components/UI/atoms/Button/Button'
 import { NewProductCard } from '../components/UI/molecules/NewProductCard/NewProductCard'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { getProductsThunk } from '../store/slices/products/productsThunks'
+import { ISearch } from '../types/types'
 
 export const SearchResults = () => {
   const { keyword } = useParams()
   const { products, totalResults, currentPage, loading } = useAppSelector((state) => state.products)
   // Buscamos los filtros de esa busqueda en espcifico
-  const searchById = useAppSelector((state) => state.searches.searchById)
-  const filters = searchById?.filters || {}
+  const searchById: ISearch = useAppSelector((state) => state.searches.searchById) || {
+    keyword: keyword || '',
+    filters: {},
+    uid: '',
+  }
+
+  const filters = searchById.keyword === keyword ? searchById.filters : {}
   const dispatch = useAppDispatch()
 
   const handlePagination = (page: number) => {

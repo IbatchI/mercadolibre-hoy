@@ -42,8 +42,8 @@ export const useSearchDetailForm = () => {
   const initialValues: ISearchWithFilters = {
     alreadySeen: searchById?.filters?.alreadySeen || false,
     keyword: searchById?.keyword || '',
-    maxPrice: searchById?.filters.maxPrice,
-    minPrice: searchById?.filters.minPrice,
+    maxPrice: searchById?.filters?.maxPrice,
+    minPrice: searchById?.filters?.minPrice,
   }
 
   const formik = useFormik({

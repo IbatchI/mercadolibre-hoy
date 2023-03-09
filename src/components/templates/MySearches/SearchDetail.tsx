@@ -47,6 +47,7 @@ export const SearchDetail = () => {
         value={minPrice}
       />
       <Input
+        data-testid={'sandajsndjasdans'}
         error={maxPriceError}
         height={'50px'}
         id="maxPrice"
