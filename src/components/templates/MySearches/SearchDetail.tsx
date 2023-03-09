@@ -17,7 +17,7 @@ export const SearchDetail = () => {
     values,
   } = useSearchDetailForm()
 
-  const { keyword, minPrice, maxPrice, alreadySeen } = values
+  const { keyword, minPrice, maxPrice, allreadySeen } = values
 
   return (
     <Form onSubmit={handleOnSubmit} width={'40%'}>
@@ -60,12 +60,12 @@ export const SearchDetail = () => {
         value={maxPrice}
       />
       <Checkbox
-        checked={alreadySeen}
+        checked={allreadySeen}
         // TODO: Integrar con BE
         disabled={true}
-        id="alreadySeen"
+        id="allreadySeen"
         label={'Marcado como visto'}
-        name="alreadySeen"
+        name="allreadySeen"
         onChange={handleOnChange}
         type={'checkbox'}
       />

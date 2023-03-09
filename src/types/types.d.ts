@@ -49,7 +49,7 @@ export interface ISearchWithFilters {
   keyword: string
   minPrice: number | undefined
   maxPrice: number | undefined
-  alreadySeen: boolean
+  allreadySeen: boolean
 }
 
 // Global types
@@ -66,14 +66,14 @@ export type UserFormTypes = 'register' | 'login' | 'update'
 export type TFilter = {
   minPrice?: number
   maxPrice?: number
-  alreadySeen?: boolean
+  allreadySeen?: boolean
   uid?: string
 }
 
 export interface IFilterForPost {
   searchId: string
-  minPrice: number
-  maxPrice: number
+  minPrice: number | undefined
+  maxPrice: number | undefined
   allreadySeen: boolean
 }
 export interface IUpdateSearchWithFilters {

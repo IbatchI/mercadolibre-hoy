@@ -1,6 +1,7 @@
 import { useFormik } from 'formik'
 import { useState } from 'react'
 import * as yup from 'yup'
+import { saveFilterQuery } from '../services/api-ml-hoy/Filters'
 import { updateSearchWithFiltersQuery } from '../services/api-ml-hoy/Searches'
 import { useAppSelector } from '../store/hooks'
 
@@ -10,7 +11,7 @@ const validatationSchema = yup.object({
   keyword: yup.string().required('El nombre de la busqueda es requerido'),
   minPrice: yup.number().min(0, 'El precio mínimo no puede ser negativo'),
   maxPrice: yup.number().min(0, 'El precio máximo no puede ser negativo'),
-  alreadySeen: yup.boolean(),
+  allreadySeen: yup.boolean(),
 })
 
 export const useSearchDetailForm = () => {
@@ -19,28 +20,37 @@ export const useSearchDetailForm = () => {
 
   const handleOnSubmit = async ({
     keyword,
-    alreadySeen,
+    allreadySeen,
     maxPrice,
     minPrice,
   }: ISearchWithFilters) => {
     try {
       setLoading(true)
-      await updateSearchWithFiltersQuery(searchById?.uid || '', {
-        keyword,
-        filters: {
-          alreadySeen,
+      if (searchById?.filters.uid) {
+        await updateSearchWithFiltersQuery(searchById?.uid || '', {
+          keyword,
+          filters: {
+            allreadySeen,
+            maxPrice,
+            minPrice,
+            uid: searchById?.filters.uid,
+          },
+        })
+      } else {
+        await saveFilterQuery({
+          searchId: searchById?.uid || '',
           maxPrice,
           minPrice,
-          uid: searchById?.filters.uid,
-        },
-      })
+          allreadySeen,
+        })
+      }
     } finally {
       setLoading(false)
     }
   }
 
   const initialValues: ISearchWithFilters = {
-    alreadySeen: searchById?.filters?.alreadySeen || false,
+    allreadySeen: searchById?.filters?.allreadySeen || false,
     keyword: searchById?.keyword || '',
     maxPrice: searchById?.filters?.maxPrice,
     minPrice: searchById?.filters?.minPrice,
@@ -57,7 +67,7 @@ export const useSearchDetailForm = () => {
       formik.errors.keyword ||
       formik.errors.minPrice ||
       formik.errors.maxPrice ||
-      formik.errors.alreadySeen
+      formik.errors.allreadySeen
     ),
     formik,
     handleOnBlur: formik.handleBlur,
