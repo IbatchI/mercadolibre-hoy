@@ -17,7 +17,7 @@ export const formatPrice = (
   })
   return formatter.format(price)
 }
-
+// Todo: fix, esto puede romper el renderizado de los componentes
 export const generateRandomKey = () => Math.random() * 100000000000000000
 
 export const skeletonArray = Array(12).fill(0)

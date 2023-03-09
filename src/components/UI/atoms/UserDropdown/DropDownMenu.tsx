@@ -36,7 +36,7 @@ export const DropDownMenu = ({ items }: IDropDownMenuProps) => {
       />
       <ListOfDropsItmes isOpen={dropDownMenuIsOpen}>
         {items.map((item) => (
-          <ItemDropDownMenu onClick={item.handleOnClick} key={item.text}>
+          <ItemDropDownMenu key={item.text} onClick={item.handleOnClick}>
             {item.text}
           </ItemDropDownMenu>
         ))}

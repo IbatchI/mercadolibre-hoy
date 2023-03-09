@@ -45,7 +45,7 @@ export const Pagination = ({
   return (
     <StyledPaginationContainer>
       {/* Go to previus page */}
-      <Button onClick={goToPreviusPage} disabled={currentPage === 0}>
+      <Button disabled={currentPage === 0} onClick={goToPreviusPage}>
         <BiLeftArrow />
       </Button>
 
@@ -57,10 +57,10 @@ export const Pagination = ({
 
         return (
           <Button
-            padding="0.4rem 1rem"
             active={page === currentPage + 1}
             key={`${index} + ${page}`}
             onClick={() => onPageChange(Number(page) - 1)}
+            padding="0.4rem 1rem"
           >
             {page}
           </Button>
@@ -68,7 +68,7 @@ export const Pagination = ({
       })}
 
       {/*  Go to next Page */}
-      <Button onClick={goToNextPage} disabled={currentPage === Number(lastPage) - 1}>
+      <Button disabled={currentPage === Number(lastPage) - 1} onClick={goToNextPage}>
         <BiRightArrow />
       </Button>
     </StyledPaginationContainer>

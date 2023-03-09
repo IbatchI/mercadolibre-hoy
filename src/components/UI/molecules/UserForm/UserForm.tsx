@@ -8,6 +8,7 @@ import { Input } from '../../atoms/Input/Input'
 import { UserFormTypes } from '../../../../types/types'
 import { useUserForm } from '../../../../hooks/useUserForm'
 import { useAppSelector } from '../../../../store/hooks'
+import { H1 } from '../../../../styles/SearchResultsStyles'
 
 interface UserFormProps {
   type: UserFormTypes
@@ -20,6 +21,7 @@ export const UserForm = ({ type }: UserFormProps) => {
   const {
     disabledSubmit,
     emailError,
+    handleOnBlur,
     handleOnChange,
     handleOnSubmit,
     nameError,
@@ -27,61 +29,69 @@ export const UserForm = ({ type }: UserFormProps) => {
     values,
   } = useUserForm(type)
 
-  const titleOfLogin = type === 'login' ? 'Login' : 'Register'
+  const { password, email, name } = values
+
+  const titleOfLogin = type === 'login' ? 'Loguearse' : 'Registrarse'
 
   return (
     <>
       <Form onSubmit={handleOnSubmit} width={'40%'}>
-        <h3>{titleOfLogin}</h3>
+        <H1>{titleOfLogin}</H1>
         {type === 'register' && (
           <Input
             disabled={loading}
+            error={nameError}
             height={'50px'}
             id="name"
-            type="text"
-            placeholder="Name"
-            value={values.name}
+            name="name"
+            onBlur={handleOnBlur}
             onChange={handleOnChange}
+            placeholder="Name"
             required
+            type="text"
+            value={name}
           />
         )}
-        <Error>{nameError}</Error>
         <Input
           disabled={loading}
+          error={emailError}
           height={'50px'}
           id="email"
+          name="email"
+          onBlur={handleOnBlur}
           onChange={handleOnChange}
           placeholder={'Email'}
-          type={'email'}
-          value={values.email}
           required
+          type={'email'}
+          value={email}
         />
-        <Error>{emailError}</Error>
 
         <Input
           disabled={loading}
+          error={passwordError}
+          handleOnClickIcon={() => {
+            setShowPassword(!showPassword)
+          }}
           height={'50px'}
+          icon={showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
           id="password"
+          name="password"
+          onBlur={handleOnBlur}
           onChange={handleOnChange}
           placeholder={'Contraseña'}
           required
           type={showPassword ? 'text' : 'password'}
-          value={values.password}
-          icon={showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-          handleOnClickIcon={() => {
-            setShowPassword(!showPassword)
-          }}
+          value={password}
         />
-        <Error>{passwordError}</Error>
 
         <Error>{error}</Error>
         <Button
-          width={'100%'}
-          fontWeight={'bold'}
-          type="submit"
-          loading={loading}
           disabled={disabledSubmit}
+          fontWeight={'bold'}
+          loading={loading}
           textColor="white"
+          type="submit"
+          width={'100%'}
         >
           {type === 'register' ? 'Registrarse' : 'Iniciar sesión'}
         </Button>

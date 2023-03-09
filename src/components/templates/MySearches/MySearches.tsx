@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
-import { H3, StyledSaveSearchs } from '../styles/SearchResultsStyles'
-import { SearchItem } from '../components/UI/molecules/SearchItem/SearchItem'
-import { getSearchesThunk } from '../store/slices/searches/searchesThunks'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { Pagination } from '../components/UI/molecules/Pagination/Pagination'
-import { OpacityAnimationContainer } from '../../utils/styledGlobal'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import { skeletonArray, generateRandomKey } from '../../utils/utilsFunctions'
+import { OpacityAnimationContainer } from '../../../../utils/styledGlobal'
+import { generateRandomKey, skeletonArray } from '../../../../utils/utilsFunctions'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { getSearchesThunk } from '../../../store/slices/searches/searchesThunks'
+import { H3, StyledSaveSearchs } from '../../../styles/SearchResultsStyles'
+import { Pagination } from '../../UI/molecules/Pagination/Pagination'
+import { SearchItem } from '../../UI/molecules/SearchItem/SearchItem'
 
 export const MySearches = () => {
   // getInfo from redux store
@@ -16,6 +16,7 @@ export const MySearches = () => {
   const dispatch = useAppDispatch()
 
   const handlePagination = (page: number) => {
+    window.scrollTo(0, 0)
     dispatch(getSearchesThunk(page))
   }
 
@@ -29,7 +30,9 @@ export const MySearches = () => {
         <H3>Mis Busquedas</H3>
         {loading
           ? skeletonArray.map(() => (
-              <SkeletonTheme key={generateRandomKey()} baseColor="#202020" highlightColor="#444">
+              // Todo: llevar colores a variables globales
+              // Todo: crear un componente Skeleton que reciba la cantidad de elementos a renderizar
+              <SkeletonTheme baseColor="#202020" highlightColor="#444" key={generateRandomKey()}>
                 <Skeleton count={1} height="50px" />
               </SkeletonTheme>
             ))
@@ -37,9 +40,9 @@ export const MySearches = () => {
 
         <Pagination
           currentPage={currentPage}
-          totalCount={searches}
-          pageSize={10}
           onPageChange={handlePagination}
+          pageSize={10}
+          totalCount={searches}
         />
       </StyledSaveSearchs>
     </OpacityAnimationContainer>

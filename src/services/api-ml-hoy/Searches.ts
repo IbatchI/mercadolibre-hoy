@@ -1,7 +1,16 @@
 import { API_ML_HOY } from './Settings'
+import { IUpdateSearchWithFilters } from '../../types/types'
 
 export const saveSearchQuery = async (keyword: string) => {
   const response = await API_ML_HOY.post(`/search`, { keyword })
+  return response.data
+}
+
+export const updateSearchWithFiltersQuery = async (
+  searchId: string,
+  { keyword, filters }: IUpdateSearchWithFilters
+) => {
+  const response = await API_ML_HOY.put(`/search/${searchId}`, { keyword, filters })
   return response.data
 }
 

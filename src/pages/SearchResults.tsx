@@ -17,18 +17,29 @@ import { Button } from '../components/UI/atoms/Button/Button'
 import { NewProductCard } from '../components/UI/molecules/NewProductCard/NewProductCard'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { getProductsThunk } from '../store/slices/products/productsThunks'
+import { ISearch } from '../types/types'
 
 export const SearchResults = () => {
   const { keyword } = useParams()
   const { products, totalResults, currentPage, loading } = useAppSelector((state) => state.products)
+  // Buscamos los filtros de esa busqueda en espcifico
+  const searchById: ISearch = useAppSelector((state) => state.searches.searchById) || {
+    keyword: keyword || '',
+    filters: {},
+    uid: '',
+  }
+
+  const filters = searchById.keyword === keyword ? searchById.filters : {}
   const dispatch = useAppDispatch()
 
   const handlePagination = (page: number) => {
-    dispatch(getProductsThunk(keyword, page))
+    window.scrollTo(0, 0)
+    dispatch(getProductsThunk({ keyword, page, filters }))
   }
 
   useEffect(() => {
-    dispatch(getProductsThunk(keyword, currentPage))
+    const page = 0
+    dispatch(getProductsThunk({ keyword, page, filters }))
   }, [keyword])
 
   return (
@@ -55,25 +66,25 @@ export const SearchResults = () => {
         <StyledCardContainer>
           {loading
             ? skeletonArray.map(() => (
-                <NewProductCard key={generateRandomKey()} isSqueleton={true} />
+                <NewProductCard isSqueleton={true} key={generateRandomKey()} />
               ))
             : products.map((product) => (
                 <NewProductCard
                   key={product.id}
-                  title={product.title}
-                  price={product.price}
-                  pictures={product.pictures}
                   link={product.permalink}
+                  pictures={product.pictures}
+                  price={product.price}
+                  title={product.title}
                 />
               ))}
         </StyledCardContainer>
       </OpacityAnimationContainer>
       {!loading && (
         <Pagination
+          currentPage={currentPage}
+          onPageChange={handlePagination}
           pageSize={LIMIT}
           totalCount={totalResults}
-          onPageChange={handlePagination}
-          currentPage={currentPage}
         />
       )}
     </>

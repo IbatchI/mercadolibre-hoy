@@ -26,7 +26,13 @@
     "react/react-in-jsx-scope": ["off"],
     "semi": ["error", "never"],
     "no-multiple-empty-lines": ["error", { "max": 1 }],
-    "no-trailing-spaces": ["error", { "skipBlankLines": true }]
+    "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "noSortAlphabetically": false
+      }
+    ]
   },
   "settings": {
     "react": {
