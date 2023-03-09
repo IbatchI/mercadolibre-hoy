@@ -69,6 +69,13 @@ export type TFilter = {
   alreadySeen?: boolean
   uid?: string
 }
+
+export interface IFilterForPost {
+  searchId: string
+  minPrice: number
+  maxPrice: number
+  allreadySeen: boolean
+}
 export interface IUpdateSearchWithFilters {
   keyword: string
   filters: TFilter

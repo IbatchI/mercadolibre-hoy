@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { AuthProtection } from '../../routes/AuthProtection'
-import { mySearchesRoutes } from './routes'
+import { mySearchesRoutes } from './Routes'
 
 export const MySearchesPage = () => {
   return (
