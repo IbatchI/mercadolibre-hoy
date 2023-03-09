@@ -11,9 +11,13 @@ export async function getProducts({
   page: number
   filters: TFilter
 }) {
-  const sarchUrl = `${API_URL}/sites/MLA/search?q=${keyword}_PriceRange_${filters.minPrice}-${
-    filters.maxPrice
-  }&since=today&condition=used&sort=price_asc&limit=${LIMIT}&offset=${page * LIMIT}`
+  let sarchUrl = `${API_URL}/sites/MLA/search?q=${keyword}&since=today&condition=used&sort=price_asc&limit=${LIMIT}&offset=${
+    page * LIMIT
+  }`
+
+  if (filters.minPrice && filters.maxPrice) {
+    sarchUrl += `&price=${filters.minPrice}-${filters.maxPrice}`
+  }
 
   const res = await fetch(sarchUrl)
   const response = await res.json()
