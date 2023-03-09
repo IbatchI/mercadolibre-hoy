@@ -40,7 +40,7 @@ export const SearchResults = () => {
   useEffect(() => {
     const page = 0
     dispatch(getProductsThunk({ keyword, page, filters }))
-  }, [keyword])
+  }, [keyword, searchById.keyword])
 
   return (
     <>
