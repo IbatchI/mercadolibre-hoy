@@ -26,7 +26,7 @@ export const useSearchDetailForm = () => {
   }: ISearchWithFilters) => {
     try {
       setLoading(true)
-      if (searchById?.filters.uid) {
+      if (searchById?.filters?.uid) {
         await updateSearchWithFiltersQuery(searchById?.uid || '', {
           keyword,
           filters: {
