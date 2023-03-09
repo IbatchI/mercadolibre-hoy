@@ -60,6 +60,8 @@ export const SearchDetail = () => {
       />
       <Checkbox
         checked={alreadySeen}
+        // TODO: Integrar con BE
+        disabled={true}
         id="alreadySeen"
         label={'Marcado como visto'}
         name="alreadySeen"

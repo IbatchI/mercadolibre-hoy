@@ -77,7 +77,7 @@ export const StyledInputContainer = styled.div<IInputProps>`
     border: 0.3px solid
       ${(props) => (props.error ? mainTheme.colors.dangerColor : mainTheme.colors.borderColors)};
     box-sizing: border-box;
-    font-size: 100%;
+    font-size: 0.95rem;
     height: 100%;
     padding: ${(props) => props.padding || '0 10px'};
     position: relative;
@@ -104,7 +104,7 @@ export const InputButtonIcon = styled.button`
   bottom: 0px;
   color: ${mainTheme.colors.primaryTextColor};
   display: flex;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   padding: 0;
   position: absolute;
   right: 10px;

@@ -1,6 +1,6 @@
 import { MdNotificationsNone, MdSave } from 'react-icons/md'
 
-import { BiSearchAlt2 } from 'react-icons/bi'
+import { BiLibrary } from 'react-icons/bi'
 import { IconButton } from '../../atoms/IconButton/IconButton'
 import { saveSearchThunk } from '../../../../store/slices/searches/searchesThunks'
 import { StyledBottomMenu } from './BottomMenuStyles'
@@ -24,7 +24,7 @@ export const BottomMenu = () => {
   return (
     <StyledBottomMenu>
       <IconButton icon={<MdNotificationsNone />} />
-      <IconButton icon={<BiSearchAlt2 />} onClick={() => navigate(`/my-searches`)} />
+      <IconButton icon={<BiLibrary />} onClick={() => navigate(`/my-searches`)} />
       <IconButton
         disabled={!keyword}
         icon={<MdSave />}

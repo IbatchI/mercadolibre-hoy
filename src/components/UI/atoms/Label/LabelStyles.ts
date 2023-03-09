@@ -7,7 +7,7 @@ export const StyledLabel = styled.label<ILabelProps>`
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   display: block;
   width: 100%;
   &:focus {
