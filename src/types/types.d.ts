@@ -27,7 +27,7 @@ export interface ISearch {
   uid: string
   keyword: string
   user?: string
-  filters: TFilter[]
+  filters: TFilter
 }
 
 // User interfaces
@@ -49,7 +49,7 @@ export interface ISearchWithFilters {
   keyword: string
   minPrice: number | undefined
   maxPrice: number | undefined
-  markAsViewed: boolean
+  alreadySeen: boolean
 }
 
 // Global types
@@ -63,14 +63,13 @@ export type TimeZone = 'es-AR' | 'en-US' | 'pt-BR'
 
 export type UserFormTypes = 'register' | 'login' | 'update'
 
-// Filters types
-export enum TypesOfFilters {
-  MIN_PRICE = 'MIN_PRICE',
-  MAX_PRICE = 'MAX_PRICE',
-  ALREADY_SEEN = 'ALREADY_SEEN',
+export type TFilter = {
+  minPrice?: number
+  maxPrice?: number
+  alreadySeen?: boolean
+  uid?: string
 }
-
-export type TFilter =
-  | { type: TypesOfFilters.MIN_PRICE; value: number }
-  | { type: TypesOfFilters.MAX_PRICE; value: number }
-  | { type: TypesOfFilters.ALREADY_SEEN; value: boolean }
+export interface IUpdateSearchWithFilters {
+  keyword: string
+  filters: TFilter
+}

@@ -16,6 +16,7 @@ export const MySearches = () => {
   const dispatch = useAppDispatch()
 
   const handlePagination = (page: number) => {
+    window.scrollTo(0, 0)
     dispatch(getSearchesThunk(page))
   }
 
