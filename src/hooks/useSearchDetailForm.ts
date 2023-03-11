@@ -1,9 +1,10 @@
 import { useFormik } from 'formik'
-import { useState } from 'react'
+// import { useEffect } from 'react'
 import * as yup from 'yup'
-import { saveFilterQuery } from '../services/api-ml-hoy/Filters'
-import { updateSearchWithFiltersQuery } from '../services/api-ml-hoy/Searches'
-import { useAppSelector } from '../store/hooks'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { createFilterThunk } from '../store/slices/filters/filtersThunks'
+// import { getFiltersBySearchThunk, createFilterThunk } from '../store/slices/filters/filtersThunks';
+import { updateSearchThunk } from '../store/slices/searches/searchesThunks'
 
 import { ISearchWithFilters } from '../types/types'
 
@@ -14,46 +15,52 @@ const validatationSchema = yup.object({
   allreadySeen: yup.boolean(),
 })
 
-export const useSearchDetailForm = () => {
-  const [loading, setLoading] = useState(false)
-  const { searchById } = useAppSelector((state) => state.searches)
+export const useSearchDetailForm = ({ searchId }: { searchId: string }) => {
+  const dispatch = useAppDispatch()
+  const { searchResults, loading } = useAppSelector((state) => state.searches)
+  // const { filters: filtersFetch } = useAppSelector((state) => state.filters)
+  const search = searchResults.find((search) => search.uid === searchId)
+  const { filters } = search || {}
 
   const handleOnSubmit = async ({
     keyword,
-    allreadySeen,
-    maxPrice,
     minPrice,
+    maxPrice,
+    allreadySeen,
   }: ISearchWithFilters) => {
     try {
-      setLoading(true)
-      if (searchById?.filters?.uid) {
-        await updateSearchWithFiltersQuery(searchById?.uid || '', {
-          keyword,
-          filters: {
-            allreadySeen,
-            maxPrice,
-            minPrice,
-            uid: searchById?.filters.uid,
-          },
-        })
+      if (filters) {
+        await dispatch(
+          updateSearchThunk({
+            searchId,
+            keyword,
+            filters: {
+              minPrice,
+              maxPrice,
+              allreadySeen,
+              uid: filters?.uid,
+            },
+          })
+        )
       } else {
-        await saveFilterQuery({
-          searchId: searchById?.uid || '',
-          maxPrice,
-          minPrice,
-          allreadySeen,
-        })
+        await dispatch(
+          createFilterThunk({
+            searchId,
+            minPrice,
+            maxPrice,
+            allreadySeen,
+          })
+        )
       }
     } finally {
-      setLoading(false)
     }
   }
 
   const initialValues: ISearchWithFilters = {
-    allreadySeen: searchById?.filters?.allreadySeen || false,
-    keyword: searchById?.keyword || '',
-    maxPrice: searchById?.filters?.maxPrice,
-    minPrice: searchById?.filters?.minPrice,
+    allreadySeen: filters?.allreadySeen ?? false,
+    keyword: search?.keyword ?? '',
+    maxPrice: filters?.maxPrice,
+    minPrice: filters?.minPrice,
   }
 
   const formik = useFormik({
@@ -74,9 +81,9 @@ export const useSearchDetailForm = () => {
     handleOnChange: formik.handleChange,
     handleOnSubmit: formik.handleSubmit,
     keywordError: formik.errors.keyword ? formik.errors.keyword : '',
-    loading,
     maxPriceError: formik.touched.maxPrice && formik.errors.maxPrice ? formik.errors.maxPrice : '',
     minPriceError: formik.touched.minPrice && formik.errors.minPrice ? formik.errors.minPrice : '',
+    loading,
     values: formik.values,
   }
 }

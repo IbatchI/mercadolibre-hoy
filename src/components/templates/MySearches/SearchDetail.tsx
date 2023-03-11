@@ -4,18 +4,21 @@ import { Form } from '../../UI/atoms/Form/FormStyles'
 import { H3 } from '../../../styles/SearchResultsStyles'
 import { Input } from '../../UI/atoms/Input/Input'
 import { useSearchDetailForm } from '../../../hooks/useSearchDetailForm'
+import { useParams } from 'react-router-dom'
 
 export const SearchDetail = () => {
+  const { id } = useParams()
   const {
     disabledSubmit,
     handleOnBlur,
     handleOnChange,
     handleOnSubmit,
     keywordError,
+    loading,
     maxPriceError,
     minPriceError,
     values,
-  } = useSearchDetailForm()
+  } = useSearchDetailForm({ searchId: id || '' })
 
   const { keyword, minPrice, maxPrice, allreadySeen } = values
 
@@ -26,6 +29,7 @@ export const SearchDetail = () => {
         error={keywordError}
         height={'50px'}
         id="keyword"
+        loading={loading}
         name="keyword"
         onBlur={handleOnBlur}
         onChange={handleOnChange}
@@ -38,6 +42,7 @@ export const SearchDetail = () => {
         error={minPriceError}
         height={'50px'}
         id="minPrice"
+        loading={loading}
         name="minPrice"
         onBlur={handleOnBlur}
         onChange={handleOnChange}
@@ -47,10 +52,10 @@ export const SearchDetail = () => {
         value={minPrice}
       />
       <Input
-        data-testid={'sandajsndjasdans'}
         error={maxPriceError}
         height={'50px'}
         id="maxPrice"
+        loading={loading}
         name="maxPrice"
         onBlur={handleOnBlur}
         onChange={handleOnChange}
@@ -72,7 +77,7 @@ export const SearchDetail = () => {
       <Button
         disabled={disabledSubmit}
         fontWeight={'bold'}
-        // loading={loading}
+        loading={loading}
         textColor="white"
         type="submit"
         width={'100%'}

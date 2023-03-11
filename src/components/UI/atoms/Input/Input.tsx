@@ -10,6 +10,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode
   minWidth?: string
   padding?: string
+  loading?: boolean
   width?: string
   label?: boolean
 }
@@ -22,15 +23,17 @@ export const Input = ({
   minWidth,
   padding,
   width,
+  loading,
   ...rest
 }: IInputProps) => {
-  const { name } = rest
+  const { name, disabled } = rest
   return (
     <InputContainer>
       <Label htmlFor={name || ''}>{name?.toUpperCase()}</Label>
       {!icon && (
         <>
           <StyledInput
+            disabled={loading || disabled}
             error={error}
             height={height}
             minWidth={minWidth}
@@ -50,6 +53,7 @@ export const Input = ({
           width={width}
         >
           <StyledInput
+            disabled={loading || disabled}
             error={error}
             height={height}
             icon={icon}

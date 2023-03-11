@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { filterSlice } from '../slices/filters/filterSlice'
 import { productsSlice } from '../slices/products/productSilce'
 import { searchSlice } from '../slices/searches/searchSlice'
 import { userSlice } from '../slices/users/userSlice'
@@ -8,6 +9,7 @@ export const store = configureStore({
     searches: searchSlice.reducer,
     user: userSlice.reducer,
     products: productsSlice.reducer,
+    filters: filterSlice.reducer,
   },
 })
 

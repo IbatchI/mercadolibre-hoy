@@ -77,6 +77,7 @@ export interface IFilterForPost {
   allreadySeen: boolean
 }
 export interface IUpdateSearchWithFilters {
+  searchId: string
   keyword: string
   filters: TFilter
 }

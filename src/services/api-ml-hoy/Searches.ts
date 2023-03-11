@@ -6,10 +6,11 @@ export const saveSearchQuery = async (keyword: string) => {
   return response.data
 }
 
-export const updateSearchWithFiltersQuery = async (
-  searchId: string,
-  { keyword, filters }: IUpdateSearchWithFilters
-) => {
+export const updateSearchWithFiltersQuery = async ({
+  searchId,
+  keyword,
+  filters,
+}: IUpdateSearchWithFilters) => {
   const response = await API_ML_HOY.put(`/search/${searchId}`, { keyword, filters })
   return response.data
 }

@@ -50,14 +50,11 @@ export const saveSearchThunk = (search: string) => {
   }
 }
 
-export const updateSearchThunk = (
-  searchId: string,
-  { keyword, filters }: IUpdateSearchWithFilters
-) => {
+export const updateSearchThunk = ({ searchId, keyword, filters }: IUpdateSearchWithFilters) => {
   return async (dispatch: Dispatch) => {
     dispatch(startLoadingSearches())
     try {
-      await updateSearchWithFiltersQuery(searchId, { keyword, filters })
+      await updateSearchWithFiltersQuery({ searchId, keyword, filters })
       await dispatch(getSearchesThunk() as unknown as AnyAction)
     } finally {
       dispatch(endLoadingSearches())
