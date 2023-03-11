@@ -39,10 +39,10 @@ export const UserForm = ({ type }: UserFormProps) => {
         <H1>{titleOfLogin}</H1>
         {type === 'register' && (
           <Input
-            disabled={loading}
             error={nameError}
             height={'50px'}
             id="name"
+            loading={loading}
             name="name"
             onBlur={handleOnBlur}
             onChange={handleOnChange}
@@ -53,10 +53,10 @@ export const UserForm = ({ type }: UserFormProps) => {
           />
         )}
         <Input
-          disabled={loading}
           error={emailError}
           height={'50px'}
           id="email"
+          loading={loading}
           name="email"
           onBlur={handleOnBlur}
           onChange={handleOnChange}
@@ -67,7 +67,6 @@ export const UserForm = ({ type }: UserFormProps) => {
         />
 
         <Input
-          disabled={loading}
           error={passwordError}
           handleOnClickIcon={() => {
             setShowPassword(!showPassword)
@@ -75,6 +74,7 @@ export const UserForm = ({ type }: UserFormProps) => {
           height={'50px'}
           icon={showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
           id="password"
+          loading={loading}
           name="password"
           onBlur={handleOnBlur}
           onChange={handleOnChange}
