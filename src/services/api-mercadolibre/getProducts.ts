@@ -15,7 +15,7 @@ export async function getProducts({
     page * LIMIT
   }`
 
-  if (filters.minPrice && filters.maxPrice) {
+  if (filters?.minPrice && filters?.maxPrice) {
     sarchUrl += `&price=${filters.minPrice}-${filters.maxPrice}`
   }
 
