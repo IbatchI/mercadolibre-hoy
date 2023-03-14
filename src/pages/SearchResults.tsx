@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Pagination } from '../components/UI/molecules/Pagination/Pagination'
 import {
@@ -9,33 +9,34 @@ import {
   StyledSearchAndFilters,
 } from '../styles/SearchResultsStyles'
 import { BiFilterAlt } from 'react-icons/bi'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import { capitalizeFirstLetter, generateRandomKey, skeletonArray } from '../../utils/utilsFunctions'
-import { OpacityAnimationContainer } from '../../utils/styledGlobal'
-import { LIMIT } from '../services/api-mercadolibre/settings'
 import { Button } from '../components/UI/atoms/Button/Button'
-import { NewProductCard } from '../components/UI/molecules/NewProductCard/NewProductCard'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { capitalizeFirstLetter, generateRandomKey, skeletonArray } from '../../utils/utilsFunctions'
 import { getProductsThunk } from '../store/slices/products/productsThunks'
+import { LIMIT } from '../services/api-mercadolibre/settings'
+import { NewProductCard } from '../components/UI/molecules/NewProductCard/NewProductCard'
+import { OpacityAnimationContainer } from '../../utils/styledGlobal'
+import { TFilter } from '../types/types'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 export const SearchResults = () => {
+  const [filters, setFilters] = useState<TFilter>({})
   const { keyword } = useParams()
   const { products, totalResults, currentPage, loading } = useAppSelector((state) => state.products)
   const { searchResults } = useAppSelector((state) => state.searches)
-  const search = searchResults.find((search) => search.keyword === keyword)
-  const { filters } = search || { filters: {} }
-
   const dispatch = useAppDispatch()
 
   const handlePagination = (page: number) => {
     window.scrollTo(0, 0)
     dispatch(getProductsThunk({ keyword, page, filters }))
   }
-
   useEffect(() => {
+    const search = searchResults.find((search) => search.keyword === keyword)
+    const { filters } = search || { filters: {} }
+    setFilters(filters)
     const page = 0
     dispatch(getProductsThunk({ keyword, page, filters }))
-  }, [search])
+  }, [keyword])
 
   return (
     <>
