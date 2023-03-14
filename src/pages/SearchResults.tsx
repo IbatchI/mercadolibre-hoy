@@ -30,6 +30,8 @@ export const SearchResults = () => {
     window.scrollTo(0, 0)
     dispatch(getProductsThunk({ keyword, page, filters }))
   }
+
+  console.log({ keyword })
   useEffect(() => {
     const search = searchResults.find((search) => search.keyword === keyword)
     const { filters } = search || { filters: {} }
