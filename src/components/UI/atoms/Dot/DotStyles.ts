@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import { mainTheme } from '../../../../styles/Styles'
 
 export const Dot = styled.div`
-  padding: 0 12px;
-  height: 32px;
+  padding: 0 5px;
   text-align: center;
   margin: auto 4px;
   color: ${mainTheme.colors.secondaryColor};
