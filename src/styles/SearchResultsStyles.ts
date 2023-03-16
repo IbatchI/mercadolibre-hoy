@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { deviceSize } from './Styles'
+import { deviceSize, mainTheme } from './Styles'
 
 export const StyledCardContainer = styled.div`
   display: grid;
@@ -33,15 +33,17 @@ export const StyledSearchAndFilters = styled.div`
 `
 
 export const H1 = styled.h1`
+  color: ${mainTheme.colors.secondaryColor};
   font-size: 24px;
-  margin: 0;
+  margin: 5px 0px 30px 0px;
   font-weight: 500;
   @media ${deviceSize.tablet} {
     font-size: 16px;
   }
 `
 export const H3 = styled.h1`
-  font-size: 24px;
+  color: ${mainTheme.colors.secondaryColor};
+  font-size: 18px;
   margin: 0;
   margin-bottom: 18px;
   font-weight: 500;

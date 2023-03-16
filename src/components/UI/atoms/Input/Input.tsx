@@ -26,10 +26,10 @@ export const Input = ({
   loading,
   ...rest
 }: IInputProps) => {
-  const { name, disabled } = rest
+  const { name, disabled, placeholder } = rest
   return (
     <InputContainer>
-      <Label htmlFor={name || ''}>{name?.toUpperCase()}</Label>
+      <Label htmlFor={name || ''}>{placeholder?.toUpperCase()}</Label>
       {!icon && (
         <>
           <StyledInput

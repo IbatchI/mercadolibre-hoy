@@ -9,6 +9,8 @@ import { UserFormTypes } from '../../../../types/types'
 import { useUserForm } from '../../../../hooks/useUserForm'
 import { useAppSelector } from '../../../../store/hooks'
 import { H1 } from '../../../../styles/SearchResultsStyles'
+import { useNavigate } from 'react-router-dom'
+import { FooterForm, RegisterButton } from './UserFormStyles'
 
 interface UserFormProps {
   type: UserFormTypes
@@ -16,6 +18,7 @@ interface UserFormProps {
 
 export const UserForm = ({ type }: UserFormProps) => {
   const [showPassword, setShowPassword] = useState(false)
+  const history = useNavigate()
   const { error, loading } = useAppSelector((state) => state.user)
 
   const {
@@ -60,7 +63,7 @@ export const UserForm = ({ type }: UserFormProps) => {
           name="email"
           onBlur={handleOnBlur}
           onChange={handleOnChange}
-          placeholder={'Email'}
+          placeholder={'Correo electrónico'}
           required
           type={'email'}
           value={email}
@@ -95,6 +98,12 @@ export const UserForm = ({ type }: UserFormProps) => {
         >
           {type === 'register' ? 'Registrarse' : 'Iniciar sesión'}
         </Button>
+        {type === 'login' ? (
+          <FooterForm>
+            Si aún no estas registrado,{' '}
+            <RegisterButton onClick={() => history('/register')}>registrate</RegisterButton>
+          </FooterForm>
+        ) : null}
       </Form>
     </>
   )
