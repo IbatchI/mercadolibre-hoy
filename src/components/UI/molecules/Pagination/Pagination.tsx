@@ -45,7 +45,7 @@ export const Pagination = ({
   return (
     <StyledPaginationContainer>
       {/* Go to previus page */}
-      <Button disabled={currentPage === 0} onClick={goToPreviusPage}>
+      <Button disabled={currentPage === 0} isPagination onClick={goToPreviusPage}>
         <BiLeftArrow />
       </Button>
 

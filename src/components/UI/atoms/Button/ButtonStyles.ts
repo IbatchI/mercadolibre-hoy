@@ -47,6 +47,6 @@ export const StyledButton = styled.button<ButtonProps>`
 
   @media ${deviceSize.mobile} {
     font-size: ${mainTheme.fontSizes.xSmall};
-    padding: ${(props) => (props.isPagination ? `0.4rem 0.8rem` : ``)};
+    padding: ${(props) => (props.isPagination ? `0.4rem 0.7rem` : ``)};
   }
 `
