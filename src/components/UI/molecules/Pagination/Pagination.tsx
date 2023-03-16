@@ -58,6 +58,7 @@ export const Pagination = ({
         return (
           <Button
             active={page === currentPage + 1}
+            isPagination
             key={`${index} + ${page}`}
             onClick={() => onPageChange(Number(page) - 1)}
             padding="0.4rem 1rem"
@@ -68,7 +69,7 @@ export const Pagination = ({
       })}
 
       {/*  Go to next Page */}
-      <Button disabled={currentPage === Number(lastPage) - 1} onClick={goToNextPage}>
+      <Button disabled={currentPage === Number(lastPage) - 1} isPagination onClick={goToNextPage}>
         <BiRightArrow />
       </Button>
     </StyledPaginationContainer>

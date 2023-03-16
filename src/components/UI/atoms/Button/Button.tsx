@@ -10,6 +10,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   textColor?: string
   width?: string
   loading?: boolean
+  isPagination?: boolean
 }
 
 export const Button = ({ loading, disabled, children, ...props }: ButtonProps) => {
