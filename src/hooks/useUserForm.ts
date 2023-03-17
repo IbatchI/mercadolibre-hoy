@@ -44,7 +44,7 @@ export const useUserForm = (type: UserFormTypes) => {
 
   return {
     disabledSubmit: !!(formik.errors.email || formik.errors.password || fieldEmpty),
-    emailError: formik.errors.email ? formik.errors.email : '',
+    emailError: formik.touched.email && formik.errors.email ? formik.errors.email : '',
     formik,
     handleOnBlur: formik.handleBlur,
     handleOnChange: formik.handleChange,
