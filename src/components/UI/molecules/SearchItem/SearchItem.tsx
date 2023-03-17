@@ -26,10 +26,12 @@ export const SearchItem = ({ search }: ISearchItemProps) => {
   }
 
   const handleOnClickSearch = (keyword: string) => {
+    window.scrollTo(0, 0)
     navigate(`/search/${keyword}`)
   }
 
   const handleOnClickDetail = (id: string) => {
+    window.scrollTo(0, 0)
     navigate(`/my-searches/${id}`)
   }
 

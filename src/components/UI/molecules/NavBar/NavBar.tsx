@@ -32,6 +32,7 @@ export const Navbar = () => {
       <StyledNavBarContainer>
         <StyledMainLogo
           onClick={() => {
+            window.scrollTo(0, 0)
             navigate('/')
           }}
           src="/images/logo.png"
