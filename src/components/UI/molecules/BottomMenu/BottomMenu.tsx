@@ -24,7 +24,13 @@ export const BottomMenu = () => {
   return (
     <StyledBottomMenu>
       <IconButton icon={<MdNotificationsNone />} />
-      <IconButton icon={<BiLibrary />} onClick={() => navigate(`/my-searches`)} />
+      <IconButton
+        icon={<BiLibrary />}
+        onClick={() => {
+          window.scrollTo(0, 0)
+          navigate(`/my-searches`)
+        }}
+      />
       <IconButton
         disabled={!keyword}
         icon={<MdSave />}
