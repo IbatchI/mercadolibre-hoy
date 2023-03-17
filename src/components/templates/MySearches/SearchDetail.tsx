@@ -33,7 +33,7 @@ export const SearchDetail = () => {
         name="keyword"
         onBlur={handleOnBlur}
         onChange={handleOnChange}
-        placeholder={keyword || ''}
+        placeholder={'Nombre de la búsqueda'}
         required
         type={'text'}
         value={keyword}
@@ -46,7 +46,7 @@ export const SearchDetail = () => {
         name="minPrice"
         onBlur={handleOnBlur}
         onChange={handleOnChange}
-        placeholder={'Precio minimo'}
+        placeholder={'Precio mínimo'}
         required
         type={'number'}
         value={minPrice}
@@ -59,7 +59,7 @@ export const SearchDetail = () => {
         name="maxPrice"
         onBlur={handleOnBlur}
         onChange={handleOnChange}
-        placeholder={'Precio maximo'}
+        placeholder={'Precio máximo'}
         required
         type={'number'}
         value={maxPrice}
