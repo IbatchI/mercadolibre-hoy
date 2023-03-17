@@ -10,54 +10,12 @@ interface IInputProps {
   width?: string
 }
 
-const getStylesFromInput = (
-  error: boolean,
-  hasIconInRight: boolean,
-  height?: string,
-  minWidth?: string,
-  padding?: string,
-  width?: string
-): string => {
-  if (!hasIconInRight) {
-    return `
-    background-color: ${mainTheme.colors.inputBackgroundColor};
-    border-radius: 5px;
-    border: 0.3px solid ${error ? mainTheme.colors.dangerColor : mainTheme.colors.borderColors};
-    box-sizing: border-box;
-    color: ${mainTheme.colors.primaryTextColor};
-    display: flex;
-    font-size: 100%;
-    height: ${height || '30px'};
-    min-width: ${minWidth || 0};
-    padding: ${padding || '0 10px'};
-    width: ${width || '100%'};
-    &:focus {
-      outline: none;
-      box-shadow: 0px 0px 2px ${mainTheme.colors.secondaryColor};
-      background-color: ${mainTheme.colors.primaryColor};
-      color: ${mainTheme.colors.primaryTextColor};
-    }`
-  } else {
-    return `
-      width: 100%;
-      border: none;
-      &:focus {
-        outline: none;
-      }
-      `
-  }
-}
-
 export const StyledInput = styled.input<IInputProps>`
-  ${(props) =>
-    getStylesFromInput(
-      props.error !== undefined && props.error?.length > 0,
-      props?.icon !== undefined,
-      props.height,
-      props.minWidth,
-      props.padding,
-      props.width
-    )}
+  width: 100%;
+  border: none;
+  &:focus {
+    outline: none;
+  }
 `
 
 export const StyledInputContainer = styled.div<IInputProps>`

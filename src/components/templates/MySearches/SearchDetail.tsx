@@ -41,6 +41,7 @@ export const SearchDetail = () => {
       <Input
         error={minPriceError}
         height={'50px'}
+        icon={'$'}
         id="minPrice"
         loading={loading}
         name="minPrice"

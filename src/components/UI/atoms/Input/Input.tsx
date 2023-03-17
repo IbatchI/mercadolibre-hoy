@@ -30,44 +30,29 @@ export const Input = ({
   return (
     <InputContainer>
       <Label htmlFor={name || ''}>{placeholder?.toUpperCase()}</Label>
-      {!icon && (
-        <>
-          <StyledInput
-            disabled={loading || disabled}
-            error={error}
-            height={height}
-            minWidth={minWidth}
-            padding={padding}
-            width={width}
-            {...rest}
-          />
-        </>
-      )}
-
-      {icon && (
-        <StyledInputContainer
+      <StyledInputContainer
+        error={error}
+        height={height}
+        minWidth={minWidth}
+        padding={padding}
+        width={width}
+      >
+        <StyledInput
+          disabled={loading || disabled}
           error={error}
           height={height}
+          icon={icon}
           minWidth={minWidth}
           padding={padding}
           width={width}
-        >
-          <StyledInput
-            disabled={loading || disabled}
-            error={error}
-            height={height}
-            icon={icon}
-            minWidth={minWidth}
-            padding={padding}
-            width={width}
-            {...rest}
-          />
+          {...rest}
+        />
+        {icon && (
           <InputButtonIcon onClick={handleOnClickIcon} type="button">
             {icon}
           </InputButtonIcon>
-        </StyledInputContainer>
-      )}
-
+        )}
+      </StyledInputContainer>
       {error && <Error>{error}</Error>}
     </InputContainer>
   )
