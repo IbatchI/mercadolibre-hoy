@@ -10,14 +10,14 @@ import {
 } from '../styles/SearchResultsStyles'
 import { BiFilterAlt } from 'react-icons/bi'
 import { Button } from '../components/UI/atoms/Button/Button'
-import { capitalizeFirstLetter, generateRandomKey, skeletonArray } from '../../utils/utilsFunctions'
+import { capitalizeFirstLetter } from '../../utils/utilsFunctions'
 import { getProductsThunk } from '../store/slices/products/productsThunks'
 import { LIMIT } from '../services/api-mercadolibre/settings'
 import { NewProductCard } from '../components/UI/molecules/NewProductCard/NewProductCard'
 import { OpacityAnimationContainer } from '../../utils/styledGlobal'
 import { TFilter } from '../types/types'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { MySkeleton } from '../components/UI/atoms/Skeleton/Skeleton'
 
 export const SearchResults = () => {
   const [filters, setFilters] = useState<TFilter>({})
@@ -30,6 +30,8 @@ export const SearchResults = () => {
     window.scrollTo(0, 0)
     dispatch(getProductsThunk({ keyword, page, filters }))
   }
+
+  const auxiliar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
   useEffect(() => {
     const search = searchResults.find((search) => search.keyword === keyword)
@@ -47,13 +49,7 @@ export const SearchResults = () => {
             <H1>Resultados para : {capitalizeFirstLetter(keyword || '')}</H1>
             <StyledResultContainer>
               <H2>Total: </H2>
-              {loading ? (
-                <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                  <Skeleton count={1} height="17px" width="30px" />
-                </SkeletonTheme>
-              ) : (
-                <H2>{totalResults}</H2>
-              )}
+              {loading ? <MySkeleton height="17px" width="30px" /> : <H2>{totalResults}</H2>}
             </StyledResultContainer>
           </div>
           <Button padding="10px" textColor="white">
@@ -62,8 +58,8 @@ export const SearchResults = () => {
         </StyledSearchAndFilters>
         <StyledCardContainer>
           {loading
-            ? skeletonArray.map(() => (
-                <NewProductCard isSqueleton={true} key={generateRandomKey()} />
+            ? auxiliar.map((numberOfArray) => (
+                <NewProductCard isSqueleton={true} key={numberOfArray} />
               ))
             : products.map((product) => (
                 <NewProductCard

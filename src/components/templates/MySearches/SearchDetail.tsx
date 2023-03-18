@@ -41,13 +41,13 @@ export const SearchDetail = () => {
       <Input
         error={minPriceError}
         height={'50px'}
+        icon={'$'}
         id="minPrice"
         loading={loading}
         name="minPrice"
         onBlur={handleOnBlur}
         onChange={handleOnChange}
         placeholder={'Precio mínimo'}
-        required
         type={'number'}
         value={minPrice}
       />
@@ -60,7 +60,6 @@ export const SearchDetail = () => {
         onBlur={handleOnBlur}
         onChange={handleOnChange}
         placeholder={'Precio máximo'}
-        required
         type={'number'}
         value={maxPrice}
       />

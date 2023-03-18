@@ -9,13 +9,14 @@ import {
   StyledTitleAndButtonsContainer,
 } from './NewProductCardStyles'
 import 'react-loading-skeleton/dist/skeleton.css'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+
 import { Price } from '../../atoms/Price/Price'
 import { BiLinkExternal } from 'react-icons/bi'
 import { HiOutlineClipboardCopy } from 'react-icons/hi'
 import { toast } from 'react-toastify'
 import { IconButton } from '../../atoms/IconButton/IconButton'
+import { MySkeleton } from '../../atoms/Skeleton/Skeleton'
 
 interface ProductCardProps {
   link?: string
@@ -44,9 +45,7 @@ export const NewProductCard = ({
   return (
     <>
       {isSqueleton ? (
-        <SkeletonTheme baseColor="#202020" highlightColor="#444">
-          <Skeleton count={1} height="180px" />
-        </SkeletonTheme>
+        <MySkeleton height={'180px'} quantity={1} />
       ) : (
         <CardStyled>
           <StyledCarrouselContainer>
