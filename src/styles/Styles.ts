@@ -16,6 +16,9 @@ export const mainTheme = {
     secondaryColor: 'var(--mainSecondaryColor)',
     ternaryColor: 'var(--mainTernaryColor)',
     dangerColor: 'var(--mainDangerColor)',
+    // Skeleton colors
+    skeletonBackgroundColor: 'var(--mainSkeletonBackgroundColor)',
+    skeletonHighlightColor: 'var(--mainSkeletonHighlightColor)',
   },
 
   mainBorderRadius: '0.3rem',

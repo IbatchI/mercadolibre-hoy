@@ -18,6 +18,9 @@
   --mainBackgroundInputColor: #ffffff29;
   --mainSecondaryBackgroundColor: #18181b;
   --mainDangerColor: #e85a4f;
+  /* Skeleton colors */
+  --mainSkeletonBackgroundColor: #202020;
+  --mainSkeletonHighlightColor: #444444;
   
   font-synthesis: none;
   text-rendering: optimizeLegibility;
