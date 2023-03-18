@@ -10,7 +10,7 @@ export const StyledGlobalContainer = styled.div`
   margin: auto;
   max-width: 1024px;
   @media ${deviceSize.tablet} {
-    margin-top: 20px;
+    margin-top: 10px;
     max-width: 94%;
     margin-bottom: 5rem;
   }
