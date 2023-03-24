@@ -14,7 +14,7 @@ export const Form = styled.form<IInputProps>`
   background-color: ${mainTheme.colors.formBackgroundColor};
   gap: 10px;
   padding: 16px 12px;
-  width: ${(props) => props.width ?? '40%'};
+  width: ${(props) => props.width ?? '30%'};
   border-radius: 5px;
   margin: 40px auto;
   color: ${mainTheme.colors.primaryTextColor};
