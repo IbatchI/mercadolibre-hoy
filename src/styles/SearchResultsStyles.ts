@@ -73,4 +73,8 @@ export const StyledSaveSearchs = styled.div`
   padding: 0px 15px 15px 15px;
   flex-direction: column;
   gap: 5px;
+
+  @media ${deviceSize.tablet} {
+    padding: 0px 10px 10px 10px;
+  }
 `
