@@ -14,7 +14,6 @@ import { capitalizeFirstLetter } from '../../utils/utilsFunctions'
 import { getProductsThunk } from '../store/slices/products/productsThunks'
 import { LIMIT } from '../services/api-mercadolibre/settings'
 import { NewProductCard } from '../components/UI/molecules/NewProductCard/NewProductCard'
-import { OpacityAnimationContainer } from '../../utils/styledGlobal'
 import { TFilter } from '../types/types'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { MySkeleton } from '../components/UI/atoms/Skeleton/Skeleton'
@@ -43,35 +42,33 @@ export const SearchResults = () => {
 
   return (
     <>
-      <OpacityAnimationContainer>
-        <StyledSearchAndFilters>
-          <div>
-            <H1>Resultados para : {capitalizeFirstLetter(keyword || '')}</H1>
-            <StyledResultContainer>
-              <H2>Total: </H2>
-              {loading ? <MySkeleton height="17px" width="30px" /> : <H2>{totalResults}</H2>}
-            </StyledResultContainer>
-          </div>
-          <Button padding="10px" textColor="white">
-            <BiFilterAlt size="16px" />
-          </Button>
-        </StyledSearchAndFilters>
-        <StyledCardContainer>
-          {loading
-            ? auxiliar.map((numberOfArray) => (
-                <NewProductCard isSqueleton={true} key={numberOfArray} />
-              ))
-            : products.map((product) => (
-                <NewProductCard
-                  key={product.id}
-                  link={product.permalink}
-                  pictures={product.pictures}
-                  price={product.price}
-                  title={product.title}
-                />
-              ))}
-        </StyledCardContainer>
-      </OpacityAnimationContainer>
+      <StyledSearchAndFilters>
+        <div>
+          <H1>Resultados para : {capitalizeFirstLetter(keyword || '')}</H1>
+          <StyledResultContainer>
+            <H2>Total: </H2>
+            {loading ? <MySkeleton height="17px" width="30px" /> : <H2>{totalResults}</H2>}
+          </StyledResultContainer>
+        </div>
+        <Button padding="10px" textColor="white">
+          <BiFilterAlt size="16px" />
+        </Button>
+      </StyledSearchAndFilters>
+      <StyledCardContainer>
+        {loading
+          ? auxiliar.map((numberOfArray) => (
+              <NewProductCard isSqueleton={true} key={numberOfArray} />
+            ))
+          : products.map((product) => (
+              <NewProductCard
+                key={product.id}
+                link={product.permalink}
+                pictures={product.pictures}
+                price={product.price}
+                title={product.title}
+              />
+            ))}
+      </StyledCardContainer>
       {!loading && (
         <Pagination
           currentPage={currentPage}

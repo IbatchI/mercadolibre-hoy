@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { getSearchesThunk } from '../../../store/slices/searches/searchesThunks'
 import { H3, StyledSaveSearchs } from '../../../styles/SearchResultsStyles'
 import { MySkeleton } from '../../UI/atoms/Skeleton/Skeleton'
-import { OpacityAnimationContainer } from '../../../../utils/styledGlobal'
 import { Pagination } from '../../UI/molecules/Pagination/Pagination'
 import { SearchItem } from '../../UI/molecules/SearchItem/SearchItem'
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
@@ -25,22 +24,20 @@ export const MySearches = () => {
   }, [])
 
   return (
-    <OpacityAnimationContainer>
-      <StyledSaveSearchs>
-        <H3>Mis Busquedas</H3>
-        {loading ? (
-          <MySkeleton height={'50px'} quantity={10} />
-        ) : (
-          searchResults.map((search) => <SearchItem key={search.uid} search={search} />)
-        )}
+    <StyledSaveSearchs>
+      <H3>Mis Busquedas</H3>
+      {loading ? (
+        <MySkeleton height={'50px'} quantity={10} />
+      ) : (
+        searchResults.map((search) => <SearchItem key={search.uid} search={search} />)
+      )}
 
-        <Pagination
-          currentPage={currentPage}
-          onPageChange={handlePagination}
-          pageSize={10}
-          totalCount={searches}
-        />
-      </StyledSaveSearchs>
-    </OpacityAnimationContainer>
+      <Pagination
+        currentPage={currentPage}
+        onPageChange={handlePagination}
+        pageSize={10}
+        totalCount={searches}
+      />
+    </StyledSaveSearchs>
   )
 }

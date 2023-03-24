@@ -1,20 +1,4 @@
 import styled, { keyframes } from 'styled-components'
-import { deviceSize } from '../src/styles/Styles'
-
-export const StyledGlobalContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 4.5rem;
-  margin-top: 35px;
-  margin: auto;
-  max-width: 1024px;
-  @media ${deviceSize.tablet} {
-    margin-top: 10px;
-    max-width: 94%;
-    margin-bottom: 5rem;
-  }
-`
 
 export const opacityAnimation = keyframes`
   0% {
@@ -30,6 +14,30 @@ export const opacityAnimation = keyframes`
 	}
 `
 
-export const OpacityAnimationContainer = styled.div`
+export const StyledGlobalContainer = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+
+  max-width: 75%;
+
+  @media (max-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (max-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media (max-width: 1200px) {
+    max-width: 1140px;
+  }
+
   animation: ${opacityAnimation} 0.2s linear;
 `
