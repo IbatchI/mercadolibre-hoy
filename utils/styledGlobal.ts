@@ -20,6 +20,8 @@ export const StyledGlobalContainer = styled.div`
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 15px;
+  // todo: este padding-bottom se puede ajustar para los distintos dispositivos
+  padding-bottom: 7em;
 
   max-width: 75%;
 
