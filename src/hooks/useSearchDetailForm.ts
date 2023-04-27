@@ -45,6 +45,7 @@ export const useSearchDetailForm = ({ searchId }: { searchId: string }) => {
       } else {
         await dispatch(
           createFilterThunk({
+            keyword,
             searchId,
             minPrice,
             maxPrice,

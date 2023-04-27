@@ -24,6 +24,7 @@ export const getFiltersBySearchThunk = ({ searchId }: { searchId: string }) => {
 }
 
 export const createFilterThunk = ({
+  keyword,
   searchId,
   minPrice,
   maxPrice,
@@ -32,7 +33,7 @@ export const createFilterThunk = ({
   return async (dispatch: Dispatch) => {
     dispatch(startLoadingFilters())
     try {
-      await saveFilterQuery({ searchId, minPrice, maxPrice, allreadySeen })
+      await saveFilterQuery({ searchId, minPrice, maxPrice, allreadySeen, keyword })
       await dispatch(getFiltersBySearchThunk({ searchId }) as unknown as AnyAction)
     } finally {
       dispatch(endLoadingFilters())
