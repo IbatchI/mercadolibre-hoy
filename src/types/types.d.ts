@@ -71,6 +71,7 @@ export type TFilter = {
 }
 
 export interface IFilterForPost {
+  keyword: string
   searchId: string
   minPrice: number | undefined
   maxPrice: number | undefined
