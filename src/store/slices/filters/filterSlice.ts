@@ -11,7 +11,6 @@ const initialState = {
   filters: {
     minPrice: undefined,
     maxPrice: undefined,
-    allreadySeen: false,
   },
   loading: false,
 } as filtersState
@@ -20,7 +19,6 @@ const initialState = {
 interface SetFiltersPayload {
   minPrice: number | undefined
   maxPrice: number | undefined
-  allreadySeen: boolean
 }
 
 export const filterSlice = createSlice({
@@ -33,7 +31,6 @@ export const filterSlice = createSlice({
     setFilters: (state, action: PayloadAction<SetFiltersPayload>) => {
       state.filters.minPrice = action.payload.minPrice
       state.filters.maxPrice = action.payload.maxPrice
-      state.filters.allreadySeen = action.payload.allreadySeen
     },
     endLoadingFilters: (state) => {
       state.loading = false

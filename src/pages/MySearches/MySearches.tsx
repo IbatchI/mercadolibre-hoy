@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 
-import { getSearchesThunk } from '../../../store/slices/searches/searchesThunks'
-import { H3, StyledSaveSearchs } from '../../../styles/SearchResultsStyles'
-import { MySkeleton } from '../../UI/atoms/Skeleton/Skeleton'
-import { Pagination } from '../../UI/molecules/Pagination/Pagination'
-import { SearchItem } from '../../UI/molecules/SearchItem/SearchItem'
-import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { getSearchesThunk } from '../../store/slices/searches/searchesThunks'
+import { H3, StyledSaveSearchs } from '../../styles/SearchResultsStyles'
+import { MySkeleton } from '../../components/UI/atoms/Skeleton/Skeleton'
+import { Pagination } from '../../components/UI/molecules/Pagination/Pagination'
+import { SearchItem } from '../../components/UI/molecules/SearchItem/SearchItem'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
 
 export const MySearches = () => {
   // getInfo from redux store

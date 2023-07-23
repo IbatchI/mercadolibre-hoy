@@ -1,4 +1,4 @@
-import { MySearches, SearchDetail } from '../../components/templates/MySearches'
+import { MySearches, SearchDetail } from './'
 import { Route } from '../../routes/Routes'
 
 export const mySearchesRoutes: Route[] = [
