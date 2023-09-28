@@ -1,13 +1,15 @@
-import { Button } from '../../UI/atoms/Button/Button'
-import { Checkbox } from '../../UI/atoms/Checkbox/Checkbox'
-import { Form } from '../../UI/atoms/Form/FormStyles'
-import { H3 } from '../../../styles/SearchResultsStyles'
-import { Input } from '../../UI/atoms/Input/Input'
-import { useSearchDetailForm } from '../../../hooks/useSearchDetailForm'
 import { useParams } from 'react-router-dom'
+import { SiCashapp } from 'react-icons/si'
+
+import { Button } from '../../components/UI/atoms/Button/Button'
+import { Form } from '../../components/UI/atoms/Form/FormStyles'
+import { H3 } from '../../styles/SearchResultsStyles'
+import { Input } from '../../components/UI/atoms/Input/Input'
+import { useSearchDetailForm } from '../../hooks/useSearchDetailForm'
 
 export const SearchDetail = () => {
   const { id } = useParams()
+
   const {
     disabledSubmit,
     handleOnBlur,
@@ -20,10 +22,10 @@ export const SearchDetail = () => {
     values,
   } = useSearchDetailForm({ searchId: id || '' })
 
-  const { keyword, minPrice, maxPrice, allreadySeen } = values
+  const { keyword, minPrice, maxPrice } = values
 
   return (
-    <Form onSubmit={handleOnSubmit} width={'40%'}>
+    <Form onSubmit={handleOnSubmit} width={'50%'}>
       <H3>Detalle de la búsqueda: {keyword}</H3>
       <Input
         error={keywordError}
@@ -41,7 +43,7 @@ export const SearchDetail = () => {
       <Input
         error={minPriceError}
         height={'50px'}
-        icon={'$'}
+        icon={<SiCashapp />}
         id="minPrice"
         loading={loading}
         name="minPrice"
@@ -54,6 +56,7 @@ export const SearchDetail = () => {
       <Input
         error={maxPriceError}
         height={'50px'}
+        icon={<SiCashapp />}
         id="maxPrice"
         loading={loading}
         name="maxPrice"
@@ -62,16 +65,6 @@ export const SearchDetail = () => {
         placeholder={'Precio máximo'}
         type={'number'}
         value={maxPrice}
-      />
-      <Checkbox
-        checked={allreadySeen}
-        // TODO: Integrar con BE
-        disabled={true}
-        id="allreadySeen"
-        label={'Marcado como visto'}
-        name="allreadySeen"
-        onChange={handleOnChange}
-        type={'checkbox'}
       />
       <Button
         disabled={disabledSubmit}

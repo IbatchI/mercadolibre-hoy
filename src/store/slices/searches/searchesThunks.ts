@@ -32,7 +32,7 @@ export const deleteSearchThunk = (id: string) => {
     dispatch(startLoadingSearches())
     try {
       await deleteSearchQuery(id)
-      await dispatch(getSearchesThunk() as unknown as AnyAction)
+      dispatch(getSearchesThunk() as unknown as AnyAction)
     } finally {
       dispatch(endLoadingSearches())
     }
@@ -55,7 +55,7 @@ export const updateSearchThunk = ({ searchId, keyword, filters }: IUpdateSearchW
     dispatch(startLoadingSearches())
     try {
       await updateSearchWithFiltersQuery({ searchId, keyword, filters })
-      await dispatch(getSearchesThunk() as unknown as AnyAction)
+      dispatch(getSearchesThunk() as unknown as AnyAction)
     } finally {
       dispatch(endLoadingSearches())
     }

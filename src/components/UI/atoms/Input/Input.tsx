@@ -1,7 +1,13 @@
 import { InputHTMLAttributes } from 'react'
 import { Error } from '../ErrorMessage/ErrorMessageStyles'
 import { Label } from '../Label/Label'
-import { StyledInput, StyledInputContainer, InputButtonIcon, InputContainer } from './InputStyles'
+import {
+  StyledInput,
+  StyledInputContainer,
+  InputButtonIcon,
+  InputContainer,
+  InputRightSpinner,
+} from './InputStyles'
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string
@@ -47,11 +53,13 @@ export const Input = ({
           width={width}
           {...rest}
         />
-        {icon && (
+        {icon && !loading && (
           <InputButtonIcon onClick={handleOnClickIcon} type="button">
             {icon}
           </InputButtonIcon>
         )}
+
+        {loading && <InputRightSpinner />}
       </StyledInputContainer>
       {error && <Error>{error}</Error>}
     </InputContainer>
